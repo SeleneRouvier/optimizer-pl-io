@@ -2,17 +2,10 @@ const math = require('mathjs');
 const algebra = require('algebra.js');
 var Equation = algebra.Equation;
 const { compositionDependencies } = require('mathjs');
-
+const { hessianoSegundoOrden } = require('./funciones')
 
 // Programación restringida 1º y 2º Derivada
 
-function pasarAAlgebra(math) {
-    return new algebra.parse(math.toString());
-}
-
-function pasarAMath(algebra) {
-    return new algebra.parse(d1.toString());
-}
 
 
 const z = "( x - 2 )^2 + ( y - 3 )^2 + 5";
@@ -44,10 +37,7 @@ function hayPuntoFactible(d1, d2) {
 
 const punto = hayPuntoFactible(dgdx, dgdy);
 
-const derivadaCruzada = dgdxy.evaluate({ x: punto[0], y: punto[1] });
-const derivadaSegundaX = dgdx2.evaluate({ x: punto[0], y: punto[1] });
-
-const hessiano = math.matrix([[derivadaSegundaX, derivadaCruzada], [derivadaCruzada, dgdy2.evaluate({ x: punto[0], y: punto[1] })]]);
+const hessiano = hessianoSegundoOrden(z, punto[0], punto[1]);
 
 // Agregar la parte del hessiano igual a 0
 
