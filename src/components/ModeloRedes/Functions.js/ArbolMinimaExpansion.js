@@ -1,21 +1,23 @@
 var jsgraphs = require('js-graph-algorithms');
 
+
+
 const cantNodos = 5;
 const aristas = [[0, 1, 0.5], [1, 2, 0.3], [2, 0, 0.4]];
 
 function arbolExpansionMinima(cantidadNodos, aristas) {
-    let g = new jsgraphs.WeightedGraph(cantidadNodos);
+    const g = new jsgraphs.WeightedGraph(cantidadNodos);
 
     aristas.forEach(arista => {
         g.addEdge(new jsgraphs.Edge(arista[0], arista[1], arista[2]));
     });
 
-    var kruskal = new jsgraphs.KruskalMST(g);
-    var mst = kruskal.mst;
+    const kruskal = new jsgraphs.KruskalMST(g);
+    const mst = kruskal.mst;
     for (var i = 0; i < mst.length; ++i) {
-        var e = mst[i];
-        var v = e.either();
-        var w = e.other(v);
+        const e = mst[i];
+        const v = e.either();
+        const w = e.other(v);
         console.log('(' + v + ', ' + w + '): ' + e.weight);
     }
 /*

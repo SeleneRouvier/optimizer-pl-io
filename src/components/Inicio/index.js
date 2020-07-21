@@ -26,6 +26,22 @@ const Inicio = () =>{
                             </Link>     
                         </Col>
                     </Row>
+
+                    <Row className="mt-3 mx-auto">
+                        <Col>
+                            <Link to={"/ModeloRedes"}>
+                                <Button size='lg' outline color="success">Modelos de redes </Button>
+                            </Link>     
+                        </Col>
+                    </Row>
+
+                    <Row className="mt-3 mx-auto">
+                        <Col>
+                            <Link to={"/ModeloStock"}>
+                                <Button size='lg' outline color="success">Modelos de stock </Button>
+                            </Link>     
+                        </Col>
+                    </Row>
                     
                     <Row className="mt-5">
                         <h5>Colaboradores:</h5>

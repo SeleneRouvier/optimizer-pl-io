@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { Button, Jumbotron, Container, Row, Col } from "reactstrap";
 
-const NoLinealProgramming = () =>{
+const ModeloRedes = () =>{
     return(
         <Container fluid className="App">
         <Row className="">
@@ -14,7 +14,7 @@ const NoLinealProgramming = () =>{
                     <Row className="mt-3 mx-auto">
                         <Col>
                             <Link to={"/LinealProgramming/InSteps"}>
-                                <Button size='lg' outline color="success">Lagrange</Button>
+                                <Button size='lg' outline color="success">UNo</Button>
                             </Link>
                                 
                         </Col>
@@ -22,7 +22,7 @@ const NoLinealProgramming = () =>{
                     <Row className="mt-3 mx-auto">
                         <Col>
                             <Link to={"/LinealProgramming/SinglePage"} >
-                                <Button size='lg' outline color="success">Kuhn y Tucker</Button>
+                                <Button size='lg' outline color="success">Dos</Button>
 
                             </Link>
                         </Col>
@@ -34,4 +34,4 @@ const NoLinealProgramming = () =>{
   )
 };
 
-export default NoLinealProgramming;
+export default ModeloRedes;
