@@ -13,16 +13,16 @@ const ModeloRedes = () =>{
                     </Row>
                     <Row className="mt-3 mx-auto">
                         <Col>
-                            <Link to={"/LinealProgramming/InSteps"}>
-                                <Button size='lg' outline color="success">Arbol de minima expansion</Button>
+                            <Link to={"/ModeloRedes/ArbolMinimaExpansion"}>
+                                <Button size='lg' outline color="success">Arbol de Minima Expansion</Button>
                             </Link>
                                 
                         </Col>
                     </Row>
                     <Row className="mt-3 mx-auto">
                         <Col>
-                            <Link to={"/LinealProgramming/SinglePage"} >
-                                <Button size='lg' outline color="success">Ruta mas corta</Button>
+                            <Link to={"/ModeloRedes/RutaMasCorta"} >
+                                <Button size='lg' outline color="success">Ruta Mas Corta</Button>
 
                             </Link>
                         </Col>
