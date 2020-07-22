@@ -11,8 +11,9 @@ class SinglePage extends React.Component {
     super(props);
     this.state = {
       model:{
-        variables: [{ xi: 0, descripcion: "", coeficiente: "" }, { xi: 1, descripcion: "", coeficiente: "" }],
+        aristas: [{ xi: 0, descripcion: "", coeficiente: "" }, { xi: 1, descripcion: "", coeficiente: "" }],
         restricciones: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
+        variables: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
         method: "graph",
         objective: "max",
         integer: false
@@ -22,36 +23,18 @@ class SinglePage extends React.Component {
     };
   }
 
-  //Esta función maneja el cambio en las restricciones
-  handleRestricciones = restricciones => {
-    let { model } = this.state;
-    model.restricciones = restricciones;
-    this.setState({ model, changes: true });
-  };
-  //Esta función maneja el cambio en las variables
-  handleVariables = variables => {
-    let { model } = this.state;
-    model.variables = variables;
-    this.setState({ model, changes: true });
-  };
-  //Esta función maneja el cambio del metodo
-  handleMethod = method => {
-    let { model } = this.state;
-    model.method = method;
-    this.setState({ model, changes: true });
-  };
-  //Esta función maneja el cambio del objetivo de optimización
-  handleObjective = objective => {
-    let { model } = this.state;
-    model.objective = objective;
-    this.setState({ model, changes: true });
-  };
   toggleInteger = () => {
     let { model } = this.state;
     model.integer = !model.integer;
     this.setState({ model, changes: true });
-
   }
+  
+  handleAristas = aristas => {
+    let { model } = this.state;
+    model.aristas = aristas;
+    this.setState({ model, changes: true });
+  };
+
   //Esta función guarda el resultado (inutilizada por el momento)
   handleResult = result => this.setState({ result });
   //Esta función habilita el cálculo en el último paso
@@ -76,22 +59,10 @@ class SinglePage extends React.Component {
         </Row>
         <Row>
           <Col xs={12} md={6} className="my-4 mx-auto ">
-            <Row>
-                <Jumbotron className='w-100'>
-                    <Configuration   status={model}
-                    handleMethod={this.handleMethod}
-                    handleVariables={this.handleVariables}
-                    handleRestricciones={this.handleRestricciones}
-                    lastStep={this.lastStep}
-                    toggleInteger={this.toggleInteger}
-                    handleObjective={this.handleObjective}
-                    showModels={this.showModels}/>
-                </Jumbotron>  
-            </Row>
 
             <Row>
                 <Jumbotron className='w-100'>
-                    <Processing status={model} handleVariables={this.handleVariables}
+                    <Processing status={model} handleAristas={this.handleAristas}
                     handleRestricciones={this.handleRestricciones} lastStep={this.lastStep}/>
                 </Jumbotron>
                 
