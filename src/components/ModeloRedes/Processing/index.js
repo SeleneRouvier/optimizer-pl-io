@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Card, CardBody, CardHeader, CardTitle, Alert } from "reactstrap";
-import Restriccion from "./Restriccion";
+import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 
 class Processing extends React.Component {
@@ -18,8 +18,8 @@ class Processing extends React.Component {
       .filter(re => re.descripcion !== "")
       .every(re => re.coeficientes.every(co => co !== "") && re.derecha !== "");
     if (verifQty && veriResQty) {
-      console.log(verifQty+'dff:'+veriResQty);
-      
+      console.log(verifQty + 'dff:' + veriResQty);
+
       this.props.lastStep(2);
       this.setState({ faltaCoe: "" });
       return true;
@@ -32,7 +32,7 @@ class Processing extends React.Component {
       return false;
     }
   }
-  
+
   handleCantidadNodos = event => {
     let { value } = event.target;
     if (value) {
@@ -41,7 +41,17 @@ class Processing extends React.Component {
     }
   }
 
+  handleAristas = event => {
+    let { value } = event.target;
+    if (value) {
+      console.log('Cambiando Arista');
+      this.props.status.cantidadNodos = value;
+    }
+  }
+
   render() {
+    console.log('###############3   ');
+    console.log(this.props);
     //Obtenemos las propiedades del Super
     let { variables } = this.props.status;
     let { restricciones } = this.props.status;
@@ -51,7 +61,7 @@ class Processing extends React.Component {
     let restriccionesInput = restricciones
       .filter(item => item.descripcion !== "")
       .map((restriccion, index) => (
-        <Restriccion
+        <Aristas
           className="mt-1"
           key={"R" + index}
           handleCoefRes={this.handleCoefRes}
@@ -82,10 +92,14 @@ class Processing extends React.Component {
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
                 <CardTitle className="text-left">
-                  <h4>Restricciones</h4>
+                  <h4>Aristas</h4>
                 </CardTitle>
               </CardHeader>
-              <CardBody>{restriccionesInput}</CardBody>
+              <CardBody>
+                <Aristas
+                  aristas={this.props.status.aristas}
+                  handleAristas = {this.props.handleAristas}
+                /></CardBody>
             </Card>
           </Row>
           {this.state.faltaCoe !== "" && (

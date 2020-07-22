@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { Button, Jumbotron, Container, Row, Col } from "reactstrap";
 
-const ModeloRedes = () =>{
+const ModeloStock = () =>{
     return(
         <Container fluid className="App">
         <Row className="">
@@ -13,8 +13,8 @@ const ModeloRedes = () =>{
                     </Row>
                     <Row className="mt-3 mx-auto">
                         <Col>
-                            <Link to={"/LinealProgramming/InSteps"}>
-                                <Button size='lg' outline color="success">UNo</Button>
+                            <Link to={"/ModeloStock/ModeloWilson"}>
+                                <Button size='lg' outline color="success">Modelo 1 - Modelo de Wilson</Button>
                             </Link>
                                 
                         </Col>
@@ -34,4 +34,4 @@ const ModeloRedes = () =>{
   )
 };
 
-export default ModeloRedes;
+export default ModeloStock;
