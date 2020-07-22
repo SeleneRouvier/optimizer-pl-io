@@ -2,8 +2,8 @@ import React from 'react';
 import {InputGroupText,InputGroup, Input,InputGroupAddon,UncontrolledPopover,PopoverBody} from 'reactstrap';
 
 const Arista = props => {
-    let {xi,descripcion} = props.arista
-    const handleChange = e => props.handleChanges(xi,e.target.value) 
+    let {xi,descripcion} = props.arista;
+    // const handleChange = e => props.handleChanges(e);
     return(
         <InputGroup className="mt-1" id={"XTT" + xi} key={"VTD" + xi}>
         <InputGroupAddon addonType="prepend">
@@ -12,16 +12,30 @@ const Arista = props => {
           </InputGroupText>
         </InputGroupAddon>
         <Input
-          name={xi}
-          placeholder="Descripcion de la arista"
-          aria-label="Descripcion"
+          name={[xi, "nodoInicial"]}
+          placeholder="Nodo inicial"
+          aria-label="Nodo inicial"
           aria-describedby="arista"
-          onChange={handleChange}
+          onChange={props.handleChanges}
           // value={descripcion}
         />
-        <UncontrolledPopover flip={false} trigger="focus hover" placement="auto" target={"XTT" + xi}>
-          <PopoverBody>Aquí debes ingresar qué representa la arista en el modelo.</PopoverBody>
-        </UncontrolledPopover>
+        <Input
+          name={[xi, "nodoFinal"]}
+          placeholder="Nodo final"
+          aria-label="Nodo final"
+          aria-describedby="arista"
+          onChange={props.handleChanges}
+          // value={descripcion}
+        />
+        <Input
+          name={[xi, "peso"]}
+          placeholder="Peso"
+          aria-label="Peso"
+          aria-describedby="arista"
+          onChange={props.handleChanges}
+          // value={descripcion}
+        />
+
       </InputGroup>)
     
 }

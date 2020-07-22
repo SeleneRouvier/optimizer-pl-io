@@ -11,11 +11,8 @@ class SinglePage extends React.Component {
     super(props);
     this.state = {
       model:{
-        aristas: [{ xi: 0, descripcion: "", coeficiente: "" }, { xi: 1, descripcion: "", coeficiente: "" }],
-        restricciones: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
-        variables: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
-        method: "graph",
-        objective: "max",
+        aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "0" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "0" }}],
+        cantidadNodos: "0",
         integer: false
       },
       result: true,
@@ -48,7 +45,6 @@ class SinglePage extends React.Component {
 
   render() {
     let { modelsOpen, model, result } = this.state
-    console.log('PRESENTATION:'+result);
     
     return (
       <Container fluid className="App">
@@ -68,11 +64,6 @@ class SinglePage extends React.Component {
                 
             </Row>
 
-            <Row>
-                <Jumbotron className='w-100'>
-                    <Presentation status={model} handleResult={this.handleResult} lastStep={this.lastStep}/>
-                </Jumbotron>
-            </Row>
           
           </Col>
         </Row>
