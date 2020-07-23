@@ -3,15 +3,15 @@ import { Container, Col, Row, Jumbotron} from "reactstrap";
 import ModalModels from "../../Models"
 import Configuration from "../Configuration";
 import Processing from "../Processing";
-import Presentation from "../Presentation";
+import Presentation from "./presentacion";
 import logo from "../logo.svg";
 
-class SinglePage extends React.Component {
+class ArbolMinimaExpansion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       model:{
-        aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "0" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "0" }}],
+        aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "0" }}],
         cantidadNodos: "0",
         integer: false
       },
@@ -36,8 +36,6 @@ class SinglePage extends React.Component {
   handleResult = result => this.setState({ result });
   //Esta función habilita el cálculo en el último paso
   lastStep = step => console.log('Changes')
-  
-  finishButtonClick = result => console.log("En algún momento va a imprimir resultados");
 
   showModels = () => this.setState({modelsOpen:!this.state.modelsOpen});
 
@@ -59,18 +57,23 @@ class SinglePage extends React.Component {
             <Row>
                 <Jumbotron className='w-100'>
                     <Processing status={model} handleAristas={this.handleAristas}
-                    handleRestricciones={this.handleRestricciones} lastStep={this.lastStep}/>
+                    handleRestricciones={this.handleRestricciones} setModel={this.setModel}/>
                 </Jumbotron>
                 
             </Row>
-
+            <Row>
+              <Presentation model={model}/>
+            </Row>
           
           </Col>
         </Row>
+
+        
+
         <Row><ModalModels open={modelsOpen} model={model} setModel={this.setModel} handleClose={this.showModels}/></Row>
       </Container>
     );
   }
 }
 
-export default SinglePage;
+export default ArbolMinimaExpansion;

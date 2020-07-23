@@ -5,20 +5,20 @@ const Aristas = props => {
     let { aristas } = props;
 
     //Función que se encarga de manejar las modificaciones en las aristas.
-    const deleteVar = xi => {
+    const deleteArista = xi => {
         if (aristas.length > 2) {
             aristas.splice(xi, 1)
             aristas.forEach((vari, index) => vari.xi = index)
-        } else {
+        } /*else {
             aristas[xi].values = { nodoInicial: "", nodoFinal: "", peso: "0" };
-        }
+        }*/
     };
     //Función que se encarga de manejar las modificaciones de aristas.
     const handleChangesArista = (e) => {
         const { name, value } = e.target;
         const xi = name.split(',')[0];;
         const variable = name.split(',')[1];
-        if (value === '') { deleteVar(xi) } else { (aristas[xi]).values[variable] = value }
+        (aristas[xi]).values[variable] = value;
         //pedimos al padre que almacene los cambios
         props.handleAristas(aristas);
     };
@@ -36,6 +36,11 @@ const Aristas = props => {
             if (aristasSinValores === 0) {
                 aristas.push({ xi: aristas.length, values: { nodoInicial: "", nodoFinal: "", peso: "0" } });
                 props.handleAristas(aristas);
+            }
+
+            console.log('aaaaaaaaaaaaaaa ', aristasSinValores);
+            if(aristasSinValores > 1) {
+                deleteArista(aristas.length - 1);
             }
         }
     };

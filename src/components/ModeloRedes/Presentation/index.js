@@ -3,6 +3,9 @@ import { Card, CardTitle, CardHeader } from "reactstrap";
 import solver from "javascript-lp-solver";
 import SimplexPresentation from "./SimplexPresentation";
 import GraphicPresentation from "./GraphicPresentation";
+import arbolExpansionMinima from "../Functions/ArbolMinimaExpansion";
+
+
 
 let convertAppToModelForSolverPrimal = datosApp => {
   //Obtenemos los Datos de la aplicacion
@@ -50,6 +53,18 @@ class Presentation extends React.Component {
     this.state = { result: false , details: false };
   }
 
+  convertirModelo() {
+    const { aristas } = props.model;
+    let aristasConverted = []; 
+    aristas.forEach(arista => {
+      const aristaConverted = [arista.values['nodoInicial'], arista.values['nodoFinal'], arista.values['peso'] ];
+      aristasConverted.push(aristaConverted);
+    });
+
+    console.log("aaaaaaaaaaaaaaaaaaa");
+    return aristasConverted;
+  }
+
   componentDidMount() {
     let result = false ;
     if ( this.validateCoeficientes(this.props) ){
@@ -95,6 +110,7 @@ class Presentation extends React.Component {
   };
 
   render() {
+    convertirModelo();
     //Obtenemos el resultado almacenado
     let { result } = this.state;
     let printResults;

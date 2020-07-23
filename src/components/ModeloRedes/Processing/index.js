@@ -38,6 +38,7 @@ class Processing extends React.Component {
     if (value) {
       console.log('Cambiando Objetivo');
       this.props.status.cantidadNodos = value;
+      this.props.setModel(this.props.status);
     }
   }
 
@@ -46,6 +47,7 @@ class Processing extends React.Component {
     if (value) {
       console.log('Cambiando Arista');
       this.props.status.aristas[name] = value;
+      this.props.setModel(this.props.status);
     }
   }
 
