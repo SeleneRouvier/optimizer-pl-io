@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-import arbolExpansionMinima from "../Functions/ArbolMinimaExpansion";
-import modelo1 from "./modelo1";
+//import modelo1 from "./modelo1";
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -33,7 +32,7 @@ class Presentation extends React.Component {
 
     if (error) return <Card> <h3>Error en arista A{numeroArista}:</h3><p>{errorDatos}</p></Card>
 
-    const resultados = modelo1(demanda, costoPrep, costoAlm, tiempoTotal);
+    const resultados = 0;//modelo1(demanda, costoPrep, costoAlm, tiempoTotal);
 
 
     let mostrar = [];
@@ -58,6 +57,7 @@ class Presentation extends React.Component {
         </CardBody>
       </Card>
     }
+    return <h3>Adios</h3>
   }
 
   render() {

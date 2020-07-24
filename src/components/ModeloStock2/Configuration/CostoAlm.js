@@ -10,7 +10,7 @@ const CostoAlm = props => {
               placeholder="Costo de Almacenamiento"
               aria-label="Descripcion"
               aria-describedby="costo"
-              onChange={ props.CostoAlm }
+              onChange={ props.handleCostoAlm }
               />
     
           </InputGroup>

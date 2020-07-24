@@ -15,31 +15,31 @@ class Processing extends React.Component {
   handleDemanda = e => {
     const model = this.props.status;
     model.demanda = e.target.value;
-    this.setState({ model, changes: true });
+    this.props.setModel(model);
   };
   //Esta función maneja el cambio en las restricciones
   handleTiempoTotal = e => {
     const model = this.props.status;
     model.tiempoTotal = e.target.value;
-    this.setState({ model, changes: true });
+    this.props.setModel(model);
   };
 
   handleCostoAlm = e => {
     const model = this.props.status;
     model.costoAlm = e.target.value;
-    this.setState({ model, changes: true });
+    this.props.setModel(model);
   };
 
   handleCostoPrep = e => {
     const model = this.props.status;
     model.costoPrep = e.target.value;
-    this.setState({ model, changes: true });
+    this.props.setModel(model);
   };
 
   handleCostoProd = e => {
     const model = this.props.status;
     model.costoProd = e.target.value;
-    this.setState({ model, changes: true });
+    this.props.setModel(model);
   };
 
 
