@@ -1,4 +1,4 @@
-
+const math = require("math-js");
 /* 
 Modelo 1 - Modelo de Wilson
 Demanda deterministica y constante
@@ -19,7 +19,7 @@ function Modelo1(d,K,C1,T){
 
 	//Calculo qo
 	//qo = lote de reposicion optima
-	let qo = sqrt((2*K*D)/(T*C1));
+	let qo = math.sqrt((2*K*D)/(T*C1));
 	//!!!! redondear para arriba!!
 	//Si el tamaño de lotes es mayor a la demanda mensual se toma la demanda mensual no se produce de mas.
 	//Si qo > D entonces qo = D;
@@ -36,7 +36,7 @@ function Modelo1(d,K,C1,T){
 	//Calculamos CTEo
 	//CTEo = Costo total esperado optimo
 	let CTEo;
-	CTEo = CTPro + sqrt(2*T*D*K*C1);
+	CTEo = CTPro + math.sqrt(2*T*D*K*C1);
 
 	//Graficamos
 	
