@@ -28,7 +28,7 @@ const Aristas = props => {
 
             var aristasSinValores = 0;
             aristas.forEach(arista => {
-                if (arista.values['nodoInicial'].length === 0 || arista.values['nodoFinal'].length === 0)
+                if (arista.values['nodoInicial'].length === 0 || arista.values['nodoFinal'].length === 0 || arista.values['peso'].length === 0)
                     aristasSinValores++;
             })
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-import arbolExpansionMinima from "../Functions/ArbolMinimaExpansion";
+import rutaMasCorta from "../Functions/RutaMasCorta";
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -10,8 +10,9 @@ class Presentation extends React.Component {
   }
 
   mostrarResultados = () => {
-    let { aristas, cantidadNodos } = this.model;
+    let { aristas, cantidadNodos, nodoInicial } = this.model;
     cantidadNodos = parseInt(cantidadNodos);
+    nodoInicial = parseInt(nodoInicial);
     var errorDatos;
     var error = false;
     var numeroArista;
@@ -19,6 +20,11 @@ class Presentation extends React.Component {
     if (cantidadNodos <= 1) {
       return <h3>Deben existir al menos 2 nodos</h3>
     }
+
+    if (nodoInicial < 0 || nodoInicial >= cantidadNodos) {
+      return <h3>El nodo inicial debe tener valores entre 0 y {cantidadNodos - 1}</h3>
+    }
+
 
     let aristasConverted = [];
     aristas.forEach(function callback(arista, index, array) {
@@ -51,26 +57,46 @@ class Presentation extends React.Component {
     console.log('Aristas del modelo: ', aristasConverted);
     console.log('Cantidad de nodos: ', cantidadNodos);
 
-    let resultados;
-    if (cantidadNodos > 0 && aristasConverted.length > 0) {
-      resultados = arbolExpansionMinima(cantidadNodos, aristasConverted);
+    if (cantidadNodos > 0 && aristasConverted.length > 0 && nodoInicial >= 0) {
+      console.log('aaaaaaaaaa', nodoInicial);
+      var { g, dijkstra } = rutaMasCorta(cantidadNodos, aristasConverted, nodoInicial);
     } else {
       return <h3>Modelo incompleto</h3>
     }
 
     let mostrar = [];
+    let flagNoHayCamino = true;
 
-    if (resultados != 0) {
-      resultados.forEach(e => {
-        const v = e.either();
-        const w = e.other(v);
+    for (var v = 0; v < g.V; ++v) {
+      if (dijkstra.hasPathTo(v)) {
+        const path = dijkstra.pathTo(v);
 
-        mostrar.push(<h4>{`(${v}, ${w}): ${e.weight}`}</h4>);
-      })
+        if (v !== nodoInicial) {
+          console.log('=====path from 0 to ' + v + ' start==========');
+          mostrar.push(<h4>{`Ruta mas corta desde ${nodoInicial} a ${v}`}</h4>);
+
+          for (var i = 0; i < path.length; ++i) {
+            const e = path[i];
+            console.log(e.from() + ' => ' + e.to() + ': ' + e.weight);
+            mostrar.push(<p>{`${e.from()}  => ${e.to()}: ${e.weight}`}</p>);
+          }
+
+          console.log('=====distance: ' + dijkstra.distanceTo(v) + '=========');
+          console.log('');
+          mostrar.push(<p>{`Distancia Total del Camino: ${dijkstra.distanceTo(v)}`}</p>);
+          mostrar.push(<br></br>);
+
+          flagNoHayCamino = false;
+        }
+      }
+    }
+
+    if (flagNoHayCamino) {
+      return <h3>El nodo no tiene caminos posibles</h3>
     }
 
     if (mostrar.length > 0) {
-      return<Card outline color="secondary" className="w-100 mt-3 mx-auto">
+      return <Card outline color="secondary" className="w-100 mt-3 mx-auto">
         <CardHeader>
           <CardTitle className="text-left">
             <h4>Resultados</h4>
