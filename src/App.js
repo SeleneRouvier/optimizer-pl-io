@@ -11,7 +11,8 @@ import NoLinealProgramming from "./components/NoLinealProgramming";
 import KuhnyTucker from "./components/NoLinealProgramming/KuhnyTucker";
 
 import ModeloRedes from "./components/ModeloRedes";
-import ArbolMinimaExpansion from "./components/ModeloRedes/ArbolMinimaExpansion"
+import ArbolMinimaExpansion from "./components/ModeloRedes/ArbolMinimaExpansion";
+import RutaMasCorta from "./components/ModeloRedes/RutaMasCorta";
 
 import ModeloStock from "./components/ModeloStock";
 import ModeloWilson from "./components/ModeloStock/ModeloWilson";
@@ -37,7 +38,7 @@ const App = () =>
 
       <Route exact path="/ModeloRedes" component={ModeloRedes} />
       <Route exact path="/ModeloRedes/ArbolMinimaExpansion" component={ArbolMinimaExpansion} />
-      <Route exact path="/ModeloRedes" component={ModeloRedes} />
+      <Route exact path="/ModeloRedes/RutaMasCorta" component={RutaMasCorta} />
 
 
       <Route exact path="/ModeloStock" component={ModeloStock} />

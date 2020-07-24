@@ -1,35 +1,25 @@
 import React from "react";
 import { Container, Col, Row, Jumbotron} from "reactstrap";
-import ModalModels from "../../Models"
-import Configuration from "../Configuration";
 import Processing from "../Processing";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
 
-class ArbolMinimaExpansion extends React.Component {
+class RutaMasCorta extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       model:{
-        aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "0" }}],
+        aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "" }}],
         cantidadNodos: "0",
-        integer: false
-      },
-      result: true,
-      modelsOpen:false
+        nodoInicial: ""
+      }
     };
   }
-  
-  handleAristas = aristas => {
-    let { model } = this.state;
-    model.aristas = aristas;
-    this.setState({ model, changes: true });
-  };
 
   setModel = model => this.setState({ model, changes:true });
 
   render() {
-    let { modelsOpen, model, result } = this.state
+    let { model } = this.state;
     
     return (
       <Container fluid className="App">
@@ -44,7 +34,7 @@ class ArbolMinimaExpansion extends React.Component {
             <Row>
                 <Jumbotron className='w-100'>
                     <Processing status={model} handleAristas={this.handleAristas}
-                    handleRestricciones={this.handleRestricciones} setModel={this.setModel}/>
+                    setModel={this.setModel} rutaMasCorta={true}/>
                 </Jumbotron>
                 
             </Row>
@@ -60,4 +50,4 @@ class ArbolMinimaExpansion extends React.Component {
   }
 }
 
-export default ArbolMinimaExpansion;
+export default RutaMasCorta;
