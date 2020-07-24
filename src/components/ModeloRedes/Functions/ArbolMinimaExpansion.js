@@ -1,25 +1,33 @@
 var jsgraphs = require('js-graph-algorithms');
 
 
-
+/*
 const cantNodos = 5;
 const aristas = [[0, 1, 0.5], [1, 2, 0.3], [2, 0, 0.4]];
+arbolExpansionMinima(cantNodos, aristas);*/
 
 function arbolExpansionMinima(cantidadNodos, aristas) {
-    const g = new jsgraphs.WeightedGraph(cantidadNodos);
+  console.log('AQUIIIIIIIIIIIIII');
+  console.log(cantidadNodos, aristas);
+  const g = new jsgraphs.WeightedGraph(cantidadNodos);
 
-    aristas.forEach(arista => {
-        g.addEdge(new jsgraphs.Edge(arista[0], arista[1], arista[2]));
-    });
+  aristas.forEach(arista => {
+    g.addEdge(new jsgraphs.Edge(arista[0], arista[1], arista[2]));
+  });
 
-    const kruskal = new jsgraphs.KruskalMST(g);
-    const mst = kruskal.mst;
-    for (var i = 0; i < mst.length; ++i) {
-        const e = mst[i];
-        const v = e.either();
-        const w = e.other(v);
-        console.log('(' + v + ', ' + w + '): ' + e.weight);
-    }
+  const kruskal = new jsgraphs.KruskalMST(g);
+  const mst = kruskal.mst;
+
+  /*
+  for (var i = 0; i < mst.length; ++i) {
+    const e = mst[i];
+    const v = e.either();
+    const w = e.other(v);
+    console.log('(' + v + ', ' + w + '): ' + e.weight);
+  }*/
+
+  return mst;
+}
 /*
     var json = [];
 
@@ -76,10 +84,7 @@ function arbolExpansionMinima(cantidadNodos, aristas) {
       }
 
 */
-    return 0;
-}
 
-arbolExpansionMinima(cantNodos, aristas);
 
 /*
 var prim = new jsgraphs.LazyPrimMST(g);
@@ -112,3 +117,5 @@ g.node(3).label = '4';
 g.node(4).label = '5';
 g.node(5).label = '6';
 */
+
+module.exports = arbolExpansionMinima;

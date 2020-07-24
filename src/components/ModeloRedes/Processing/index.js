@@ -38,37 +38,21 @@ class Processing extends React.Component {
     if (value) {
       console.log('Cambiando Objetivo');
       this.props.status.cantidadNodos = value;
+      this.props.setModel(this.props.status);
     }
   }
 
   handleAristas = event => {
-    let { value } = event.target;
+    let { value , name } = event.target;
     if (value) {
       console.log('Cambiando Arista');
-      this.props.status.cantidadNodos = value;
+      this.props.status.aristas[name] = value;
+      this.props.setModel(this.props.status);
     }
   }
 
   render() {
-    console.log('###############3   ');
-    console.log(this.props);
-    //Obtenemos las propiedades del Super
-    let { variables } = this.props.status;
-    let { restricciones } = this.props.status;
-    let varsOperativas = variables.filter(va => va.descripcion !== "").length;
     //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
-
-    let restriccionesInput = restricciones
-      .filter(item => item.descripcion !== "")
-      .map((restriccion, index) => (
-        <Aristas
-          className="mt-1"
-          key={"R" + index}
-          handleCoefRes={this.handleCoefRes}
-          cantVariables={varsOperativas}
-          restriccion={restriccion}
-        />
-      ));
 
     return (
       <>
