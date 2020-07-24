@@ -21,8 +21,8 @@ const ModeloRedes = () =>{
                     </Row>
                     <Row className="mt-3 mx-auto">
                         <Col>
-                            <Link to={"/ModeloRedes/RutaMasCorta"} >
-                                <Button size='lg' outline color="success">NANA</Button>
+                            <Link to={"/ModeloStock/Modelo2"} >
+                                <Button size='lg' outline color="success">Modelo Simple Sin Agotamiento y con stock de proteccion</Button>
 
                             </Link>
                         </Col>

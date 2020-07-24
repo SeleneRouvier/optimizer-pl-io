@@ -26,6 +26,10 @@ class Presentation extends React.Component {
       return <h3>No pueden existir numeros negativos</h3>
     }
 
+    if (Number.isNaN(demanda) || Number.isNaN(tiempoTotal) || Number.isNaN(costoAlm) || Number.isNaN(costoPrep) || Number.isNaN(costoProd) ) {
+      return <h3>Valores no numericos</h3>
+    }
+
     var errorDatos;
     var error = false;
     var numeroArista;

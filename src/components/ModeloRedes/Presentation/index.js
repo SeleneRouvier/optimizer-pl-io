@@ -61,7 +61,6 @@ class Presentation extends React.Component {
       aristasConverted.push(aristaConverted);
     });
 
-    console.log("aaaaaaaaaaaaaaaaaaa");
     return aristasConverted;
   }
 

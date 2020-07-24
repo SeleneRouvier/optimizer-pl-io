@@ -4,7 +4,7 @@ import Configuration from "../Configuration";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
 
-class ArbolMinimaExpansion extends React.Component {
+class Modelo2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,8 @@ class ArbolMinimaExpansion extends React.Component {
         tiempoTotal: '',
         costoAlm: '',
         costoPrep: '',
-        costoProd: ''
+        costoProd: '',
+        stockProt: ''
       },
       result: true,
       modelsOpen:false
@@ -38,7 +39,8 @@ class ArbolMinimaExpansion extends React.Component {
             <Row>
                 <Jumbotron className='w-100'>
                     <Configuration status={model}
-                    handleRestricciones={this.handleRestricciones} setModel={this.setModel}/>
+                    handleRestricciones={this.handleRestricciones} setModel={this.setModel}
+                    modelo2={true}/>
                 </Jumbotron>
                 
             </Row>
@@ -58,4 +60,4 @@ class ArbolMinimaExpansion extends React.Component {
   }
 }
 
-export default ArbolMinimaExpansion;
+export default Modelo2;

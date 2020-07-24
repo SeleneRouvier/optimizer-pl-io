@@ -5,6 +5,7 @@ import TiempoTotal from "./TiempoTotal";
 import CostoAlm from "./CostoAlm";
 import CostoPrep from "./CostoPrep";
 import CostoProd from "./CostoProd";
+import StockProteccion from "./StockProteccion";
 
 class Processing extends React.Component {
   constructor(props) {
@@ -41,6 +42,31 @@ class Processing extends React.Component {
     model.costoProd = e.target.value;
     this.props.setModel(model);
   };
+
+  handleStockProteccion = e => {
+    const model = this.props.status;
+    model.stockProt = e.target.value;
+    this.props.setModel(model);
+  };
+
+  sp() {
+    if (this.props.modelo2) {
+      return <Col xs={12} md={6} className="my-4 mx-auto ">
+      <Card outline color="secondary" className="w-100 mt-3">
+        <CardHeader>
+          <CardTitle className="text-left">
+            <h4>Stock de proteccion (sp)</h4>
+          </CardTitle>
+        </CardHeader>
+        <CardBody className="mx-auto">
+          <StockProteccion
+            handleStockProteccion={this.handleStockProteccion}
+          />
+        </CardBody>
+      </Card>
+    </Col>
+    }
+  }
 
 
 
@@ -115,6 +141,7 @@ class Processing extends React.Component {
           </Row>
 
           <Row>
+            <Col xs={12} md={6} className="my-4 mx-auto ">
               <Card outline color="secondary" className="w-100 mt-3">
                 <CardHeader>
                   <CardTitle className="text-left">
@@ -127,6 +154,8 @@ class Processing extends React.Component {
                   />
                 </CardBody>
               </Card>
+            </Col>
+            {this.sp()}
           </Row>
         </Container>
       </>
