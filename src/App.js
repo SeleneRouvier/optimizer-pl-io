@@ -14,8 +14,8 @@ import ModeloRedes from "./components/ModeloRedes";
 import ArbolMinimaExpansion from "./components/ModeloRedes/ArbolMinimaExpansion";
 import RutaMasCorta from "./components/ModeloRedes/RutaMasCorta";
 
-import ModeloStock from "./components/ModeloStock";
-import ModeloWilson from "./components/ModeloStock/ModeloWilson";
+import ModeloStock2 from "./components/ModeloStock2";
+import ModeloWilson from "./components/ModeloStock2/ModeloWilson";
 
 
 const NoLinealProgrammingPage = () => <NoLinealProgramming />;
@@ -41,7 +41,7 @@ const App = () =>
       <Route exact path="/ModeloRedes/RutaMasCorta" component={RutaMasCorta} />
 
 
-      <Route exact path="/ModeloStock" component={ModeloStock} />
+      <Route exact path="/ModeloStock" component={ModeloStock2} />
       <Route exact path="/ModeloStock/ModeloWilson" component={ModeloWilson} />
       <Redirect to="/home" />
     </Switch>;

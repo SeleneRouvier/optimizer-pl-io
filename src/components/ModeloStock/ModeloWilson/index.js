@@ -11,7 +11,6 @@ class ModeloWilson extends React.Component {
     super(props);
     this.state = {
       model:{
-        variables: [{ xi: 0, descripcion: "", coeficiente: "" }, { xi: 1, descripcion: "", coeficiente: "" }],
         restricciones: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
         demandaunitaria: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
         tiempototal: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
@@ -42,38 +41,6 @@ class ModeloWilson extends React.Component {
     model.tiempototal = tiempototal;
     this.setState({ model, changes: true });
   };
-  //Esta función maneja el cambio en las variables
-  handleVariables = variables => {
-    let { model } = this.state;
-    model.variables = variables;
-    this.setState({ model, changes: true });
-  };
-  //Esta función maneja el cambio del metodo
-  handleMethod = method => {
-    let { model } = this.state;
-    model.method = method;
-    this.setState({ model, changes: true });
-  };
-  //Esta función maneja el cambio del objetivo de optimización
-  handleObjective = objective => {
-    let { model } = this.state;
-    model.objective = objective;
-    this.setState({ model, changes: true });
-  };
-  toggleInteger = () => {
-    let { model } = this.state;
-    model.integer = !model.integer;
-    this.setState({ model, changes: true });
-
-  }
-  //Esta función guarda el resultado (inutilizada por el momento)
-  handleResult = result => this.setState({ result });
-  //Esta función habilita el cálculo en el último paso
-  lastStep = step => console.log('Changes')
-  
-  finishButtonClick = result => console.log("En algún momento va a imprimir resultados");
-
-  showModels = () => this.setState({modelsOpen:!this.state.modelsOpen});
 
   setModel = model => this.setState({ model, changes:true });
 
@@ -94,7 +61,6 @@ class ModeloWilson extends React.Component {
                 <Jumbotron className='w-100'>
                     <Configuration   status={model}
                     handleMethod={this.handleMethod}
-                    handleVariables={this.handleVariables}
                     handleRestricciones={this.handleRestricciones}
                     handleDemandaUnitaria={this.handleDemandaUnitaria}
                     handleTiempoTotal={this.handleTiempoTotal}
@@ -107,7 +73,7 @@ class ModeloWilson extends React.Component {
 
             <Row>
                 <Jumbotron className='w-100'>
-                    <Processing status={model} handleVariables={this.handleVariables}
+                    <Processing status={model}
                     handleRestricciones={this.handleRestricciones} handleDemandaUnitaria={this.handleDemandaUnitaria} 
                     handleTiempoTotal={this.handleTiempoTotal} lastStep={this.lastStep}/>
                 </Jumbotron>
