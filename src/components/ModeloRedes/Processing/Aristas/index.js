@@ -38,7 +38,6 @@ const Aristas = props => {
                 props.handleAristas(aristas);
             }
 
-            console.log('aaaaaaaaaaaaaaa ', aristasSinValores);
             if(aristasSinValores > 1) {
                 deleteArista(aristas.length - 1);
             }

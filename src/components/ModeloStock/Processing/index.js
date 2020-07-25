@@ -79,10 +79,8 @@ class Processing extends React.Component {
 
   render() {
     //Obtenemos las propiedades del Super
-    let { variables } = this.props.status;
     let { restricciones } = this.props.status;
     let { demandaunitaria } = this.props.status;
-    let varsOperativas = variables.filter(va => va.descripcion !== "").length;
 
     //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
     let demandainput = restricciones
@@ -92,7 +90,6 @@ class Processing extends React.Component {
           className="mt-1"
           key={"R" + index}
           handleCoefRes={this.handleCoefRes}
-          cantVariables={varsOperativas}
           demandaunitaria={demandaunitaria}
         />
       ));
@@ -104,7 +101,6 @@ class Processing extends React.Component {
           className="mt-1"
           key={"R" + index}
           handleCoefRes={this.handleCoefRes}
-          cantVariables={varsOperativas}
           restriccion={restriccion}
         />
       ));
@@ -114,9 +110,6 @@ class Processing extends React.Component {
         <h3>Cargamos los datos de nuestro modelo</h3>
         <Container>
           <Row>
-            <ReferencesList variables={variables} restricciones={restricciones} />
-          </Row>
-          <Row>
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
                 <CardTitle className="text-left">
@@ -125,7 +118,6 @@ class Processing extends React.Component {
               </CardHeader>
               <CardBody className="mx-auto">
                 <FuncionObj
-                  variables={variables}
                   handleCoefVar={this.handleCoefVar}
                   objective={this.props.status.objective}
                 />

@@ -136,7 +136,7 @@ class Configuration extends React.Component {
                   <h4>Costo de preparacion</h4>
                 </CardTitle>
               </CardHeader>
-              <CardBody><Variables method={method} handleVariables={this.handleVariables} variables={variables}/></CardBody>
+              
             </Card>
           </Row>
           <Row>
