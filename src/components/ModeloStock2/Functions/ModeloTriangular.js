@@ -31,7 +31,7 @@ function ModeloTriangular(D,K,b,p,T,C1,d){
     const To = CalcularToComun(K,T,D,C1);
     const Tp = CalcularTp(qo,p);
     const sm = CalcularSm(Tp,p,d);
-    return {qo, n, ctprep, crprod, ctalm, cte, To, Tp, sm};
+    return {qo, n, ctprep, ctprod, ctalm, cte, To, Tp, sm};
 }
 
 module.exports = ModeloTriangular;

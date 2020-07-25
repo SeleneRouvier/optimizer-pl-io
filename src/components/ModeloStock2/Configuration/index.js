@@ -1,11 +1,13 @@
 import React from "react";
 import { Container, Row, Col, Card, CardBody, CardHeader, CardTitle, Alert } from "reactstrap";
-import DemandaUnit from "./DemandaUnit";
+import Demanda from "./Demanda";
+import DemandaUnitaria from "./DemandaUnitaria";
 import TiempoTotal from "./TiempoTotal";
 import CostoAlm from "./CostoAlm";
 import CostoPrep from "./CostoPrep";
 import CostoProd from "./CostoProd";
 import StockProteccion from "./StockProteccion";
+import VelocidadProd from "./VelocidadProd";
 
 class Processing extends React.Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class Processing extends React.Component {
   //Esta función maneja el cambio en las restricciones
   handleDemanda = e => {
     const model = this.props.status;
+    console.log('aaaaaaaaaaaa')
     model.demanda = e.target.value;
     this.props.setModel(model);
   };
@@ -49,6 +52,18 @@ class Processing extends React.Component {
     this.props.setModel(model);
   };
 
+  handleDemandaUnitaria = e => {
+    const model = this.props.status;
+    model.demandaUnit = e.target.value;
+    this.props.setModel(model);
+  }
+
+  handleVelocidadProduccion = e => {
+    const model = this.props.status;
+    model.velocidadProd = e.target.value;
+    this.props.setModel(model);
+  }
+
   sp() {
     if (this.props.modelo2) {
       return <Col xs={12} md={6} className="my-4 mx-auto ">
@@ -68,7 +83,45 @@ class Processing extends React.Component {
     }
   }
 
+  demandaUnit() {
+    if (this.props.modeloTriangular) {
+      return(
+      <Col xs={12} md={6} className="my-4 mx-auto ">
+      <Card outline color="secondary" className="w-100 mt-3">
+        <CardHeader>
+          <CardTitle className="text-left">
+            <h4>Demanda Unitaria (d)</h4>
+          </CardTitle>
+        </CardHeader>
+        <CardBody className="mx-auto">
+          <DemandaUnitaria
+            handleDemandaUnitaria={this.handleDemandaUnitaria}
+          />
+        </CardBody>
+      </Card>
+    </Col>)
+    }
+  }
 
+  velocidadProd() {
+    if (this.props.modeloTriangular) {
+      return(
+      <Col xs={12} md={6} className="my-4 mx-auto ">
+      <Card outline color="secondary" className="w-100 mt-3">
+        <CardHeader>
+          <CardTitle className="text-left">
+            <h4>Velocidad de Produccion (p)</h4>
+          </CardTitle>
+        </CardHeader>
+        <CardBody className="mx-auto">
+          <VelocidadProd
+            handleVelocidadProduccion={this.handleVelocidadProduccion}
+          />
+        </CardBody>
+      </Card>
+    </Col>)
+    }
+  }
 
   render() {
     //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
@@ -86,7 +139,7 @@ class Processing extends React.Component {
                   </CardTitle>
                 </CardHeader>
                 <CardBody className="mx-auto">
-                  <DemandaUnit
+                  <Demanda
                     handleDemanda={this.handleDemanda}
                   />
                 </CardBody>
@@ -156,6 +209,8 @@ class Processing extends React.Component {
               </Card>
             </Col>
             {this.sp()}
+            {this.demandaUnit()}
+            {this.velocidadProd()}
           </Row>
         </Container>
       </>

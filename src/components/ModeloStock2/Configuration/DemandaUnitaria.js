@@ -2,19 +2,19 @@ import React from 'react';
 import {InputGroup, InputGroupAddon, InputGroupText, Input, UncontrolledTooltip } from 'reactstrap'
 
 
-const DemandaUnit = props => {
+const DemandaUnitaria = props => {
     return(
             <InputGroup className="mt-1" id={"TTR"} key={"RTD"}>
 
             <Input
-              placeholder="Demanda"
+              placeholder="Demanda Unitaria"
               aria-label="Descripcion"
               aria-describedby="cantidad"
-              onChange={ props.handleDemanda }
+              onChange={ props.handleDemandaUnitaria }
               />
     
           </InputGroup>
     ) 
 }
 
-export default DemandaUnit;
+export default DemandaUnitaria;

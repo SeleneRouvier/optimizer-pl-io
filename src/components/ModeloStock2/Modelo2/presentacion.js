@@ -33,9 +33,7 @@ class Presentation extends React.Component {
       return <h3>Valores no numericos</h3>
     }
 
-    const resultados = modelo2(demanda, costoPrep, costoProd, costoAlm, tiempoTotal, stockProt);
-
-    console.log(resultados);
+    const {qo, n, ctprep, ctprod, ctalm, casp, cmsp, cte, To, cteo} = modelo2(demanda, costoPrep, costoProd, costoAlm, tiempoTotal, stockProt);
 
     return (
     <Card outline color="secondary" className="w-100 mt-3 mx-auto">
@@ -45,9 +43,16 @@ class Presentation extends React.Component {
         </CardTitle>
       </CardHeader>
       <CardBody className="mx-auto">
-        <p>qo = {resultados.qo}</p>
-        <p>To = {resultados.To}</p>
-        <p>cteo = {resultados.cteo}</p>
+        <p>qo = {qo}</p>
+        <p>n = {n}</p>
+        <p>ctprep = {ctprep}</p>
+        <p>ctprod = {ctprod}</p>
+        <p>ctalm = {ctalm}</p>
+        <p>casp = {casp}</p>
+        <p>cmsp = {cmsp}</p>
+        <p>cte = {cte}</p>
+        <p>To = {To}</p>
+        <p>cteo = {cteo}</p>
       </CardBody>
     </Card>)
   }

@@ -27,6 +27,15 @@ const ModeloRedes = () =>{
                             </Link>
                         </Col>
                     </Row>
+
+                    <Row className="mt-3 mx-auto">
+                        <Col>
+                            <Link to={"/ModeloStock/ModeloTriangular"} >
+                                <Button size='lg' outline color="success">Modelo triangular</Button>
+
+                            </Link>
+                        </Col>
+                    </Row>
                 </Jumbotron>
             </Col>
         </Row>
