@@ -23,7 +23,7 @@ function CalcularCTEo(ctprod, T, D, K, C1, casp, cmsp) {
 
 function ModeloSimpleSinAgotamientoConStockDeProteccion(D, K, b, C1, T, sp) {
     const qo = CalcularqoComun(K, D, T, C1);
-    if qo > D {
+    if (qo > D) {
         qo = D;
     }
     const n = CalcularN(qo,D);
