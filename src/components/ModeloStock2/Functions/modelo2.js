@@ -1,5 +1,5 @@
 const math = require('mathjs');
-const { CalcularqoComun, CalcularToComun, CalcularCTEoComun, CostoTotalPreparacionComun, CostoTotalProductoComun } = require('./FuncionesComunes');
+const { CalcularqoComun, CalcularN, CalcularToComun, CalcularCTEoComun, CostoTotalPreparacionComun, CostoTotalProductoComun } = require('./FuncionesComunes');
 
 function CostoTotalAlmacenamiento(q, T, C1) {
     let ctalm = 0.5 * T * q * C1;
@@ -23,6 +23,10 @@ function CalcularCTEo(ctprod, T, D, K, C1, casp, cmsp) {
 
 function ModeloSimpleSinAgotamientoConStockDeProteccion(D, K, b, C1, T, sp) {
     const qo = CalcularqoComun(K, D, T, C1);
+    if qo > D {
+        qo = D;
+    }
+    const n = CalcularN(qo,D);
     const ctprep = CostoTotalPreparacionComun(D, qo, K);
     const ctprod = CostoTotalProductoComun(b, D);
     const ctalm = CostoTotalAlmacenamiento(qo, T, C1);
@@ -32,7 +36,7 @@ function ModeloSimpleSinAgotamientoConStockDeProteccion(D, K, b, C1, T, sp) {
     const To = CalcularToComun(K, T, D, C1);
     const cteo = CalcularCTEo(ctprod, T, D, K, C1, casp, cmsp);
 
-    return {qo, To, cteo};
+    return {qo, n, ctprep, ctprod, ctalm, casp, cmsp, cte, To, cteo};
 }
 
 module.exports = ModeloSimpleSinAgotamientoConStockDeProteccion;

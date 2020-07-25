@@ -5,6 +5,11 @@ function CalcularqoComun(K,D,T,C1){
     return qo;
 }
 
+function CalcularN(qo,D){
+    let n = D / qo;
+    return n;
+}
+
 function CalcularToComun(K,T,D,C1){
     let To = math.sqrt(2 * K * T/(D * C1));
     return To;
@@ -25,4 +30,4 @@ function CostoTotalProductoComun(b, D){
     return ctprod
 }
 
-module.exports = {CalcularqoComun,CalcularToComun,CalcularCTEoComun,CostoTotalPreparacionComun,CostoTotalProductoComun};
+module.exports = {CalcularqoComun,CalcularN,CalcularToComun,CalcularCTEoComun,CostoTotalPreparacionComun,CostoTotalProductoComun};
