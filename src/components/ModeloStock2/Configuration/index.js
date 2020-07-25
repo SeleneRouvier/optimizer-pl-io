@@ -8,6 +8,8 @@ import CostoPrep from "./CostoPrep";
 import CostoProd from "./CostoProd";
 import StockProteccion from "./StockProteccion";
 import VelocidadProd from "./VelocidadProd";
+import StockRealAlmacenado from "./StockRealAlmacenado";
+import CostoAgotamiento from "./CostoAgotamiento";
 
 class Processing extends React.Component {
   constructor(props) {
@@ -64,62 +66,115 @@ class Processing extends React.Component {
     this.props.setModel(model);
   }
 
+  handleCostoAgotamiento = e => {
+    const model = this.props.status;
+    model.costoAgotamiento = e.target.value;
+    this.props.setModel(model);
+  }
+
+  handleStockRealAlmacenado = e => {
+    const model = this.props.status;
+    model.stockRealAlmacenado = e.target.value;
+    this.props.setModel(model);
+  }
+
   sp() {
     if (this.props.modelo2) {
       return <Col xs={12} md={6} className="my-4 mx-auto ">
-      <Card outline color="secondary" className="w-100 mt-3">
-        <CardHeader>
-          <CardTitle className="text-left">
-            <h4>Stock de proteccion (sp)</h4>
-          </CardTitle>
-        </CardHeader>
-        <CardBody className="mx-auto">
-          <StockProteccion
-            handleStockProteccion={this.handleStockProteccion}
-          />
-        </CardBody>
-      </Card>
-    </Col>
+        <Card outline color="secondary" className="w-100 mt-3">
+          <CardHeader>
+            <CardTitle className="text-left">
+              <h4>Stock de proteccion (sp)</h4>
+            </CardTitle>
+          </CardHeader>
+          <CardBody className="mx-auto">
+            <StockProteccion
+              handleStockProteccion={this.handleStockProteccion}
+            />
+          </CardBody>
+        </Card>
+      </Col>
     }
   }
 
   demandaUnit() {
     if (this.props.modeloTriangular) {
-      return(
-      <Col xs={12} md={6} className="my-4 mx-auto ">
-      <Card outline color="secondary" className="w-100 mt-3">
-        <CardHeader>
-          <CardTitle className="text-left">
-            <h4>Demanda Unitaria (d)</h4>
-          </CardTitle>
-        </CardHeader>
-        <CardBody className="mx-auto">
-          <DemandaUnitaria
-            handleDemandaUnitaria={this.handleDemandaUnitaria}
-          />
-        </CardBody>
-      </Card>
-    </Col>)
+      return (
+        <Col xs={12} md={6} className="my-4 mx-auto ">
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>Demanda Unitaria (d)</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody className="mx-auto">
+              <DemandaUnitaria
+                handleDemandaUnitaria={this.handleDemandaUnitaria}
+              />
+            </CardBody>
+          </Card>
+        </Col>)
     }
   }
 
+  costoAgotamiento() {
+    if (this.props.agotamientoSimple) {
+      return (
+        <Col xs={12} md={6} className="my-4 mx-auto ">
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>Costo de Agotamiento (C2)</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody className="mx-auto">
+              <CostoAgotamiento
+                handleCostoAgotamiento={this.handleCostoAgotamiento}
+              />
+            </CardBody>
+          </Card>
+        </Col>)
+    }
+  }
+
+  stockRealAlmacenado() {
+    if (this.props.agotamientoSimple) {
+      return (
+        <Col xs={12} md={6} className="my-4 mx-auto ">
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>Stock Real Almacenado (s)</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody className="mx-auto">
+              <StockRealAlmacenado
+                handleStockRealAlmacenado={this.handleStockRealAlmacenado}
+              />
+            </CardBody>
+          </Card>
+        </Col>)
+    }
+  }
+
+
   velocidadProd() {
     if (this.props.modeloTriangular) {
-      return(
-      <Col xs={12} md={6} className="my-4 mx-auto ">
-      <Card outline color="secondary" className="w-100 mt-3">
-        <CardHeader>
-          <CardTitle className="text-left">
-            <h4>Velocidad de Produccion (p)</h4>
-          </CardTitle>
-        </CardHeader>
-        <CardBody className="mx-auto">
-          <VelocidadProd
-            handleVelocidadProduccion={this.handleVelocidadProduccion}
-          />
-        </CardBody>
-      </Card>
-    </Col>)
+      return (
+        <Col xs={12} md={6} className="my-4 mx-auto ">
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>Velocidad de Produccion (p)</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody className="mx-auto">
+              <VelocidadProd
+                handleVelocidadProduccion={this.handleVelocidadProduccion}
+              />
+            </CardBody>
+          </Card>
+        </Col>)
     }
   }
 
@@ -135,7 +190,7 @@ class Processing extends React.Component {
               <Card outline color="secondary" className="w-100 mt-3">
                 <CardHeader>
                   <CardTitle className="text-left">
-                    <h4>Demanda</h4>
+                    <h4>Demanda (D)</h4>
                   </CardTitle>
                 </CardHeader>
                 <CardBody className="mx-auto">
@@ -211,6 +266,8 @@ class Processing extends React.Component {
             {this.sp()}
             {this.demandaUnit()}
             {this.velocidadProd()}
+            {this.costoAgotamiento()}
+            {this.stockRealAlmacenado()}
           </Row>
         </Container>
       </>

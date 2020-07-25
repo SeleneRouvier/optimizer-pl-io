@@ -42,7 +42,7 @@ function ModeloSimpleConAgotamiento(D,K,b,s,T,C1,C2){
     const so = CalcularSo(C1,C2,qo);
     const To = CalcularTo(K,D,T,C1,C2);
     const cteo = CalcularCTEo(ctprod,T,D,K,C1,C2);
-    return {qo, n, ctprep, crprod, ctalm, ca, cte, so, To, cteo};
+    return {qo, n, ctprep, ctprod, ctalm, ca, cte, so, To, cteo};
 }
 
 module.exports = ModeloSimpleConAgotamiento;
