@@ -45,6 +45,8 @@ class Processing extends React.Component {
       console.log(this.props.status.variables);
     }
   };
+
+  // Arreglar para que no deje poner negativooooooooo
   handleDem = event => {
     let { value} = event.target;
     if (value) {
