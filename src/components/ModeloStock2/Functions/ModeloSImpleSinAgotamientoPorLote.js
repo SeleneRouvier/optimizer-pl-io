@@ -1,4 +1,4 @@
-const {CostoTotalPreparacionComun,CostoTotalProductoComun,CalcularqoComun } = require("./FuncionesComunes");
+const {CalcularN,CalcularToComun,CostoTotalPreparacionComun,CostoTotalProductoComun,CalcularqoComun } = require("./FuncionesComunes");
 
 function CostoTotalAlmacenamiento(q,T,C1){
     let ctalm = 0.5 * T * q * C1;
@@ -37,8 +37,13 @@ function ModeloSimpleSinAgotamientoPorLote(D,q,K,PorcCostoProd,T,P,bi){
         limsup = q[x];
         x++;
     }
+    const n = CalcularN(qo,D);
+    const To = CalcularToComun(K,T,D,C1);
     const ctprep = CostoTotalPreparacionComun(D,qo,K);
     const ctprod = CostoTotalProductoComun(bi[x-1], D);
     const ctalm = CostoTotalAlmacenamiento(qo,T,C1);
     const cte = ctprep + ctprod + ctalm;
+    return {n,To,ctprep,ctprod,ctalm,cte,qo,q[x-1],bi[x-1]}
+    //q[x-1] = limite inferior que se tomo el qo
+    //bi[x-1] = el precio que tomo el qo
 }
