@@ -1,4 +1,6 @@
-const math = require("math-js");
+const math = require("mathjs");
+const { CalcularqoComun, CalcularN, CalcularToComun, CalcularCTEoComun, CostoTotalPreparacionComun, CostoTotalProductoComun } = require('./FuncionesComunes');
+
 /* 
 Modelo 1 - Modelo de Wilson
 Demanda deterministica y constante
@@ -12,47 +14,28 @@ b 	= costo del producto, de adquisicion o produccion
 n 	= veces que se solicita un reaprovisionamiento
 to 	= tiempo optimo de realizar reaprovisionamiento
 */
-function Modelo1(d,K,C1,T){
-	//calculo la demanda total D
-	let D;
-	D = d*T;
-
-	//Calculo qo
-	//qo = lote de reposicion optima
-	let qo = math.sqrt((2*K*D)/(T*C1));
-	//!!!! redondear para arriba!!
-	//Si el tamaño de lotes es mayor a la demanda mensual se toma la demanda mensual no se produce de mas.
-	//Si qo > D entonces qo = D;
-
-
-	//Calculamos n
-	let n;
-	n = D / qo;
-
-	//Calculamos to
-	let to;
-	to = (T*qo)/D;
-
+function CostoTotalAlmacenamiento(q, T, C1) {
+    let ctalm = 0.5 * T * q * C1;
+    return ctalm;
+}
+function ModeloWilson(D,K,C1,T,b){
+	let qo = Math.ceil(CalcularqoComun(K,D,T,C1)); 
+	if (qo > D) {
+        qo = D;
+    }
+    const n = CalcularN(qo,D);
+    const To = CalcularToComun(K,T,D,C1);
+    const CTPre = CostoTotalPreparacionComun(D,qo,K);
+    const CTProd = CostoTotalProductoComun(b, D);
+    const CTAlm = CostoTotalAlmacenamiento(qo, T, C1);
+    const CTEo = CalcularCTEoComun(CTProd,T,D,K,C1);
+    const CTE = CTPre + CTProd + CTAlm;
 	//Calculamos CTEo
 	//CTEo = Costo total esperado optimo
-	let CTEo;
-	CTEo = CTPro + math.sqrt(2*T*D*K*C1);
-
-	//Graficamos
-	
-	//------------------------------------------
-	//Costo total de preparacion
-	let CTPre;
-	CTPre = D*K/q;
-	//Costo total del producto
-	let CTPro;
-	CTPro = b+D;
-	//Costo total de almacenamiento
-	let CTA;
-	CTA = 0.5*q*T*C1;
-	//Costo total esperado
-	let CTE;
-	CTE = CTPre + CTPro + CTA;
-
-
+	return {qo, n, CTPre, CTProd, CTAlm, CTE, To, CTEo};
 }
+
+let result = ModeloWilson(3000,120,0.2,1,0);
+console.log('acaaaaaaaaaa ',result);
+
+module.exports = ModeloWilson;

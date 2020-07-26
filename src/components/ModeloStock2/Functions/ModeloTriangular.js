@@ -22,7 +22,7 @@ function CalcularTp(qo,p){
 }
 
 function ModeloTriangular(D,K,b,p,T,C1,d){
-    const qo = Calcularqo(K,d,C1,p);
+    const qo = Math.ceil(Calcularqo(K,d,C1,p));
     const n = CalcularN(qo,D);
     const ctprep = CostoTotalPreparacionComun(D,qo,K);
     const ctprod = CostoTotalProductoComun(b, D);

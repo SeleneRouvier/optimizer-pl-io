@@ -32,7 +32,7 @@ function CalcularCTEo(ctprod,T,D,K,C1,C2){
 }
 
 function ModeloSimpleConAgotamiento(D,K,b,s,T,C1,C2){
-    const qo = Calcularqo(K,D,T,C1,C2);
+    const qo = Math.ceil(Calcularqo(K,D,T,C1,C2));
     const n = CalcularN(qo,D);
     const ctprep = CostoTotalPreparacionComun(D,qo,K);
     const ctprod = CostoTotalProductoComun(b, D);
