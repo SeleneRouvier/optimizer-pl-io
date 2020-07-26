@@ -10,6 +10,8 @@ import StockProteccion from "./StockProteccion";
 import VelocidadProd from "./VelocidadProd";
 import StockRealAlmacenado from "./StockRealAlmacenado";
 import CostoAgotamiento from "./CostoAgotamiento";
+import ComponentsD from "./Ds";
+import ComponentsQ from "./Qs";
 
 class Processing extends React.Component {
   constructor(props) {
@@ -75,6 +77,18 @@ class Processing extends React.Component {
   handleStockRealAlmacenado = e => {
     const model = this.props.status;
     model.stockRealAlmacenado = e.target.value;
+    this.props.setModel(model);
+  }
+
+  handleDs = ds => {
+    const model = this.props.status;
+    model.d = ds;
+    this.props.setModel(model);
+  }
+
+  handleQs = qs => {
+    const model = this.props.status;
+    model.q = qs;
     this.props.setModel(model);
   }
 
@@ -154,6 +168,43 @@ class Processing extends React.Component {
             </CardBody>
           </Card>
         </Col>)
+    }
+  }
+
+  qsyds() {
+    if(this.props.simpleSinAgot){
+      return(
+        <Col>
+        <Row>
+            <Card outline color="secondary" className="w-100 mt-3">
+              <CardHeader>
+                <CardTitle className="text-left">
+                  <h4>d</h4>
+                </CardTitle>
+              </CardHeader>
+              <CardBody>
+                <ComponentsD
+                  ds={this.props.status.ds}
+                  handleDs = {this.handleDs}
+                /></CardBody>
+            </Card>
+          </Row>
+          <Row>
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>q</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody>
+              <ComponentsQ
+                qs={this.props.status.qs}
+                handleQs = {this.handleQs}
+              /></CardBody>
+          </Card>
+        </Row>
+        </Col>
+      )
     }
   }
 
@@ -269,6 +320,7 @@ class Processing extends React.Component {
             {this.costoAgotamiento()}
             {this.stockRealAlmacenado()}
           </Row>
+          {this.qsyds()}
         </Container>
       </>
     );

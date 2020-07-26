@@ -45,6 +45,15 @@ const ModeloRedes = () =>{
                             </Link>
                         </Col>
                     </Row>
+                    <Row className="mt-3 mx-auto">
+                        <Col>
+                            <Link to={"/ModeloStock/ModeloSimpleSinAgotamientoPorLote"} >
+                                <Button size='lg' outline color="success">Modelo Simple Sin Agotamiento Por Lote</Button>
+
+                            </Link>
+                        </Col>
+                    </Row>
+                    
                 </Jumbotron>
             </Col>
         </Row>
