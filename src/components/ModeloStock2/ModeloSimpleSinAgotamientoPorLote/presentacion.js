@@ -12,18 +12,14 @@ class Presentation extends React.Component {
   mostrarResultados = () => {
     let { demanda, tiempoTotal, costoAlm, costoPrep, costoProd, ds, qs } = this.model;
 
-    flag = false;
+    let flag = false;
     ds.forEach(d => {
-      if (d.length === 0) {
-        flag == true;
-      }
-    });
+      if (d.length === 0) flag = true;
+    })
 
     qs.forEach(q => {
-      if (q.length === 0) {
-        flag == true;
-      }
-    });
+      if (q.length === 0) flag = true;
+    })
 
     if ( flag || demanda.length === 0 || tiempoTotal.length === 0 || costoAlm.length === 0 || costoPrep.length === 0 || costoProd.length === 0) {
       return <h3>Modelo incompleto</h3>
