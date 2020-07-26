@@ -30,7 +30,7 @@ function ModeloSimpleSinAgotamientoPorLote(D,q,K,PorcCostoProd,T,P,bi){
         cdi = CostoDineroInmovilizado(P,bi[x]);
         Ci = CalcularCi(bi[x],PorcCostoProd);
         C1 = CalcularC1(cdi,Ci);
-        qo = CalcularqoComun(K,D,T,C1);
+        qo = Math.ceil(CalcularqoComun(K,D,T,C1));
         if (qo >= q[x] && qo < limsup){
             flag = true;
         }
