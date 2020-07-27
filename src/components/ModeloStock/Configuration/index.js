@@ -1,82 +1,43 @@
 import React from "react";
 import { Container, Row, Col, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
-import Demanda from "./Demanda";
-import DemandaUnitaria from "./DemandaUnitaria";
-import TiempoTotal from "./TiempoTotal";
-import CostoAlm from "./CostoAlm";
-import CostoPrep from "./CostoPrep";
-import CostoProd from "./CostoProd";
-import StockProteccion from "./StockProteccion";
-import VelocidadProd from "./VelocidadProd";
-import StockRealAlmacenado from "./StockRealAlmacenado";
-import CostoAgotamiento from "./CostoAgotamiento";
 import ComponentsD from "./Ds";
 import ComponentsQ from "./Qs";
-import PorcAplicaCostoProd from "./PorcAplicaCostoProd";
-import PorcInteres from "./PorcInteres";
-import CostoPropioMercaderia from "./CostoPropioMercaderia";
+import CampoUnitario from './CampoUnitarioBase';
 
 class Processing extends React.Component {
 
-  handleDemanda = e => {
-    const model = this.props.status;
-    model.demanda = e.target.value;
-    this.props.setModel(model);
-  };
 
-  handleTiempoTotal = e => {
+  handleGeneral(e, atributo) {
     const model = this.props.status;
-    model.tiempoTotal = e.target.value;
-    this.props.setModel(model);
-  };
-
-  handleCostoAlm = e => {
-    const model = this.props.status;
-    model.costoAlm = e.target.value;
-    this.props.setModel(model);
-  };
-
-  handleCostoPrep = e => {
-    const model = this.props.status;
-    model.costoPrep = e.target.value;
-    this.props.setModel(model);
-  };
-
-  handleCostoProd = e => {
-    const model = this.props.status;
-    model.costoProd = e.target.value;
-    this.props.setModel(model);
-  };
-
-  handleStockProteccion = e => {
-    const model = this.props.status;
-    model.stockProt = e.target.value;
-    this.props.setModel(model);
-  };
-
-  handleDemandaUnitaria = e => {
-    const model = this.props.status;
-    model.demandaUnit = e.target.value;
+    model[atributo] = e.target.value;
     this.props.setModel(model);
   }
 
-  handleVelocidadProduccion = e => {
-    const model = this.props.status;
-    model.velocidadProd = e.target.value;
-    this.props.setModel(model);
-  }
+  handleDemanda = e => this.handleGeneral(e, 'demanda');
 
-  handleCostoAgotamiento = e => {
-    const model = this.props.status;
-    model.costoAgotamiento = e.target.value;
-    this.props.setModel(model);
-  }
+  handleTiempoTotal = e => this.handleGeneral(e, 'tiempoTotal');
 
-  handleStockRealAlmacenado = e => {
-    const model = this.props.status;
-    model.stockRealAlmacenado = e.target.value;
-    this.props.setModel(model);
-  }
+  handleCostoAlm = e => this.handleGeneral(e, 'costoAlm');
+
+  handleCostoPrep = e => this.handleGeneral(e, 'costoPrep');
+
+  handleCostoProd = e => this.handleGeneral(e, 'costoProd');
+
+  handleStockProteccion = e => this.handleGeneral(e, 'stockProt');
+
+  handleDemandaUnitaria = e => this.handleGeneral(e, 'demandaUnit');
+
+  handleVelocidadProduccion = e => this.handleGeneral(e, 'velocidadProd');
+
+  handleCostoAgotamiento = e => this.handleGeneral(e, 'costoAgotamiento');
+
+  handleStockRealAlmacenado = e => this.handleGeneral(e, 'stockRealAlmacenado');
+
+  handlePorcAplicaCostoProd = e => this.handleGeneral(e, 'porcAplicaCostoProd');
+
+  handlePorcInteres = e => this.handleGeneral(e, 'porcInteres');
+
+  handleCostoPropioMercaderia = e => this.handleGeneral(e, 'costoPropioMercaderia');
 
   handleDs = ds => {
     const model = this.props.status;
@@ -90,100 +51,47 @@ class Processing extends React.Component {
     this.props.setModel(model);
   }
 
-  handlePorcAplicaCostoProd = e => {
-    const model = this.props.status;
-    model.porcAplicaCostoProd = e.target.value;
-    this.props.setModel(model);
-  }
-
-  handlePorcInteres = e => {
-    const model = this.props.status;
-    model.porcInteres = e.target.value;
-    this.props.setModel(model);
-  }
-
-  handleCostoPropioMercaderia = e => {
-    const model = this.props.status;
-    model.costoPropioMercaderia = e.target.value;
-    this.props.setModel(model);
-  }
-
-  sp() {
-    if (this.props.modelo2) {
-      return <Col xs={12} md={6} className="my-4 mx-auto ">
+  columnaGenerica(titulo, nombre, handle) {
+    return (
+      <Col xs={12} md={6} className="my-4 mx-auto ">
         <Card outline color="secondary" className="w-100 mt-3">
           <CardHeader>
             <CardTitle className="text-left">
-              <h4>Stock de proteccion (sp)</h4>
+              <h4>{titulo}</h4>
             </CardTitle>
           </CardHeader>
           <CardBody className="mx-auto">
-            <StockProteccion
-              handleStockProteccion={this.handleStockProteccion}
+            <CampoUnitario
+              nombre={nombre}
+              handleChange={handle}
             />
           </CardBody>
         </Card>
       </Col>
+    )
+  }
+
+  sp() {
+    if (this.props.modelo2) {
+      return this.columnaGenerica('Stock de proteccion (sp)', 'Stock de proteccion', this.handleStockProteccion)
     }
   }
 
   demandaUnit() {
     if (this.props.modeloTriangular) {
-      return (
-        <Col xs={12} md={6} className="my-4 mx-auto ">
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>Demanda Unitaria (d)</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody className="mx-auto">
-              <DemandaUnitaria
-                handleDemandaUnitaria={this.handleDemandaUnitaria}
-              />
-            </CardBody>
-          </Card>
-        </Col>)
+      return this.columnaGenerica('Demanda Unitaria (d)', 'Demanda Unitaria', this.handleDemandaUnitaria)
     }
   }
 
   costoAgotamiento() {
     if (this.props.agotamientoSimple) {
-      return (
-        <Col xs={12} md={6} className="my-4 mx-auto ">
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>Costo de Agotamiento (C2)</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody className="mx-auto">
-              <CostoAgotamiento
-                handleCostoAgotamiento={this.handleCostoAgotamiento}
-              />
-            </CardBody>
-          </Card>
-        </Col>)
+      return this.columnaGenerica('Costo de Agotamiento (C2)', 'Costo de Agotamiento', this.handleCostoAgotamiento)
     }
   }
 
   stockRealAlmacenado() {
     if (this.props.agotamientoSimple) {
-      return (
-        <Col xs={12} md={6} className="my-4 mx-auto ">
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>Stock Real Almacenado (s)</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody className="mx-auto">
-              <StockRealAlmacenado
-                handleStockRealAlmacenado={this.handleStockRealAlmacenado}
-              />
-            </CardBody>
-          </Card>
-        </Col>)
+      return this.columnaGenerica('Stock Real Almacenado (s)', 'Stock Real Almacenado', this.handleStockRealAlmacenado)
     }
   }
 
@@ -227,111 +135,35 @@ class Processing extends React.Component {
 
   velocidadProd() {
     if (this.props.modeloTriangular) {
-      return (
-        <Col xs={12} md={6} className="my-4 mx-auto ">
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>Velocidad de Produccion (p)</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody className="mx-auto">
-              <VelocidadProd
-                handleVelocidadProduccion={this.handleVelocidadProduccion}
-              />
-            </CardBody>
-          </Card>
-        </Col>)
+      return this.columnaGenerica('Velocidad de Produccion (p)', 'Velocidad de Produccion', this.handleVelocidadProduccion)
     }
   }
 
   costoAlm() {
     if (!this.props.simpleSinAgot) {
-      return <Col xs={12} md={6} className="my-4 mx-auto ">
-        <Card outline color="secondary" className="w-100 mt-3">
-          <CardHeader>
-            <CardTitle className="text-left">
-              <h4>Costo de Almacenamiento (C1)</h4>
-            </CardTitle>
-          </CardHeader>
-          <CardBody className="mx-auto">
-            <CostoAlm
-              handleCostoAlm={this.handleCostoAlm}
-            />
-          </CardBody>
-        </Card>
-      </Col>
+      return this.columnaGenerica('Costo de Almacenamiento (C1)', 'Costo de Almacenamiento', this.handleCostoAlm)
     }
   }
 
   porcInteres() {
     if (this.props.simpleSinAgot) {
-      return (
-        <Col xs={12} md={6} className="my-4 mx-auto ">
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>Porcentaje de interés que se produciría con el dinero inmovilizado (p)</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody className="mx-auto">
-              <PorcInteres
-                handlePorcInteres={this.handlePorcInteres}
-              />
-            </CardBody>
-          </Card>
-        </Col>)
+      return this.columnaGenerica('Porcentaje de interés que se produciría con el dinero inmovilizado (p)', 'Porcentaje de interés', this.handlePorcInteres)
     }
   }
 
   porcAplicaCostoProd() {
     if (this.props.simpleSinAgot) {
-      return (
-        <Col xs={12} md={6} className="my-4 mx-auto ">
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>Porcentaje Aplicado a Costo de Producto</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody className="mx-auto">
-              <PorcAplicaCostoProd
-                handlePorcAplicaCostoProd={this.handlePorcAplicaCostoProd}
-              />
-            </CardBody>
-          </Card>
-        </Col>)
+      return this.columnaGenerica('Porcentaje Aplicado a Costo de Producto', 'Porcentaje Aplicado a Costo de Producto', this.handlePorcAplicaCostoProd)
     }
   }
 
   costoPropioMercaderia() {
     if (this.props.simpleSinAgot) {
-      return (
-        <Col xs={12} md={6} className="my-4 mx-auto ">
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>Costo propio de la mercaderia (C1')</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody className="mx-auto">
-              <CostoPropioMercaderia
-                handleCostoPropioMercaderia={this.handleCostoPropioMercaderia}
-              />
-            </CardBody>
-          </Card>
-        </Col>)
+      return this.columnaGenerica("Costo propio de la mercaderia (C1')", 'Costo propio de la mercaderia', this.handleCostoPropioMercaderia)
     }
   }
 
-
-
-
-
-
   render() {
-    //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
-
     return (
       <>
         <h3>Cargamos los datos de nuestro modelo</h3>
@@ -345,8 +177,9 @@ class Processing extends React.Component {
                   </CardTitle>
                 </CardHeader>
                 <CardBody className="mx-auto">
-                  <Demanda
-                    handleDemanda={this.handleDemanda}
+                  <CampoUnitario
+                    nombre='Demanda'
+                    handleChange={this.handleDemanda}
                   />
                 </CardBody>
               </Card>
@@ -360,8 +193,9 @@ class Processing extends React.Component {
                   </CardTitle>
                 </CardHeader>
                 <CardBody className="mx-auto">
-                  <TiempoTotal
-                    handleTiempoTotal={this.handleTiempoTotal}
+                  <CampoUnitario
+                    nombre='Tiempo Total'
+                    handleChange={this.handleTiempoTotal}
                   />
                 </CardBody>
               </Card>
@@ -378,8 +212,9 @@ class Processing extends React.Component {
                   </CardTitle>
                 </CardHeader>
                 <CardBody className="mx-auto">
-                  <CostoPrep
-                    handleCostoPrep={this.handleCostoPrep}
+                  <CampoUnitario
+                    nombre='Costo de Preparacion'
+                    handleChange={this.handleCostoPrep}
                   />
                 </CardBody>
               </Card>
@@ -395,8 +230,9 @@ class Processing extends React.Component {
                   </CardTitle>
                 </CardHeader>
                 <CardBody className="mx-auto">
-                  <CostoProd
-                    handleCostoProd={this.handleCostoProd}
+                  <CampoUnitario
+                    nombre='Costo de Producto'
+                    handleChange={this.handleCostoProd}
                   />
                 </CardBody>
               </Card>
