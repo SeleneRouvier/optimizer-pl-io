@@ -1,24 +1,21 @@
 import React from "react";
-import { Container, Col, Row, Jumbotron} from "reactstrap";
-import ModalModels from "../../Models"
+import { Container, Col, Row, Jumbotron } from "reactstrap";
 import Configuration from "../Configuration";
 import Processing from "../Processing";
-import Presentation from "../Presentation";
 import logo from "../logo.svg";
 
 class SinglePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      model:{
+      model: {
         variables: [{ xi: 0, descripcion: "", coeficiente: "" }, { xi: 1, descripcion: "", coeficiente: "" }],
         restricciones: [{ ri: 0, descripcion: "", coeficientes: [], eq: ">=", derecha: "" }],
         method: "graph",
         objective: "max",
         integer: false
       },
-      result: true,
-      modelsOpen:false
+      result: true
     };
   }
 
@@ -56,17 +53,17 @@ class SinglePage extends React.Component {
   handleResult = result => this.setState({ result });
   //Esta función habilita el cálculo en el último paso
   lastStep = step => console.log('Changes')
-  
+
   finishButtonClick = result => console.log("En algún momento va a imprimir resultados");
 
-  showModels = () => this.setState({modelsOpen:!this.state.modelsOpen});
+  showModels = () => this.setState({ modelsOpen: !this.state.modelsOpen });
 
-  setModel = model => this.setState({ model, changes:true });
+  setModel = model => this.setState({ model, changes: true });
 
   render() {
-    let { modelsOpen, model, result } = this.state
-    console.log('PRESENTATION:'+result);
-    
+    let { model, result } = this.state
+    console.log('PRESENTATION:' + result);
+
     return (
       <Container fluid className="App">
         <Row className="">
@@ -77,35 +74,29 @@ class SinglePage extends React.Component {
         <Row>
           <Col xs={12} md={6} className="my-4 mx-auto ">
             <Row>
-                <Jumbotron className='w-100'>
-                    <Configuration   status={model}
-                    handleMethod={this.handleMethod}
-                    handleVariables={this.handleVariables}
-                    handleRestricciones={this.handleRestricciones}
-                    lastStep={this.lastStep}
-                    toggleInteger={this.toggleInteger}
-                    handleObjective={this.handleObjective}
-                    showModels={this.showModels}/>
-                </Jumbotron>  
+              <Jumbotron className='w-100'>
+                <Configuration status={model}
+                  handleMethod={this.handleMethod}
+                  handleVariables={this.handleVariables}
+                  handleRestricciones={this.handleRestricciones}
+                  lastStep={this.lastStep}
+                  toggleInteger={this.toggleInteger}
+                  handleObjective={this.handleObjective}
+                  showModels={this.showModels} />
+              </Jumbotron>
             </Row>
 
             <Row>
-                <Jumbotron className='w-100'>
-                    <Processing status={model} handleVariables={this.handleVariables}
-                    handleRestricciones={this.handleRestricciones} lastStep={this.lastStep}/>
-                </Jumbotron>
-                
+              <Jumbotron className='w-100'>
+                <Processing status={model} handleVariables={this.handleVariables}
+                  handleRestricciones={this.handleRestricciones} lastStep={this.lastStep} />
+              </Jumbotron>
+
             </Row>
 
-            <Row>
-                <Jumbotron className='w-100'>
-                    <Presentation status={model} handleResult={this.handleResult} lastStep={this.lastStep}/>
-                </Jumbotron>
-            </Row>
-          
+
           </Col>
         </Row>
-        <Row><ModalModels open={modelsOpen} model={model} setModel={this.setModel} handleClose={this.showModels}/></Row>
       </Container>
     );
   }

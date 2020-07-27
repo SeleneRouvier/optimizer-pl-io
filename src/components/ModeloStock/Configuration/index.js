@@ -17,9 +17,6 @@ import PorcInteres from "./PorcInteres";
 import CostoPropioMercaderia from "./CostoPropioMercaderia";
 
 class Processing extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleDemanda = e => {
     const model = this.props.status;

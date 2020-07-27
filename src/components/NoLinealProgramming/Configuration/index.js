@@ -39,25 +39,6 @@ class Configuration extends React.Component {
   render() {
     //Obtenemos de las props, las varaibles y restricciones.
     let { variables, restricciones, method } = this.props.status;
-
-    let buttonsMethods = (
-      <ButtonGroup id="ButtUtil">
-        <Button
-          outline
-          onClick={() => this.props.handleMethod("graph")}
-          active={this.props.status.method === "graph"}
-          color="primary">
-          Gráfico
-        </Button>
-        <Button
-          outline
-          onClick={() => this.props.handleMethod("simplex")}
-          active={this.props.status.method === "simplex"}
-          color="primary">
-          Simplex
-        </Button>
-      </ButtonGroup>
-    );
     let buttonsOptType = (
       <ButtonGroup>
         <Button

@@ -35,13 +35,13 @@ class SimplexPresentation extends React.Component{
         //Obtenemos la Lista de Variables Slack y Reales
         let variablesList = result._tableau.variablesPerIndex
         //Obtenemos la Lista de Variables Reales
-        let variablesRealesList = result._tableau.variablesPerIndex.filter(el => !el.isSlack);
+        // let variablesRealesList = result._tableau.variablesPerIndex.filter(el => !el.isSlack);
         //Contamos la Cantidad de elementos en la fila de resultados (van a ser cero por ser simplex reducido)
-        let itemsinCero = matrix[0].length - 1;
+        // let itemsinCero = matrix[0].length - 1;
         //Obtenemos cuales son las variables que no estan en el set de resultados (van a ser cero)
-        let varsEnCero = variablesRealesList.filter( vari => !Object.keys(result.solutionSet).includes(vari.id) )
+        // let varsEnCero = variablesRealesList.filter( vari => !Object.keys(result.solutionSet).includes(vari.id) )
         //La cantidad de columnas en la fila de resultados - la cantidad de variables nulas, me devuelven la cantidad de slacks
-        let slacksEnCero = itemsinCero - varsEnCero.length;
+        // let slacksEnCero = itemsinCero - varsEnCero.length;
 
         //Procesamos INFO
 
