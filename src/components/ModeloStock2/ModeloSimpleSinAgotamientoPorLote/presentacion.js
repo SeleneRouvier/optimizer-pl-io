@@ -65,6 +65,24 @@ class Presentation extends React.Component {
     const bTransformado = ds.map(d => parseInt(d));
     const qTransformado = qs.map(q => parseInt(q));
 
+    if(ds.length != bTransformado.filter(b => {
+      if (Number.isNaN(b)) {
+        return false;
+      }
+      return true;
+    }).length){
+      return <h3>Valores no numericos</h3>
+    };
+
+    if(qs.length != qTransformado.filter(q => {
+      if (Number.isNaN(q)) {
+        return false;
+      }
+      return true;
+    }).length){
+      return <h3>Valores no numericos</h3>
+    };
+
     const { n, To, ctprep, ctprod, ctalm, cte, qo, liminf, cprod } = modelo4(demanda, qTransformado, costoPrep, porcAplicaCostoProd, tiempoTotal, porcInteres, bTransformado, costoPropioMercaderia);
 
     return (

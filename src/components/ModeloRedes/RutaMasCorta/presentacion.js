@@ -58,7 +58,6 @@ class Presentation extends React.Component {
     console.log('Cantidad de nodos: ', cantidadNodos);
 
     if (cantidadNodos > 0 && aristasConverted.length > 0 && nodoInicial >= 0) {
-      console.log('aaaaaaaaaa', nodoInicial);
       var { g, dijkstra } = rutaMasCorta(cantidadNodos, aristasConverted, nodoInicial);
     } else {
       return <h3>Modelo incompleto</h3>

@@ -23,8 +23,6 @@ class Presentation extends React.Component {
     costoProd = parseInt(costoProd);
     stockProt = parseInt(stockProt);
 
-    console.log('aa ', stockProt)
-
     if (demanda < 0 || tiempoTotal < 0 || costoAlm < 0 || costoPrep < 0 || costoProd < 0 || stockProt < 0) {
       return <h3>No pueden existir numeros negativos</h3>
     }

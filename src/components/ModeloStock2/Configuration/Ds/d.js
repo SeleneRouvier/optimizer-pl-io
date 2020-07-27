@@ -5,9 +5,9 @@ const Arista = props => {
     const numero = props.d;
     // const handleChange = e => props.handleChanges(e);
     return(
-        <InputGroup className="mt-1" id={"XTTt" + numero} key={"VTDd" + numero}>
+        <InputGroup className="mt-1">
         <InputGroupAddon addonType="prepend">
-          <InputGroupText name="xii" id="d">
+          <InputGroupText>
             {"b" + numero}
           </InputGroupText>
         </InputGroupAddon>

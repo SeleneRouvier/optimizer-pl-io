@@ -35,7 +35,4 @@ function ModeloWilson(D,K,C1,T,b){
 	return {qo, n, CTPre, CTProd, CTAlm, CTE, To, CTEo};
 }
 
-let result = ModeloWilson(3000,120,0.2,1,0);
-console.log('acaaaaaaaaaa ',result);
-
 module.exports = ModeloWilson;
