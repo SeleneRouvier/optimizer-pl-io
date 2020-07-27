@@ -169,74 +169,20 @@ class Processing extends React.Component {
         <h3>Cargamos los datos de nuestro modelo</h3>
         <Container>
           <Row>
-            <Col xs={12} md={6} className="my-4 mx-auto ">
-              <Card outline color="secondary" className="w-100 mt-3">
-                <CardHeader>
-                  <CardTitle className="text-left">
-                    <h4>Demanda (D)</h4>
-                  </CardTitle>
-                </CardHeader>
-                <CardBody className="mx-auto">
-                  <CampoUnitario
-                    nombre='Demanda'
-                    handleChange={this.handleDemanda}
-                  />
-                </CardBody>
-              </Card>
-            </Col>
+            {this.columnaGenerica("Demanda (D)", 'Demanda', this.handleDemanda)}
 
-            <Col xs={12} md={6} className="my-4 mx-auto ">
-              <Card outline color="secondary" className="w-100 mt-3">
-                <CardHeader>
-                  <CardTitle className="text-left">
-                    <h4>Tiempo Total (T)</h4>
-                  </CardTitle>
-                </CardHeader>
-                <CardBody className="mx-auto">
-                  <CampoUnitario
-                    nombre='Tiempo Total'
-                    handleChange={this.handleTiempoTotal}
-                  />
-                </CardBody>
-              </Card>
-            </Col>
+            {this.columnaGenerica("Tiempo Total (T)", 'Tiempo Total', this.handleTiempoTotal)}
           </Row>
+
           <Row>
             {this.costoAlm()}
 
-            <Col xs={12} md={6} className="my-4 mx-auto ">
-              <Card outline color="secondary" className="w-100 mt-3">
-                <CardHeader>
-                  <CardTitle className="text-left">
-                    <h4>Costo de Preparacion (K)</h4>
-                  </CardTitle>
-                </CardHeader>
-                <CardBody className="mx-auto">
-                  <CampoUnitario
-                    nombre='Costo de Preparacion'
-                    handleChange={this.handleCostoPrep}
-                  />
-                </CardBody>
-              </Card>
-            </Col>
+            {this.columnaGenerica("Costo de Preparacion (K)", 'Costo de Preparacion', this.handleCostoPrep)}
           </Row>
 
           <Row>
-            <Col xs={12} md={6} className="my-4 mx-auto ">
-              <Card outline color="secondary" className="w-100 mt-3">
-                <CardHeader>
-                  <CardTitle className="text-left">
-                    <h4>Costo de Producto (b)</h4>
-                  </CardTitle>
-                </CardHeader>
-                <CardBody className="mx-auto">
-                  <CampoUnitario
-                    nombre='Costo de Producto'
-                    handleChange={this.handleCostoProd}
-                  />
-                </CardBody>
-              </Card>
-            </Col>
+            {this.columnaGenerica("Costo de Producto (b)", 'DemanCosto de Productoda', this.handleCostoProd)}
+
             {this.sp()}
             {this.demandaUnit()}
             {this.velocidadProd()}
@@ -248,7 +194,9 @@ class Processing extends React.Component {
             {this.costoPropioMercaderia()}
 
           </Row>
-          {this.qsyds()}
+          <Row>
+            {this.qsyds()}
+          </Row>
         </Container>
       </>
     );
