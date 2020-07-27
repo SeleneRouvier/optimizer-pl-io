@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
 import modelo2 from "../Functions/modelo2";
-import { parse } from "mathjs";
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class Presentation extends React.Component {
     console.log('dd', demanda.length)
 
     let valido = this.validar({ demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt });
-    if (valido != true) return valido;
+    if (valido !== true) return valido;
     /*
     if (demanda.length === 0 || tiempoTotal.length === 0 || costoAlm.length === 0 || costoPrep.length === 0 || costoProd.length === 0 || stockProt.length === 0) {
       return <h3>Modelo incompleto</h3>
