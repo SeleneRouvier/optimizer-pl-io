@@ -11,8 +11,8 @@ function CalcularSm(Tp,p,d){
     return sm;
 }
 
-function Calcularqo(K,d,C1,p){
-    let qo = math.sqrt((2*K*d*p)/(C1*(p-d)));
+function Calcularqo(K,d,C1,p,D,T){
+    let qo = math.sqrt((2*K*D)/(C1*T*(1-d/p)));
     return qo;
 }
 
@@ -22,7 +22,7 @@ function CalcularTp(qo,p){
 }
 
 function ModeloTriangular(D,K,b,p,T,C1,d){
-    const qo = Math.ceil(Calcularqo(K,d,C1,p));
+    const qo = Math.ceil(Calcularqo(K,d,C1,p,D,T));
     const n = CalcularN(qo,D);
     const ctprep = CostoTotalPreparacionComun(D,qo,K);
     const ctprod = CostoTotalProductoComun(b, D);
