@@ -14,12 +14,12 @@ import ModeloRedes from "./components/ModeloRedes";
 import ArbolMinimaExpansion from "./components/ModeloRedes/ArbolMinimaExpansion";
 import RutaMasCorta from "./components/ModeloRedes/RutaMasCorta";
 
-import ModeloStock2 from "./components/ModeloStock2";
-import ModeloWilson from "./components/ModeloStock2/ModeloWilson";
-import Modelo2 from "./components/ModeloStock2/Modelo2";
-import ModeloTriangular from "./components/ModeloStock2/ModeloTriangular";
-import ModeloSimpleConAgotamiento from "./components/ModeloStock2/ModeloAgotamientoSimple";
-import ModeloSimpleSinAgotamientoPorLote from "./components/ModeloStock2/ModeloSimpleSinAgotamientoPorLote";
+import ModeloStock2 from "./components/ModeloStock";
+import ModeloWilson from "./components/ModeloStock/ModeloWilson";
+import Modelo2 from "./components/ModeloStock/Modelo2";
+import ModeloTriangular from "./components/ModeloStock/ModeloTriangular";
+import ModeloSimpleConAgotamiento from "./components/ModeloStock/ModeloAgotamientoSimple";
+import ModeloSimpleSinAgotamientoPorLote from "./components/ModeloStock/ModeloSimpleSinAgotamientoPorLote";
 
 const NoLinealProgrammingPage = () => <NoLinealProgramming />;
 

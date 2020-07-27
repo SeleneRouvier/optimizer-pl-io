@@ -6,7 +6,6 @@ class Presentation extends React.Component {
   constructor(props) {
     super(props);
     this.model = props.model;
-    this.resultado = null;
   }
 
   mostrarResultados = () => {

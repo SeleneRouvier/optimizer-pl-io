@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, CardBody, CardHeader, CardTitle, Alert } from "reactstrap";
+import { Container, Row, Col, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import Demanda from "./Demanda";
 import DemandaUnitaria from "./DemandaUnitaria";
 import TiempoTotal from "./TiempoTotal";
@@ -269,28 +269,28 @@ class Processing extends React.Component {
 
   porcInteres() {
     if (this.props.simpleSinAgot) {
-      return ( 
-          <Col xs={12} md={6} className="my-4 mx-auto ">
-            <Card outline color="secondary" className="w-100 mt-3">
-              <CardHeader>
-                <CardTitle className="text-left">
-                  <h4>Porcentaje de interés que se produciría con el dinero inmovilizado (p)</h4>
-                </CardTitle>
-              </CardHeader>
-              <CardBody className="mx-auto">
-                <PorcInteres
-                  handlePorcInteres={this.handlePorcInteres}
-                />
-              </CardBody>
-            </Card>
-          </Col>)
+      return (
+        <Col xs={12} md={6} className="my-4 mx-auto ">
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>Porcentaje de interés que se produciría con el dinero inmovilizado (p)</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody className="mx-auto">
+              <PorcInteres
+                handlePorcInteres={this.handlePorcInteres}
+              />
+            </CardBody>
+          </Card>
+        </Col>)
     }
   }
 
   porcAplicaCostoProd() {
     if (this.props.simpleSinAgot) {
-      return ( 
-          <Col xs={12} md={6} className="my-4 mx-auto ">
+      return (
+        <Col xs={12} md={6} className="my-4 mx-auto ">
           <Card outline color="secondary" className="w-100 mt-3">
             <CardHeader>
               <CardTitle className="text-left">
@@ -309,26 +309,26 @@ class Processing extends React.Component {
 
   costoPropioMercaderia() {
     if (this.props.simpleSinAgot) {
-      return ( 
+      return (
         <Col xs={12} md={6} className="my-4 mx-auto ">
-        <Card outline color="secondary" className="w-100 mt-3">
-          <CardHeader>
-            <CardTitle className="text-left">
-              <h4>Costo propio de la mercaderia (C1')</h4>
-            </CardTitle>
-          </CardHeader>
-          <CardBody className="mx-auto">
-            <CostoPropioMercaderia
-              handleCostoPropioMercaderia={this.handleCostoPropioMercaderia}
-            />
-          </CardBody>
-        </Card>
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>Costo propio de la mercaderia (C1')</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody className="mx-auto">
+              <CostoPropioMercaderia
+                handleCostoPropioMercaderia={this.handleCostoPropioMercaderia}
+              />
+            </CardBody>
+          </Card>
         </Col>)
     }
   }
 
 
-  
+
 
 
 
@@ -409,11 +409,11 @@ class Processing extends React.Component {
             {this.velocidadProd()}
             {this.costoAgotamiento()}
             {this.stockRealAlmacenado()}
-            
+
             {this.porcInteres()}
             {this.porcAplicaCostoProd()}
             {this.costoPropioMercaderia()}
-            
+
           </Row>
           {this.qsyds()}
         </Container>

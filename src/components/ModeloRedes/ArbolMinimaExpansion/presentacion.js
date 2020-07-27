@@ -60,7 +60,7 @@ class Presentation extends React.Component {
 
     let mostrar = [];
 
-    if (resultados != 0) {
+    if (resultados !== 0) {
       resultados.forEach(e => {
         const v = e.either();
         const w = e.other(v);

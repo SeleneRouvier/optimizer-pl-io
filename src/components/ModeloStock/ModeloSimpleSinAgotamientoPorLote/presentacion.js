@@ -6,7 +6,6 @@ class Presentation extends React.Component {
   constructor(props) {
     super(props);
     this.model = props.model;
-    this.resultado = null;
   }
 
   mostrarResultados = () => {
@@ -30,7 +29,7 @@ class Presentation extends React.Component {
       return true;
     });
 
-    if (ds.length != qs.length) {
+    if (ds.length !== qs.length) {
       return <h3>La cantidad de b's debe ser igual a la cantidad de q's</h3>
     }
 
@@ -65,7 +64,7 @@ class Presentation extends React.Component {
     const bTransformado = ds.map(d => parseInt(d));
     const qTransformado = qs.map(q => parseInt(q));
 
-    if(ds.length != bTransformado.filter(b => {
+    if(ds.length !== bTransformado.filter(b => {
       if (Number.isNaN(b)) {
         return false;
       }
@@ -74,7 +73,7 @@ class Presentation extends React.Component {
       return <h3>Valores no numericos</h3>
     };
 
-    if(qs.length != qTransformado.filter(q => {
+    if(qs.length !== qTransformado.filter(q => {
       if (Number.isNaN(q)) {
         return false;
       }

@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonGroup, Button, Container, Row, Col, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { ButtonGroup, Button, Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import { Alert, UncontrolledPopover, PopoverBody, PopoverHeader } from "reactstrap";
 import Restrictions from "./Restrictions";
 import Variables from "./Variables";

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputGroup, InputGroupAddon, InputGroupText, Input, UncontrolledTooltip } from 'reactstrap'
+import { Input } from 'reactstrap'
 
 
 const PorcInteres = props => {

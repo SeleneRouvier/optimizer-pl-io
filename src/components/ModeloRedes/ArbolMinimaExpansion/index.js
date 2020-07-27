@@ -1,7 +1,5 @@
 import React from "react";
 import { Container, Col, Row, Jumbotron} from "reactstrap";
-import ModalModels from "../../Models"
-import Configuration from "../Configuration";
 import Processing from "../Processing";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
@@ -15,8 +13,7 @@ class ArbolMinimaExpansion extends React.Component {
         cantidadNodos: "0",
         integer: false
       },
-      result: true,
-      modelsOpen:false
+      result: true
     };
   }
   
