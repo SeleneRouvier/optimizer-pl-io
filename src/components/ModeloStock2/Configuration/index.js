@@ -12,20 +12,21 @@ import StockRealAlmacenado from "./StockRealAlmacenado";
 import CostoAgotamiento from "./CostoAgotamiento";
 import ComponentsD from "./Ds";
 import ComponentsQ from "./Qs";
+import PorcAplicaCostoProd from "./PorcAplicaCostoProd";
+import PorcInteres from "./PorcInteres";
+import CostoPropioMercaderia from "./CostoPropioMercaderia";
 
 class Processing extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  //Esta función maneja el cambio en las restricciones
   handleDemanda = e => {
     const model = this.props.status;
-    console.log('aaaaaaaaaaaa')
     model.demanda = e.target.value;
     this.props.setModel(model);
   };
-  //Esta función maneja el cambio en las restricciones
+
   handleTiempoTotal = e => {
     const model = this.props.status;
     model.tiempoTotal = e.target.value;
@@ -89,6 +90,24 @@ class Processing extends React.Component {
   handleQs = qs => {
     const model = this.props.status;
     model.q = qs;
+    this.props.setModel(model);
+  }
+
+  handlePorcAplicaCostoProd = e => {
+    const model = this.props.status;
+    model.porcAplicaCostoProd = e.target.value;
+    this.props.setModel(model);
+  }
+
+  handlePorcInteres = e => {
+    const model = this.props.status;
+    model.porcInteres = e.target.value;
+    this.props.setModel(model);
+  }
+
+  handleCostoPropioMercaderia = e => {
+    const model = this.props.status;
+    model.costoPropioMercaderia = e.target.value;
     this.props.setModel(model);
   }
 
@@ -172,37 +191,37 @@ class Processing extends React.Component {
   }
 
   qsyds() {
-    if(this.props.simpleSinAgot){
-      return(
+    if (this.props.simpleSinAgot) {
+      return (
         <Col>
-        <Row>
+          <Row>
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
                 <CardTitle className="text-left">
-                  <h4>d</h4>
+                  <h4>b</h4>
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <ComponentsD
                   ds={this.props.status.ds}
-                  handleDs = {this.handleDs}
+                  handleDs={this.handleDs}
                 /></CardBody>
             </Card>
           </Row>
           <Row>
-          <Card outline color="secondary" className="w-100 mt-3">
-            <CardHeader>
-              <CardTitle className="text-left">
-                <h4>q</h4>
-              </CardTitle>
-            </CardHeader>
-            <CardBody>
-              <ComponentsQ
-                qs={this.props.status.qs}
-                handleQs = {this.handleQs}
-              /></CardBody>
-          </Card>
-        </Row>
+            <Card outline color="secondary" className="w-100 mt-3">
+              <CardHeader>
+                <CardTitle className="text-left">
+                  <h4>q</h4>
+                </CardTitle>
+              </CardHeader>
+              <CardBody>
+                <ComponentsQ
+                  qs={this.props.status.qs}
+                  handleQs={this.handleQs}
+                /></CardBody>
+            </Card>
+          </Row>
         </Col>
       )
     }
@@ -228,6 +247,90 @@ class Processing extends React.Component {
         </Col>)
     }
   }
+
+  costoAlm() {
+    if (!this.props.simpleSinAgot) {
+      return <Col xs={12} md={6} className="my-4 mx-auto ">
+        <Card outline color="secondary" className="w-100 mt-3">
+          <CardHeader>
+            <CardTitle className="text-left">
+              <h4>Costo de Almacenamiento (C1)</h4>
+            </CardTitle>
+          </CardHeader>
+          <CardBody className="mx-auto">
+            <CostoAlm
+              handleCostoAlm={this.handleCostoAlm}
+            />
+          </CardBody>
+        </Card>
+      </Col>
+    }
+  }
+
+  porcInteres() {
+    if (this.props.simpleSinAgot) {
+      return ( 
+          <Col xs={12} md={6} className="my-4 mx-auto ">
+            <Card outline color="secondary" className="w-100 mt-3">
+              <CardHeader>
+                <CardTitle className="text-left">
+                  <h4>Porcentaje de interés que se produciría con el dinero inmovilizado (p)</h4>
+                </CardTitle>
+              </CardHeader>
+              <CardBody className="mx-auto">
+                <PorcInteres
+                  handlePorcInteres={this.handlePorcInteres}
+                />
+              </CardBody>
+            </Card>
+          </Col>)
+    }
+  }
+
+  porcAplicaCostoProd() {
+    if (this.props.simpleSinAgot) {
+      return ( 
+          <Col xs={12} md={6} className="my-4 mx-auto ">
+          <Card outline color="secondary" className="w-100 mt-3">
+            <CardHeader>
+              <CardTitle className="text-left">
+                <h4>Porcentaje Aplicado a Costo de Producto</h4>
+              </CardTitle>
+            </CardHeader>
+            <CardBody className="mx-auto">
+              <PorcAplicaCostoProd
+                handlePorcAplicaCostoProd={this.handlePorcAplicaCostoProd}
+              />
+            </CardBody>
+          </Card>
+        </Col>)
+    }
+  }
+
+  costoPropioMercaderia() {
+    if (this.props.simpleSinAgot) {
+      return ( 
+        <Col xs={12} md={6} className="my-4 mx-auto ">
+        <Card outline color="secondary" className="w-100 mt-3">
+          <CardHeader>
+            <CardTitle className="text-left">
+              <h4>Costo propio de la mercaderia (C1')</h4>
+            </CardTitle>
+          </CardHeader>
+          <CardBody className="mx-auto">
+            <CostoPropioMercaderia
+              handleCostoPropioMercaderia={this.handleCostoPropioMercaderia}
+            />
+          </CardBody>
+        </Card>
+        </Col>)
+    }
+  }
+
+
+  
+
+
 
   render() {
     //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
@@ -268,20 +371,7 @@ class Processing extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={6} className="my-4 mx-auto ">
-              <Card outline color="secondary" className="w-100 mt-3">
-                <CardHeader>
-                  <CardTitle className="text-left">
-                    <h4>Costo de Almacenamiento (C1)</h4>
-                  </CardTitle>
-                </CardHeader>
-                <CardBody className="mx-auto">
-                  <CostoAlm
-                    handleCostoAlm={this.handleCostoAlm}
-                  />
-                </CardBody>
-              </Card>
-            </Col>
+            {this.costoAlm()}
 
             <Col xs={12} md={6} className="my-4 mx-auto ">
               <Card outline color="secondary" className="w-100 mt-3">
@@ -319,6 +409,11 @@ class Processing extends React.Component {
             {this.velocidadProd()}
             {this.costoAgotamiento()}
             {this.stockRealAlmacenado()}
+            
+            {this.porcInteres()}
+            {this.porcAplicaCostoProd()}
+            {this.costoPropioMercaderia()}
+            
           </Row>
           {this.qsyds()}
         </Container>

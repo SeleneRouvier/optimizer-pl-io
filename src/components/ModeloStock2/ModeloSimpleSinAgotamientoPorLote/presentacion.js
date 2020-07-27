@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-//import modelo1 from "./modelo1";
+import modelo4 from "../Functions/ModeloSimpleSinAgotamientoPorLote";
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -10,9 +10,30 @@ class Presentation extends React.Component {
   }
 
   mostrarResultados = () => {
-    let { demanda, tiempoTotal, costoAlm, costoPrep, costoProd, ds, qs } = this.model;
+    console.log(this.model);
+    let { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoProd, ds, qs, costoPropioMercaderia, porcInteres } = this.model;
 
     let flag = false;
+
+
+    ds = ds.filter(d => {
+      if (d.length === 0) {
+        return false;
+      }
+      return true;
+    });
+
+    qs = qs.filter(q => {
+      if (q.length === 0) {
+        return false;
+      }
+      return true;
+    });
+
+    if (ds.length != qs.length) {
+      return <h3>La cantidad de b's debe ser igual a la cantidad de q's</h3>
+    }
+
     ds.forEach(d => {
       if (d.length === 0) flag = true;
     })
@@ -21,69 +42,57 @@ class Presentation extends React.Component {
       if (q.length === 0) flag = true;
     })
 
-    if ( flag || demanda.length === 0 || tiempoTotal.length === 0 || costoAlm.length === 0 || costoPrep.length === 0 || costoProd.length === 0) {
+    if (flag || demanda.length === 0 || tiempoTotal.length === 0 || costoPropioMercaderia.length === 0 || costoPrep.length === 0 || costoProd.length === 0 || porcAplicaCostoProd.length === 0 || porcInteres.length === 0) {
       return <h3>Modelo incompleto</h3>
     }
 
     demanda = parseInt(demanda);
     tiempoTotal = parseInt(tiempoTotal);
-    costoAlm = parseInt(costoAlm);
+    costoPropioMercaderia = parseInt(costoPropioMercaderia);
     costoPrep = parseInt(costoPrep);
     costoProd = parseInt(costoProd);
+    porcAplicaCostoProd = parseInt(porcAplicaCostoProd);
+    porcInteres = parseInt(porcInteres);
 
-    if (demanda < 0 || tiempoTotal < 0 || costoAlm < 0 || costoPrep < 0 || costoProd < 0) {
+    if (demanda < 0 || tiempoTotal < 0 || costoPropioMercaderia < 0 || costoPrep < 0 || costoProd < 0 || porcAplicaCostoProd < 0 || porcInteres < 0) {
       return <h3>No pueden existir numeros negativos</h3>
     }
 
-    if (Number.isNaN(demanda) || Number.isNaN(tiempoTotal) || Number.isNaN(costoAlm) || Number.isNaN(costoPrep) || Number.isNaN(costoProd)) {
+    if (Number.isNaN(demanda) || Number.isNaN(tiempoTotal) || Number.isNaN(costoPropioMercaderia) || Number.isNaN(costoPrep) || Number.isNaN(costoProd) || Number.isNaN(porcAplicaCostoProd) | Number.isNaN(porcInteres)) {
       return <h3>Valores no numericos</h3>
     }
 
-    var errorDatos;
-    var error = false;
-    var numeroArista;
+    const bTransformado = ds.map(d => parseInt(d));
+    const qTransformado = qs.map(q => parseInt(q));
 
-    if (error) return <Card> <h3>Error en arista A{numeroArista}:</h3><p>{errorDatos}</p></Card>
+    const { n, To, ctprep, ctprod, ctalm, cte, qo, liminf, cprod } = modelo4(demanda, qTransformado, costoPrep, porcAplicaCostoProd, tiempoTotal, porcInteres, bTransformado, costoPropioMercaderia);
 
-    const resultados = 0;//modelo1(demanda, costoPrep, costoAlm, tiempoTotal);
-
-
-    let mostrar = [];
-    if (resultados != 0) {
-      resultados.forEach(e => {
-        const v = e.either();
-        const w = e.other(v);
-
-        mostrar.push(<h4>{`(${v}, ${w}): ${e.weight}`}</h4>);
-      })
-    }
-
-    if (mostrar.length > 0) {
-      return <Card outline color="secondary" className="w-100 mt-3 mx-auto">
-        <CardHeader>
-          <CardTitle className="text-left">
-            <h4>Resultados</h4>
-          </CardTitle>
-        </CardHeader>
-        <CardBody className="mx-auto">
-          {mostrar}
-        </CardBody>
-      </Card>
-    }
-    return <h3>Adios</h3>
+    return (
+    <Card outline color="secondary" className="w-100 mt-3 mx-auto">
+      <CardHeader>
+        <CardTitle className="text-left">
+          <h4>Resultados</h4>
+        </CardTitle>
+      </CardHeader>
+      <CardBody className="mx-auto">
+        <p>n = {n}</p>
+        <p>To = {To}</p>
+        <p>ctprep = {ctprep}</p>
+        <p>ctprod = {ctprod}</p>
+        <p>ctalm = {ctalm}</p>
+        <p>cte = {cte}</p>
+        <p>qo = {qo}</p>
+        <p>liminf = {liminf}</p>
+        <p>cprod = {cprod}</p>
+      </CardBody>
+    </Card>)
   }
 
   render() {
 
     return (
       <>
-        <Card outline color="info" className="w-100 mt-3 mx-auto">
-          <CardHeader>
-            <CardTitle>
-              {this.mostrarResultados()}
-            </CardTitle>
-          </CardHeader>
-        </Card>
+        {this.mostrarResultados()}
       </>
     );
   }

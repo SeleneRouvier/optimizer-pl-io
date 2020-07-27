@@ -8,14 +8,14 @@ const Arista = props => {
         <InputGroup className="mt-1" id={"XTTt" + numero} key={"VTDd" + numero}>
         <InputGroupAddon addonType="prepend">
           <InputGroupText name="xii" id="d">
-            {"d" + numero}
+            {"b" + numero}
           </InputGroupText>
         </InputGroupAddon>
         <Input
           name={numero}
-          placeholder="d"
-          aria-label="d"
-          aria-describedby="d"
+          placeholder="b"
+          aria-label="b"
+          aria-describedby="b"
           onChange={props.handleChanges}
         />
 
