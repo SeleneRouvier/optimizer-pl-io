@@ -1,5 +1,9 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
+import {makeVisFlexible,GradientDefs,LabelSeries,
+  LineSeriesCanvas,Borders,XYPlot, XAxis, YAxis,
+  HorizontalGridLines,LineSeries, AreaSeries,
+  VerticalGridLines,MarkSeries,DiscreteColorLegend,Hint} from 'react-vis';
 import modelo2 from "../Functions/modelo2";
 import validar from "../Functions/Validar";
 
@@ -8,6 +12,102 @@ class Presentation extends React.Component {
     super(props);
     this.model = props.model;
     this.resultado = null;
+  }
+  state = {
+    useCanvas: false
+  };
+
+  plotearGrafico = () => {
+    if (this.resultado){
+      const FlexibleGraph = makeVisFlexible(XYPlot);
+      const {useCanvas} = this.state;
+      const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
+      const Line = useCanvas ? LineSeriesCanvas : LineSeries;
+      const T = this.model.tiempoTotal * 30;
+      const To = this.resultado.To*30;
+      const items = [];
+      const incremento = To;
+      console.log(this.model.stockProt);
+      let topey = this.resultado.qo + this.model.stockProt;
+      let iniciox = 0;
+      let finx = To;
+      let finy = this.model.stockProt;
+      while (finx <= T) {
+        items.push(<Line
+          className="primera reposicion"
+          color="#12939A"
+          data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
+        />);
+        items.push(<AreaSeries
+        className="area-series-example"
+        opacity= {0.25}
+        color="orange"
+        data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
+        />);
+        items.push(<Line
+          className="se repone"
+          color="#7bc96f"
+          data={[{x: finx, y: finy}, {x: finx, y: topey}]}
+        />);
+        iniciox = finx;
+        finx = finx + incremento;
+      }
+      if (finx !== T) {
+        const delta = T - (finx-incremento);
+        finx = T;
+        finy = (-this.resultado.qo/To)*delta+this.resultado.qo;
+        items.push(<Line
+          className="primera reposicion"
+          color="#12939A"
+          data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
+        />);
+        items.push(<AreaSeries
+        className="area-series-example"
+        opacity= {0.25}
+        color="orange"
+        data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
+        />);
+        items.push(<Line
+          className="Tiempo total"
+          color="Red"
+          data={[{x: finx, y: 0}, {x: finx, y: topey}]}
+        />);
+      }
+      return (
+      <FlexibleGraph
+      height={500}
+      margin={{bottom: 80, left: 50, right: 10, top: 75}}>
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <Line
+          className="To"
+          color="blue"
+          style={{
+            strokeLinejoin: 'round',
+            strokeWidth: 4
+          }}
+          strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+          data={[{x: 0, y: 0}, {x: To, y: 0}]}
+        />
+        <MarkSeries
+            className="mark-series-example"
+            strokeWidth={2}
+            sizeRange={[5, 15]}
+            data={[{x: 0, y: this.resultado.qo, size: 5},{x: To, y: 0, size: 5}]}/>
+        <LabelSeries animation allowOffsetToBeReversed data={[{x: 0, y: this.resultado.qo, label: 'qo='+this.resultado.qo, size: 10},
+        {x: To, y: 0, label: 'To='+To, size: 10}]} />
+        <XAxis title="tiempo" />
+        <YAxis />
+        {items}
+        <DiscreteColorLegend style={{position: 'absolute', left: '50px', top: '10px'}} 
+        orientation="horizontal"
+        items={[ { title: 'reposiciones', color: '#7bc96f' },
+        { title: 'Tiempo total', color: 'Red' },
+        { title: 'Stock', color: '#12939A' },
+        { title: 'To', color: 'blue', strokeStyle: "dashed" } ]} />
+      </FlexibleGraph>
+      );
+    }
   }
 
   mostrarResultados = () => {
@@ -20,9 +120,9 @@ class Presentation extends React.Component {
     if (valido !== true) return valido;
 
     var {demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt} = variables;
-
-    const { qo, n, ctprep, ctprod, ctalm, casp, cmsp, cte, To, cteo } = modelo2(demanda, costoPrep, costoProd, costoAlm, tiempoTotal, stockProt);
-
+    this.model = variables;
+    this.resultado = modelo2(demanda, costoPrep, costoProd, costoAlm, tiempoTotal, stockProt);
+    const { qo, n, ctprep, ctprod, ctalm, casp, cmsp, cte, To, cteo } = this.resultado;
     return (
       <Card outline color="secondary" className="w-100 mt-3 mx-auto">
         <CardHeader>
@@ -49,6 +149,7 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
+        {this.plotearGrafico()}
       </>
     );
   }
