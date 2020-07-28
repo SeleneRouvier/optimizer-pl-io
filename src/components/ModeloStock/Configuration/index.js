@@ -4,7 +4,7 @@ import ComponentsD from "./Ds";
 import ComponentsQ from "./Qs";
 import CampoUnitario from './CampoUnitarioBase';
 
-class Processing extends React.Component {
+class Configuration extends React.Component {
 
 
   handleGeneral(e, atributo) {
@@ -203,4 +203,4 @@ class Processing extends React.Component {
   }
 }
 
-export default Processing;
+export default Configuration;

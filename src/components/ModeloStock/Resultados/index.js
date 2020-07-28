@@ -10,16 +10,32 @@ class Presentation extends React.Component {
     this.resultado = null;
   }
 
-  mostrarResultados = () => {
-    var { demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt } = this.model;
+  validar(variables) {
+    for (const prop in variables) {
+      if (variables[prop].length === 0) return <h3>Modelo incompleto</h3>;
 
-    const variables = { demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt }
+      if (prop === 'costoAlm' || prop === 'costoPrep' || prop === 'costoProd' || prop === 'costoPropioMercaderia' || prop === 'costoAgotamiento' || prop === 'tiempoTotal') {
+        variables[prop] = Number(variables[prop]);
+      } else {
+        variables[prop] = parseInt(variables[prop]);
+      }
 
-    let valido = validar( variables );
+      if (Number.isNaN(variables[prop])) return <h3>Valores no numericos</h3>;
+      if (variables[prop] < 0) return <h3>No pueden existir numeros negativos</h3>;
+    }
+
+    return true;
+  }
+
+  mostrarResultados = (variables) => {
+
+    const variables = this.model;
+
+    let valido = this.validar(variables);
 
     if (valido !== true) return valido;
 
-    var {demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt} = variables;
+    var { demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt } = variables;
 
     const { qo, n, ctprep, ctprod, ctalm, casp, cmsp, cte, To, cteo } = modelo2(demanda, costoPrep, costoProd, costoAlm, tiempoTotal, stockProt);
 
@@ -49,6 +65,7 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
+
       </>
     );
   }
