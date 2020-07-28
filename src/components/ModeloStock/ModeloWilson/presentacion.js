@@ -1,6 +1,9 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-import {makeVisFlexible,GradientDefs,LineSeriesCanvas,Borders,XYPlot, XAxis, YAxis, HorizontalGridLines,LineSeries, AreaSeries, VerticalGridLines,MarkSeries,DiscreteColorLegend,Hint} from 'react-vis';
+import {makeVisFlexible,GradientDefs,LabelSeries,
+  LineSeriesCanvas,Borders,XYPlot, XAxis, YAxis,
+  HorizontalGridLines,LineSeries, AreaSeries,
+  VerticalGridLines,MarkSeries,DiscreteColorLegend,Hint} from 'react-vis';
 import modelo1 from "../Functions/modelo1";
 
 class Presentation extends React.Component {
@@ -15,75 +18,92 @@ class Presentation extends React.Component {
   plotearGrafico = () => {
     if (this.resultado){
       const FlexibleGraph = makeVisFlexible(XYPlot);
-    const {useCanvas} = this.state;
-    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
-    const Line = useCanvas ? LineSeriesCanvas : LineSeries;
-    const T = this.model.tiempoTotal * 30;
-    const To = this.resultado.To*30;
-    const items = [];
-    const incremento = To;
-    let topey = this.resultado.qo;
-    let iniciox = 0;
-    let finx = To;
-    let finy = 0;
-    while (finx <= T) {
-      items.push(<Line
-        className="primera reposicion"
+      const {useCanvas} = this.state;
+      const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
+      const Line = useCanvas ? LineSeriesCanvas : LineSeries;
+      const T = this.model.tiempoTotal * 30;
+      const To = this.resultado.To*30;
+      const items = [];
+      const incremento = To;
+      let topey = this.resultado.qo;
+      let iniciox = 0;
+      let finx = To;
+      let finy = 0;
+      while (finx <= T) {
+        items.push(<Line
+          className="primera reposicion"
+          color="#12939A"
+          data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
+        />);
+        items.push(<AreaSeries
+        className="area-series-example"
+        opacity= {0.25}
+        color="orange"
         data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
-      />);
-      items.push(<Line
-        className="se repone"
-        data={[{x: finx, y: 0}, {x: finx, y: topey}]}
-      />);
-      /* 
-      <Line
-        className="primera reposicion"
+        />);
+        items.push(<Line
+          className="se repone"
+          color="#7bc96f"
+          data={[{x: finx, y: 0}, {x: finx, y: topey}]}
+        />);
+        iniciox = finx;
+        finx = finx + incremento;
+      }
+      if (finx !== T) {
+        const delta = T - (finx-incremento);
+        finx = T;
+        finy = (-this.resultado.qo/To)*delta+this.resultado.qo;
+        items.push(<Line
+          className="primera reposicion"
+          color="#12939A"
+          data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
+        />);
+        items.push(<AreaSeries
+        className="area-series-example"
+        opacity= {0.25}
+        color="orange"
         data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
-      />
-      <Line
-        className="se repone"
-        data={[{x: finx, y: 0}, {x: finx, y: topey}]}
-      />
-      */
-      iniciox = finx;
-      finx = finx + incremento;
-    }
-    console.log(T, finx);
-    if (finx !== T) {
-      console.log('entre aqui',finx-incremento);
-      const delta = T - (finx-incremento);
-      finx = T;
-      finy = (-this.resultado.qo/To)*delta+this.resultado.qo;
-      console.log('DALE',finx, delta, finy);
-      items.push(<Line
-        className="primera reposicion"
-        data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
-      />);
-      items.push(<Line
-        className="Tiempo total"
-        data={[{x: finx, y: 0}, {x: finx, y: topey}]}
-      />);
-      /* 
-      <Line
-        className="primera reposicion"
-        data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
-      />
-      <Line
-        className="Tiempo total"
-        data={[{x: finx, y: 0}, {x: finx, y: topey}]}
-      />
-      */
-    }
-    console.log('que esta pasando aca??',T,finx,topey,finy,iniciox)
+        />);
+        items.push(<Line
+          className="Tiempo total"
+          color="Red"
+          data={[{x: finx, y: 0}, {x: finx, y: topey}]}
+        />);
+      }
       return (
-    <FlexibleGraph height={500}>
-      <VerticalGridLines />
-      <HorizontalGridLines />
-      <XAxis />
-      <YAxis />
-      {items}
-    </FlexibleGraph>
-  );
+      <FlexibleGraph
+      height={500}
+      margin={{bottom: 80, left: 50, right: 10, top: 75}}>
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <Line
+          className="To"
+          color="blue"
+          style={{
+            strokeLinejoin: 'round',
+            strokeWidth: 4
+          }}
+          strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+          data={[{x: 0, y: 0}, {x: To, y: 0}]}
+        />
+        <MarkSeries
+            className="mark-series-example"
+            strokeWidth={2}
+            sizeRange={[5, 15]}
+            data={[{x: 0, y: this.resultado.qo, size: 5},{x: To, y: 0, size: 5}]}/>
+        <LabelSeries animation allowOffsetToBeReversed data={[{x: 0, y: this.resultado.qo, label: 'qo='+this.resultado.qo, size: 10},
+        {x: To, y: 0, label: 'To='+To, size: 10}]} />
+        <XAxis title="tiempo" />
+        <YAxis />
+        {items}
+        <DiscreteColorLegend style={{position: 'absolute', left: '50px', top: '10px'}} 
+        orientation="horizontal"
+        items={[ { title: 'reposiciones', color: '#7bc96f' },
+        { title: 'Tiempo total', color: 'Red' },
+        { title: 'Stock', color: '#12939A' },
+        { title: 'To', color: 'blue', strokeStyle: "dashed" } ]} />
+      </FlexibleGraph>
+      );
     }
   }
 
