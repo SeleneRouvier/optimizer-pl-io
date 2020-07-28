@@ -71,17 +71,14 @@ class Presentation extends React.Component {
         const path = dijkstra.pathTo(v);
 
         if (v !== nodoInicial) {
-          console.log('=====path from 0 to ' + v + ' start==========');
           mostrar.push(<h4>{`Ruta mas corta desde ${nodoInicial} a ${v}`}</h4>);
 
           for (var i = 0; i < path.length; ++i) {
             const e = path[i];
             console.log(e.from() + ' => ' + e.to() + ': ' + e.weight);
-            mostrar.push(<p>{`${e.from()}  => ${e.to()}: ${e.weight}`}</p>);
+            mostrar.push(<p>{`(${e.from()} => ${e.to()}): Distancia de ${e.weight}`}</p>);
           }
 
-          console.log('=====distance: ' + dijkstra.distanceTo(v) + '=========');
-          console.log('');
           mostrar.push(<p>{`Distancia Total del Camino: ${dijkstra.distanceTo(v)}`}</p>);
           mostrar.push(<br></br>);
 
