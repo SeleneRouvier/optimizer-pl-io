@@ -1,13 +1,10 @@
 import React from "react";
-import { Container, Row, Card, CardBody, CardHeader, CardTitle, Alert } from "reactstrap";
+import { Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 import NodoInicial from "./NodoInicial";
 
 class Processing extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleCantidadNodos = event => {
     let { value } = event.target;

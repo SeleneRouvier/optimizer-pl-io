@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonGroup, Button, Container, Row, Col, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { ButtonGroup, Button, Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import { Alert, UncontrolledPopover, PopoverBody, PopoverHeader } from "reactstrap";
 import Restrictions from "./Restrictions";
 import Variables from "./Variables";
@@ -26,38 +26,19 @@ class Configuration extends React.Component {
     }
     return false;
   }
-  
+
   //Funcion que se encarga de traspasar los cambios al padre
   handleRestrictions = restricciones => this.props.handleRestricciones(restricciones)
-  
+
   //Funcion que se encarga de traspasar los cambios al padre
   handleVariables = variables => this.props.handleVariables(variables)
-  
+
   //Modelos
   showModels = () => this.props.showModels()
 
   render() {
     //Obtenemos de las props, las varaibles y restricciones.
-    let {variables,restricciones,method } = this.props.status;
-
-    let buttonsMethods = (
-      <ButtonGroup id="ButtUtil">
-        <Button
-          outline
-          onClick={ () => this.props.handleMethod("graph")}
-          active={this.props.status.method === "graph"}
-          color="primary">
-          Gráfico
-        </Button>
-        <Button
-          outline
-          onClick={ () => this.props.handleMethod("simplex")}
-          active={this.props.status.method === "simplex"}
-          color="primary">
-          Simplex
-        </Button>
-      </ButtonGroup>
-    );
+    let { variables, restricciones, method } = this.props.status;
     let buttonsOptType = (
       <ButtonGroup>
         <Button
@@ -84,16 +65,16 @@ class Configuration extends React.Component {
         <h3>Comenzamos configurando nuestro modelo</h3>
         <Container>
 
-              <UncontrolledPopover flip={false} trigger="hover" placement="top" target="CardOpt">
-                <PopoverBody>
-                  Y aquí el tipo de optimizacion que deseas realizar: si deseas maximizar o minimizar la
-                  función.
+          <UncontrolledPopover flip={false} trigger="hover" placement="top" target="CardOpt">
+            <PopoverBody>
+              Y aquí el tipo de optimizacion que deseas realizar: si deseas maximizar o minimizar la
+              función.
                 </PopoverBody>
-              </UncontrolledPopover>
-              <Card outline color="secondary" id="CardOpt" className="mt-3 mx-auto">
-                <CardHeader>Tipo de optimización</CardHeader>
-                <CardBody>{buttonsOptType}</CardBody>
-              </Card>
+          </UncontrolledPopover>
+          <Card outline color="secondary" id="CardOpt" className="mt-3 mx-auto">
+            <CardHeader>Tipo de optimización</CardHeader>
+            <CardBody>{buttonsOptType}</CardBody>
+          </Card>
 
           <Row>
             <UncontrolledPopover flip={false} trigger="hover" placement="top" target="CardVariables">
@@ -109,7 +90,7 @@ class Configuration extends React.Component {
                   <h4>Variables</h4>
                 </CardTitle>
               </CardHeader>
-              <CardBody><Variables method={method} handleVariables={this.handleVariables} variables={variables}/></CardBody>
+              <CardBody><Variables method={method} handleVariables={this.handleVariables} variables={variables} /></CardBody>
             </Card>
           </Row>
           <Row>
@@ -126,7 +107,7 @@ class Configuration extends React.Component {
                   <h4>Restricciones</h4>
                 </CardTitle>
               </CardHeader>
-              <CardBody><Restrictions handleRestrictions={this.handleRestrictions} restricciones={restricciones}/></CardBody>
+              <CardBody><Restrictions handleRestrictions={this.handleRestrictions} restricciones={restricciones} /></CardBody>
             </Card>
           </Row>
           {this.state.faltaDescrip !== "" && (

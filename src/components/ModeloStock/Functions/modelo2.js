@@ -1,4 +1,3 @@
-const math = require('mathjs');
 const { CalcularqoComun, CalcularN, CalcularToComun, CalcularCTEoComun, CostoTotalPreparacionComun, CostoTotalProductoComun } = require('./FuncionesComunes');
 
 function CostoTotalAlmacenamiento(q, T, C1) {

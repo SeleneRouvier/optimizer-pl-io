@@ -1,4 +1,3 @@
-const math = require("mathjs");
 const { CalcularqoComun, CalcularN, CalcularToComun, CalcularCTEoComun, CostoTotalPreparacionComun, CostoTotalProductoComun } = require('./FuncionesComunes');
 
 /* 
@@ -34,8 +33,5 @@ function ModeloWilson(D,K,C1,T,b){
 	//CTEo = Costo total esperado optimo
 	return {qo, n, CTPre, CTProd, CTAlm, CTE, To, CTEo};
 }
-
-let result = ModeloWilson(3000,120,0.2,1,0);
-console.log('acaaaaaaaaaa ',result);
 
 module.exports = ModeloWilson;

@@ -78,7 +78,7 @@ const Inicio = () =>{
                         <Col>
                             <Button href="https://github.com/santinozaracho/optimizer-pl-io/issues" 
                                 outline>
-                                <img height='25px' src="https://img.icons8.com/ios-filled/50/000000/github.png"/>
+                                <img height='25px' src="https://img.icons8.com/ios-filled/50/000000/github.png" alt=""/>
                                 Report Issues
                             </Button>
                         </Col>
