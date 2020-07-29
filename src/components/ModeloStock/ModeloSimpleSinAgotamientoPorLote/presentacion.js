@@ -41,8 +41,8 @@ class Presentation extends React.Component {
 
     if (ds.length === 0 || qs.length === 0) return <h3>Modelo incompleto</h3>
 
-    const bTransformado = ds.map(d => parseInt(d));
-    const qTransformado = qs.map(q => parseInt(q));
+    const bTransformado = ds.map(d => Number(d));
+    const qTransformado = qs.map(q => Number(q));
 
     if (ds.length !== bTransformado.filter(b => {
       if (Number.isNaN(b)) {
