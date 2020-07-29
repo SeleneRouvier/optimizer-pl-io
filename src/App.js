@@ -7,7 +7,7 @@ import LinealProgramming from './components/LinealProgramming';
 import InSteps from "./components/LinealProgramming/InSteps";
 import SinglePage from "./components/LinealProgramming/SinglePage";
 
-import NoLinealProgramming from "./components/NoLinealProgramming";
+import NoLinealProgramming from "./components/NoLinealProgramming/indexNoImplementado";
 import KuhnyTucker from "./components/NoLinealProgramming/KuhnyTucker";
 
 import ModeloRedes from "./components/ModeloRedes";

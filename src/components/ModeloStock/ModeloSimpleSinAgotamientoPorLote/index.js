@@ -12,7 +12,6 @@ class ArbolMinimaExpansion extends React.Component {
         demanda: "",
         tiempoTotal: '',
         costoPrep: '',
-        costoProd: '',
         ds: ['', ''],
         qs: ['', ''],
         porcAplicaCostoProd: '',
@@ -38,7 +37,12 @@ class ArbolMinimaExpansion extends React.Component {
         </Row>
         <Row>
           <Col xs={12} md={6} className="my-4 mx-auto ">
-
+            <Row>
+              <Jumbotron className='w-100'>
+                <h2>Modelos de stock:</h2>
+                <h2>Modelo Simple Sin Agotamiento Por Lote</h2>
+              </Jumbotron>
+            </Row>
             <Row>
               <Jumbotron className='w-100'>
                 <Configuration status={model}

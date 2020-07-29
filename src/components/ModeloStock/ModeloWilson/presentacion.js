@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-import {makeVisFlexible,GradientDefs,LabelSeries,
-  LineSeriesCanvas,Borders,XYPlot, XAxis, YAxis,
+import {makeVisFlexible,LabelSeries,
+  LineSeriesCanvas,XYPlot, XAxis, YAxis,
   HorizontalGridLines,LineSeries, AreaSeries,
-  VerticalGridLines,MarkSeries,DiscreteColorLegend,Hint} from 'react-vis';
+  VerticalGridLines,MarkSeries,DiscreteColorLegend} from 'react-vis';
 import modelo1 from "../Functions/modelo1";
 
 class Presentation extends React.Component {
@@ -19,7 +19,6 @@ class Presentation extends React.Component {
     if (this.resultado){
       const FlexibleGraph = makeVisFlexible(XYPlot);
       const {useCanvas} = this.state;
-      const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
       const T = this.model.tiempoTotal * 30;
       const To = this.resultado.To*30;
@@ -64,12 +63,12 @@ class Presentation extends React.Component {
         color="orange"
         data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
         />);
-        items.push(<Line
+      }
+      items.push(<Line
           className="Tiempo total"
           color="Red"
-          data={[{x: finx, y: 0}, {x: finx, y: topey}]}
+          data={[{x: T, y: 0}, {x: T, y: topey}]}
         />);
-      }
       return (
       <FlexibleGraph
       height={500}
@@ -157,6 +156,8 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
+        <hr class="my-2"></hr>
+        <h3>Cantidad de stock en función del tiempo</h3>
         {this.plotearGrafico()}
       </>
     );

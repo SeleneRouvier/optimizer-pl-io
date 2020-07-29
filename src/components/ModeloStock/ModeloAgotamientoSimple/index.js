@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Col, Row, Jumbotron} from "reactstrap";
+import { Container, Col, Row, Jumbotron } from "reactstrap";
 import Configuration from "../Configuration";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
@@ -8,25 +8,24 @@ class ModeloAgotamientoSimple extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      model:{
+      model: {
         demanda: "",
         tiempoTotal: '',
         costoAlm: '',
         costoPrep: '',
         costoProd: '',
         costoAgotamiento: '',
-        stockRealAlmacenado: ''
       },
       result: true,
-      modelsOpen:false
+      modelsOpen: false
     };
   }
 
-  setModel = model => this.setState({ model, changes:true });
+  setModel = model => this.setState({ model, changes: true });
 
   render() {
     let { model } = this.state
-    
+
     return (
       <Container fluid className="App">
         <Row className="">
@@ -36,23 +35,24 @@ class ModeloAgotamientoSimple extends React.Component {
         </Row>
         <Row>
           <Col xs={12} md={6} className="my-4 mx-auto ">
-
             <Row>
-                <Jumbotron className='w-100'>
-                    <Configuration status={model}
-                    setModel={this.setModel}
-                    agotamientoSimple={true}/>
-                </Jumbotron>
-                
+              <Jumbotron className='w-100'>
+                <h2>Modelos de stock:</h2>
+                <h2>Modelo Agotamiento Simple</h2>
+              </Jumbotron>
             </Row>
-
             <Row>
-                <Jumbotron className='w-100'>
-                    <Presentation model={model}/>
-                </Jumbotron>
-                
+              <Jumbotron className='w-100'>
+                <Configuration status={model}
+                  setModel={this.setModel}
+                  agotamientoSimple={true} />
+              </Jumbotron>
             </Row>
-          
+            <Row>
+              <Jumbotron className='w-100'>
+                <Presentation model={model} />
+              </Jumbotron>
+            </Row>
           </Col>
         </Row>
 

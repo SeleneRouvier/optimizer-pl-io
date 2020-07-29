@@ -11,15 +11,20 @@ class Presentation extends React.Component {
 
   mostrarResultados = () => {
 
-    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoProd, ds, qs, costoPropioMercaderia, porcInteres } = this.model;
+    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, ds, qs, costoPropioMercaderia, porcInteres } = this.model;
 
-    const variables = { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoProd, costoPropioMercaderia, porcInteres };
+    const variables = { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoPropioMercaderia, porcInteres };
 
     let valido = validar(variables);
 
     if (valido !== true) return valido;
 
-    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoProd, costoPropioMercaderia, porcInteres } = variables;
+    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoPropioMercaderia, porcInteres } = variables;
+
+    console.log(variables);
+
+    porcAplicaCostoProd = porcAplicaCostoProd/100;
+    porcInteres = porcInteres/100;
 
     ds = ds.filter(d => {
       if (d.length === 0) {
@@ -41,7 +46,7 @@ class Presentation extends React.Component {
 
     if (ds.length === 0 || qs.length === 0) return <h3>Modelo incompleto</h3>
 
-    const bTransformado = ds.map(d => parseInt(d));
+    const bTransformado = ds.map(d => Number(d));
     const qTransformado = qs.map(q => parseInt(q));
 
     if (ds.length !== bTransformado.filter(b => {
