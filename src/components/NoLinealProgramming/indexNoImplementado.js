@@ -1,9 +1,12 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Jumbotron, Container, Row, Col } from "reactstrap";
 
 const NoLinealProgramming = () => {
-    return(
+  useEffect(() => {
+    document.title = "Programacion no lineal"
+  }, []);
+  return (
     <Container fluid className="App">
       <Row className="">
         <Col xs={12} md={6} className="mx-auto my-5">
@@ -12,12 +15,12 @@ const NoLinealProgramming = () => {
               <h2>La Programación No-Lineal aún no está disponible.</h2>
             </Row>
             <Row>
-                <Link to='/home'><Button className="fluid-left">Volver</Button></Link>
+              <Link to='/home'><Button className="fluid-left">Volver</Button></Link>
             </Row>
           </Jumbotron>
         </Col>
       </Row>
     </Container>
-    )
-    };
+  )
+};
 export default NoLinealProgramming;

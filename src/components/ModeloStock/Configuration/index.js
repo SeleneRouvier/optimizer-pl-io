@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Row, Col, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { Container, Row, Col, Card, CardBody, CardHeader, CardTitle, UncontrolledPopover, PopoverBody } from "reactstrap";
 import ComponentsD from "./Ds";
 import ComponentsQ from "./Qs";
 import CampoUnitario from './CampoUnitarioBase';
+import TiempoTotal from './TiempoTotal';
 
 class Configuration extends React.Component {
 
@@ -36,6 +37,8 @@ class Configuration extends React.Component {
   handlePorcInteres = e => this.handleGeneral(e, 'porcInteres');
 
   handleCostoPropioMercaderia = e => this.handleGeneral(e, 'costoPropioMercaderia');
+
+  handleUnidadTiempoTotal = e => this.handleGeneral(e, 'unidadTiempo');
 
   handleDs = ds => {
     const model = this.props.status;
@@ -92,7 +95,7 @@ class Configuration extends React.Component {
       return (
         <Col>
           <Row>
-            <Card outline color="secondary" className="w-100 mt-3">
+            <Card outline color="secondary" className="w-100 mt-3" id="B">
               <CardHeader>
                 <CardTitle className="text-left">
                   <h4>Costo de producto</h4>
@@ -104,9 +107,14 @@ class Configuration extends React.Component {
                   handleDs={this.handleDs}
                 /></CardBody>
             </Card>
+            <UncontrolledPopover placement="right" target="B" trigger="hover">
+              <PopoverBody>
+                <p>Los valores de los costos de producto deben estar ordenados ascendentemente.</p>
+              </PopoverBody>
+            </UncontrolledPopover>
           </Row>
           <Row>
-            <Card outline color="secondary" className="w-100 mt-3">
+            <Card outline color="secondary" className="w-100 mt-3" id="Q">
               <CardHeader>
                 <CardTitle className="text-left">
                   <h4>Limite de lotes</h4>
@@ -118,6 +126,11 @@ class Configuration extends React.Component {
                   handleQs={this.handleQs}
                 /></CardBody>
             </Card>
+            <UncontrolledPopover placement="right" target="Q" trigger="hover">
+              <PopoverBody>
+                <p>Los valores de los limites de lotes deben estar ordenados descendentemente.</p>
+              </PopoverBody>
+            </UncontrolledPopover>
           </Row>
         </Col>
       )
@@ -156,7 +169,7 @@ class Configuration extends React.Component {
   }
 
   costoDeProducto() {
-    if(!this.props.simpleSinAgot) {
+    if (!this.props.simpleSinAgot) {
       return this.columnaGenerica("Costo de Producto (b)", 'DemanCosto de Productoda', this.handleCostoProd)
     }
   }
@@ -169,7 +182,23 @@ class Configuration extends React.Component {
           <Row>
             {this.columnaGenerica("Demanda (D)", 'Demanda', this.handleDemanda)}
 
-            {this.columnaGenerica("Tiempo Total (T)", 'Tiempo Total', this.handleTiempoTotal)}
+            <Col xs={12} md={6} className="my-4 mx-auto ">
+              <Card outline color="secondary" className="w-100 mt-3">
+                <CardHeader>
+                  <CardTitle className="text-left">
+                    <h4>Tiempo Total (T)</h4>
+                  </CardTitle>
+                </CardHeader>
+                <CardBody className="mx-auto">
+                  <TiempoTotal
+                    nombre="Tiempo Total (T)"
+                    handleChange={this.handleTiempoTotal}
+                    handleChangeUnit={this.handleUnidadTiempoTotal}
+                    selected={this.props.status.unidadTiempo}
+                  />
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
 
           <Row>

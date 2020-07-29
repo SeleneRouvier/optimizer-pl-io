@@ -13,7 +13,8 @@ class ModeloWilson extends React.Component {
         tiempoTotal: '',
         costoAlm: '',
         costoPrep: '',
-        costoProd: ''
+        costoProd: '',
+        unidadTiempo: 'Meses'
       },
       result: true,
       modelsOpen: false
