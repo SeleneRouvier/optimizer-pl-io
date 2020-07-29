@@ -4,7 +4,7 @@ import Configuration from "../Configuration";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
 
-class ArbolMinimaExpansion extends React.Component {
+class ModeloWilson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,4 +58,4 @@ class ArbolMinimaExpansion extends React.Component {
   }
 }
 
-export default ArbolMinimaExpansion;
+export default ModeloWilson;

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Jumbotron, Container, Row, Col, UncontrolledPopover, PopoverBody, PopoverHeader } from "reactstrap";
 
-const ModeloRedes = () => {
+
+
+const ModelosStock = () => {
+  useEffect(() => {
+    document.title = "Modelos de stock"
+  }, []);
   return (
     <Container fluid className="App">
       <Row className="">
@@ -97,4 +102,4 @@ const ModeloRedes = () => {
   )
 };
 
-export default ModeloRedes;
+export default ModelosStock;
