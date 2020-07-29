@@ -7,7 +7,6 @@ import TiempoTotal from './TiempoTotal';
 
 class Configuration extends React.Component {
 
-
   handleGeneral(e, atributo) {
     const model = this.props.status;
     model[atributo] = e.target.value;
