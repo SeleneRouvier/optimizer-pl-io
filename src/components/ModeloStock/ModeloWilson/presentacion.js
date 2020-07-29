@@ -64,12 +64,12 @@ class Presentation extends React.Component {
         color="orange"
         data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
         />);
-        items.push(<Line
+      }
+      items.push(<Line
           className="Tiempo total"
           color="Red"
-          data={[{x: finx, y: 0}, {x: finx, y: topey}]}
+          data={[{x: T, y: 0}, {x: T, y: topey}]}
         />);
-      }
       return (
       <FlexibleGraph
       height={500}
