@@ -200,11 +200,11 @@ class Presentation extends React.Component {
     }).length) {
       return <h3>Valores no numericos</h3>
     };
-
+    console.log(porcInteres,porcAplicaCostoProd);
     this.resultado = modelo4(demanda, qTransformado, costoPrep, porcAplicaCostoProd, tiempoTotal, porcInteres, bTransformado, costoPropioMercaderia);
     
     const { n, To, ctprep, ctprod, ctalm, cte, qo, liminf, cprod } = this.resultado
-    
+
     return (
       <Card outline color="secondary" className="w-100 mt-3 mx-auto">
         <CardHeader>
