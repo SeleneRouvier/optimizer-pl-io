@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-import modelo4 from "../Functions/ModeloSimpleSinAgotamientoPorLote";
+import modelo5 from "../Functions/ModeloSimpleSinAgotamientoPorLote";
 import validar from "../Functions/Validar";
 import {makeVisFlexible,LabelSeries,
   LineSeriesCanvas,XYPlot, XAxis, YAxis,
@@ -201,7 +201,7 @@ class Presentation extends React.Component {
       return <h3>Valores no numericos</h3>
     };
     console.log(porcInteres,porcAplicaCostoProd);
-    this.resultado = modelo4(demanda, qTransformado, costoPrep, porcAplicaCostoProd, tiempoTotal, porcInteres, bTransformado, costoPropioMercaderia);
+    this.resultado = modelo5(demanda, qTransformado, costoPrep, porcAplicaCostoProd, tiempoTotal, porcInteres, bTransformado, costoPropioMercaderia);
     
     const { n, To, ctprep, ctprod, ctalm, cte, qo, liminf, cprod } = this.resultado
 
