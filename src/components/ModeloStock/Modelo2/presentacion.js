@@ -56,7 +56,7 @@ class Presentation extends React.Component {
       if (finx !== T) {
         const delta = T - (finx-incremento);
         finx = T;
-        finy = (-this.resultado.qo/To)*delta+this.resultado.qo;
+        finy = (-this.resultado.qo/To)*delta+(this.resultado.qo + this.modeloTransformado.stockProt);
         items.push(<Line
           className="primera reposicion"
           color="#12939A"
