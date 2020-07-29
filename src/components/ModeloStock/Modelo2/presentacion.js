@@ -11,6 +11,7 @@ class Presentation extends React.Component {
   constructor(props) {
     super(props);
     this.model = props.model;
+    this.modeloTransformado = null;
     this.resultado = null;
   }
   state = {
@@ -23,15 +24,15 @@ class Presentation extends React.Component {
       const {useCanvas} = this.state;
       const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
-      const T = this.model.tiempoTotal * 30;
+      const T = this.modeloTransformado.tiempoTotal * 30;
       const To = this.resultado.To*30;
       const items = [];
       const incremento = To;
-      console.log(this.resultado.stockProt);
-      let topey = this.resultado.qo + this.model.stockProt;
+
+      let topey = this.resultado.qo + this.modeloTransformado.stockProt;
       let iniciox = 0;
       let finx = To;
-      let finy = this.model.stockProt;
+      let finy = this.modeloTransformado.stockProt;
       while (finx <= T) {
         items.push(<Line
           className="primera reposicion"
@@ -93,10 +94,10 @@ class Presentation extends React.Component {
             className="mark-series-example"
             strokeWidth={2}
             sizeRange={[5, 15]}
-            data={[{x: 0, y: (this.resultado.qo + this.model.stockProt), size: 5},{x: To, y: 0, size: 5}]}/>
-        <LabelSeries animation allowOffsetToBeReversed data={[{x: 0, y: (this.resultado.qo + this.model.stockProt), label: 'qo='+this.resultado.qo, size: 10},
+            data={[{x: 0, y: (this.resultado.qo + this.modeloTransformado.stockProt), size: 5},{x: To, y: 0, size: 5}]}/>
+        <LabelSeries animation allowOffsetToBeReversed data={[{x: 0, y: (this.resultado.qo + this.modeloTransformado.stockProt), label: 'qo='+this.resultado.qo, size: 10},
         {x: To, y: 0, label: 'To='+To, size: 10},
-        {x: 0, y: this.model.stockProt, label: 'sp='+this.model.stockProt, size: 10}]} />
+        {x: 0, y: this.modeloTransformado.stockProt, label: 'sp='+this.modeloTransformado.stockProt, size: 10}]} />
         <Line
             className="qo"
             color="red"
@@ -105,7 +106,7 @@ class Presentation extends React.Component {
               strokeLinejoin: 'round',
               strokeWidth: 4
             }}
-            data={[{x: 0, y: this.model.stockProt}, {x: 0, y: (this.resultado.qo + this.model.stockProt)}]}
+            data={[{x: 0, y: this.modeloTransformado.stockProt}, {x: 0, y: (this.resultado.qo + this.modeloTransformado.stockProt)}]}
           />
         <Line
             className="sp"
@@ -115,7 +116,7 @@ class Presentation extends React.Component {
               strokeWidth: 4
             }}
             strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
-            data={[{x: 0, y: this.model.stockProt}, {x: T, y: this.model.stockProt}]}
+            data={[{x: 0, y: this.modeloTransformado.stockProt}, {x: T, y: this.modeloTransformado.stockProt}]}
           />
         <XAxis title="tiempo" />
         <YAxis />
@@ -143,9 +144,11 @@ class Presentation extends React.Component {
     if (valido !== true) return valido;
 
     var {demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt} = variables;
-    this.model = variables;
+
+    this.modeloTransformado = variables;
+
     this.resultado = modelo2(demanda, costoPrep, costoProd, costoAlm, tiempoTotal, stockProt);
-    console.log(variables);
+
     const { qo, n, ctprep, ctprod, ctalm, casp, cmsp, cte, To, cteo } = this.resultado;
     return (
       <Card outline color="secondary" className="w-100 mt-3 mx-auto">
