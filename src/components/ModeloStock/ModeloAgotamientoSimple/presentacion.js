@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-import {makeVisFlexible,GradientDefs,LabelSeries,
-  LineSeriesCanvas,Borders,XYPlot, XAxis, YAxis,
+import {makeVisFlexible,LabelSeries,
+  LineSeriesCanvas,XYPlot, XAxis, YAxis,
   HorizontalGridLines,LineSeries, AreaSeries,
-  VerticalGridLines,MarkSeries,DiscreteColorLegend,Hint} from 'react-vis';
+  VerticalGridLines,MarkSeries,DiscreteColorLegend} from 'react-vis';
 import modeloSconAgotamiento from "../Functions/ModeloSimpleConAgotamiento";
 import validar from "../Functions/Validar";
 
@@ -20,7 +20,6 @@ class Presentation extends React.Component {
     if (this.resultado){
       const FlexibleGraph = makeVisFlexible(XYPlot);
       const {useCanvas} = this.state;
-      const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
       //ver lo de tiempo
       const T = this.model.tiempoTotal * 30;
@@ -191,6 +190,8 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
+        <hr class="my-2"></hr>
+        <h3>Cantidad de stock en función del tiempo</h3>
         {this.plotearGrafico()}
       </>
     );

@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
 import modeloTriangular from "../Functions/ModeloTriangular";
-import {makeVisFlexible,GradientDefs,LabelSeries,
-  LineSeriesCanvas,Borders,XYPlot, XAxis, YAxis,
+import {makeVisFlexible,LabelSeries,
+  LineSeriesCanvas,XYPlot, XAxis, YAxis,
   HorizontalGridLines,LineSeries, AreaSeries,
-  VerticalGridLines,MarkSeries,DiscreteColorLegend,Hint} from 'react-vis';
+  VerticalGridLines,MarkSeries,DiscreteColorLegend} from 'react-vis';
 import validar from "../Functions/Validar";
 
 class Presentation extends React.Component {
@@ -21,7 +21,6 @@ class Presentation extends React.Component {
     if (this.resultado){
       const FlexibleGraph = makeVisFlexible(XYPlot);
       const {useCanvas} = this.state;
-      const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
       //ver lo de tiempo
       const T = this.model.tiempoTotal * 365;
@@ -112,65 +111,65 @@ class Presentation extends React.Component {
           data={[{x: T, y: 0}, {x: T, y: topey}]}
         />);
       return (
-      <FlexibleGraph
-      height={500}
-      margin={{bottom: 80, left: 50, right: 10, top: 75}}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <Line
-          className="qo"
-          color="black"
-          strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
-          style={{
-            strokeLinejoin: 'round',
-            strokeWidth: 4
-          }}
-          data={[{x: 0, y: 0}, {x: 0, y: this.resultado.qo}]}
-        />
-        <Line
-          className="To"
-          color="blue"
-          style={{
-            strokeLinejoin: 'round',
-            strokeWidth: 4
-          }}
-          strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
-          data={[{x: 0, y: -50}, {x: To, y: -50}]}
-        />
-        <Line
-          className="T1"
-          color="green"
-          style={{
-            strokeLinejoin: 'round',
-            strokeWidth: 4
-          }}
-          strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
-          data={[{x: 0, y: 0}, {x: this.resultado.Tp, y: 0}]}
-        />
-        <MarkSeries
-            className="mark-series-example"
-            strokeWidth={2}
-            sizeRange={[5, 15]}
-            data={[{x: 0, y: this.resultado.qo, size: 5},{x: this.resultado.Tp, y: topey, size: 5},{x: To, y: 0, size: 5},{x: this.resultado.Tp, y: 0, size: 5}]}/>
-        <LabelSeries animation allowOffsetToBeReversed 
-        data={[{x: 0, y: this.resultado.qo, label: 'qo='+this.resultado.qo, size: 10},
-        {x: this.resultado.Tp, y: topey, label: 'sm='+this.resultado.sm, size: 10},
-        {x: To, y: -50, label: 'To='+To, size: 10},
-        {x: this.resultado.Tp, y: 0, label: 'Tp='+this.resultado.Tp, size: 10}]}
-        labelAnchorX="start" />
-        <XAxis title="tiempo" />
-        <YAxis />
-        {items}
-        <DiscreteColorLegend style={{position: 'absolute', left: '50px', top: '10px'}} 
-        orientation="horizontal"
-        items={[ { title: 'Utilizacion', color: '#7bc96f' },
-        { title: 'Tiempo total', color: 'Red' },
-        { title: 'Utilizacion y fabricacion', color: '#12939A' },
-        { title: 'sm', color: 'brown', strokeStyle: "dashed" },
-        { title: 'To', color: 'blue', strokeStyle: "dashed" },
-        { title: 'Tp', color: 'green', strokeStyle: "dashed" },
-        { title: 'qo', color: 'black', strokeStyle: "dashed" } ]} />
-      </FlexibleGraph>
+        <FlexibleGraph
+        height={500}
+        margin={{bottom: 80, left: 50, right: 10, top: 75}}>
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <Line
+            className="qo"
+            color="black"
+            strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+            style={{
+              strokeLinejoin: 'round',
+              strokeWidth: 4
+            }}
+            data={[{x: 0, y: 0}, {x: 0, y: this.resultado.qo}]}
+          />
+          <Line
+            className="To"
+            color="blue"
+            style={{
+              strokeLinejoin: 'round',
+              strokeWidth: 4
+            }}
+            strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+            data={[{x: 0, y: -50}, {x: To, y: -50}]}
+          />
+          <Line
+            className="T1"
+            color="green"
+            style={{
+              strokeLinejoin: 'round',
+              strokeWidth: 4
+            }}
+            strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+            data={[{x: 0, y: 0}, {x: this.resultado.Tp, y: 0}]}
+          />
+          <MarkSeries
+              className="mark-series-example"
+              strokeWidth={2}
+              sizeRange={[5, 15]}
+              data={[{x: 0, y: this.resultado.qo, size: 5},{x: this.resultado.Tp, y: topey, size: 5},{x: To, y: 0, size: 5},{x: this.resultado.Tp, y: 0, size: 5}]}/>
+          <LabelSeries animation allowOffsetToBeReversed 
+          data={[{x: 0, y: this.resultado.qo, label: 'qo='+this.resultado.qo, size: 10},
+          {x: this.resultado.Tp, y: topey, label: 'sm='+this.resultado.sm, size: 10},
+          {x: To, y: -50, label: 'To='+To, size: 10},
+          {x: this.resultado.Tp, y: 0, label: 'Tp='+this.resultado.Tp, size: 10}]}
+          labelAnchorX="start" />
+          <XAxis title="tiempo" />
+          <YAxis />
+          {items}
+          <DiscreteColorLegend style={{position: 'absolute', left: '50px', top: '10px'}} 
+          orientation="horizontal"
+          items={[ { title: 'Utilizacion', color: '#7bc96f' },
+          { title: 'Tiempo total', color: 'Red' },
+          { title: 'Utilizacion y fabricacion', color: '#12939A' },
+          { title: 'sm', color: 'brown', strokeStyle: "dashed" },
+          { title: 'To', color: 'blue', strokeStyle: "dashed" },
+          { title: 'Tp', color: 'green', strokeStyle: "dashed" },
+          { title: 'qo', color: 'black', strokeStyle: "dashed" } ]} />
+        </FlexibleGraph>
       );
     }
   }
@@ -216,6 +215,8 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
+        <hr class="my-2"></hr>
+        <h3>Cantidad de stock en función del tiempo</h3>
         {this.plotearGrafico()}
       </>
     );
