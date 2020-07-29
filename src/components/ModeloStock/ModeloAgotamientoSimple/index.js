@@ -15,7 +15,6 @@ class ModeloAgotamientoSimple extends React.Component {
         costoPrep: '',
         costoProd: '',
         costoAgotamiento: '',
-        stockRealAlmacenado: ''
       },
       result: true,
       modelsOpen:false

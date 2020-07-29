@@ -31,8 +31,6 @@ class Configuration extends React.Component {
 
   handleCostoAgotamiento = e => this.handleGeneral(e, 'costoAgotamiento');
 
-  handleStockRealAlmacenado = e => this.handleGeneral(e, 'stockRealAlmacenado');
-
   handlePorcAplicaCostoProd = e => this.handleGeneral(e, 'porcAplicaCostoProd');
 
   handlePorcInteres = e => this.handleGeneral(e, 'porcInteres');
@@ -86,12 +84,6 @@ class Configuration extends React.Component {
   costoAgotamiento() {
     if (this.props.agotamientoSimple) {
       return this.columnaGenerica('Costo de Agotamiento (C2)', 'Costo de Agotamiento', this.handleCostoAgotamiento)
-    }
-  }
-
-  stockRealAlmacenado() {
-    if (this.props.agotamientoSimple) {
-      return this.columnaGenerica('Stock Real Almacenado (s)', 'Stock Real Almacenado', this.handleStockRealAlmacenado)
     }
   }
 
@@ -187,7 +179,6 @@ class Configuration extends React.Component {
             {this.demandaUnit()}
             {this.velocidadProd()}
             {this.costoAgotamiento()}
-            {this.stockRealAlmacenado()}
 
             {this.porcInteres()}
             {this.porcAplicaCostoProd()}
