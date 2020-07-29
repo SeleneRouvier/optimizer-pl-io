@@ -20,8 +20,14 @@ class Presentation extends React.Component {
       const FlexibleGraph = makeVisFlexible(XYPlot);
       const {useCanvas} = this.state;
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
-      const T = this.model.tiempoTotal * 30;
-      const To = this.resultado.To*30;
+      let unidad;
+      if (this.model.unidadTiempo = "Meses") {
+        unidad = 30;
+      } else {
+        unidad = 360;
+      }
+      const T = this.model.tiempoTotal * unidad;
+      const To = this.resultado.To*unidad;
       const items = [];
       const incremento = To;
       let topey = this.resultado.qo;
