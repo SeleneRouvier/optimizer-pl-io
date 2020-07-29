@@ -160,6 +160,9 @@ class Presentation extends React.Component {
 
     var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoPropioMercaderia, porcInteres } = variables;
 
+    porcAplicaCostoProd = porcAplicaCostoProd/100;
+    porcInteres = porcAplicaCostoProd/100;
+
     ds = ds.filter(d => {
       if (d.length === 0) {
         return false;
@@ -181,7 +184,7 @@ class Presentation extends React.Component {
     if (ds.length === 0 || qs.length === 0) return <h3>Modelo incompleto</h3>
 
     const bTransformado = ds.map(d => Number(d));
-    const qTransformado = qs.map(q => Number(q));
+    const qTransformado = qs.map(q => parseInt(q));
 
     if (ds.length !== bTransformado.filter(b => {
       if (Number.isNaN(b)) {
