@@ -27,7 +27,7 @@ class Presentation extends React.Component {
       const To = this.resultado.To*30;
       const items = [];
       const incremento = To;
-      console.log(this.model.stockProt);
+      console.log(this.resultado.stockProt);
       let topey = this.resultado.qo + this.model.stockProt;
       let iniciox = 0;
       let finx = To;
@@ -93,9 +93,30 @@ class Presentation extends React.Component {
             className="mark-series-example"
             strokeWidth={2}
             sizeRange={[5, 15]}
-            data={[{x: 0, y: this.resultado.qo, size: 5},{x: To, y: 0, size: 5}]}/>
-        <LabelSeries animation allowOffsetToBeReversed data={[{x: 0, y: this.resultado.qo, label: 'qo='+this.resultado.qo, size: 10},
-        {x: To, y: 0, label: 'To='+To, size: 10}]} />
+            data={[{x: 0, y: (this.resultado.qo + this.model.stockProt), size: 5},{x: To, y: 0, size: 5}]}/>
+        <LabelSeries animation allowOffsetToBeReversed data={[{x: 0, y: (this.resultado.qo + this.model.stockProt), label: 'qo='+this.resultado.qo, size: 10},
+        {x: To, y: 0, label: 'To='+To, size: 10},
+        {x: 0, y: this.model.stockProt, label: 'sp='+this.model.stockProt, size: 10}]} />
+        <Line
+            className="qo"
+            color="red"
+            strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+            style={{
+              strokeLinejoin: 'round',
+              strokeWidth: 4
+            }}
+            data={[{x: 0, y: this.model.stockProt}, {x: 0, y: (this.resultado.qo + this.model.stockProt)}]}
+          />
+        <Line
+            className="sp"
+            color="green"
+            style={{
+              strokeLinejoin: 'round',
+              strokeWidth: 4
+            }}
+            strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+            data={[{x: 0, y: this.model.stockProt}, {x: T, y: this.model.stockProt}]}
+          />
         <XAxis title="tiempo" />
         <YAxis />
         {items}
@@ -104,7 +125,9 @@ class Presentation extends React.Component {
         items={[ { title: 'reposiciones', color: '#7bc96f' },
         { title: 'Tiempo total', color: 'Red' },
         { title: 'Stock', color: '#12939A' },
-        { title: 'To', color: 'blue', strokeStyle: "dashed" } ]} />
+        { title: 'To', color: 'blue', strokeStyle: "dashed" },
+        { title: 'Stock de Proteccion', color: 'green', strokeStyle: "dashed" },
+        { title: 'qo', color: 'red', strokeStyle: "dashed" } ]} />
       </FlexibleGraph>
       );
     }
@@ -122,6 +145,7 @@ class Presentation extends React.Component {
     var {demanda, tiempoTotal, costoAlm, costoPrep, costoProd, stockProt} = variables;
     this.model = variables;
     this.resultado = modelo2(demanda, costoPrep, costoProd, costoAlm, tiempoTotal, stockProt);
+    console.log(variables);
     const { qo, n, ctprep, ctprod, ctalm, casp, cmsp, cte, To, cteo } = this.resultado;
     return (
       <Card outline color="secondary" className="w-100 mt-3 mx-auto">
