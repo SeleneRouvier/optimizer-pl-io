@@ -16,7 +16,8 @@ class ArbolMinimaExpansion extends React.Component {
         qs: ['', ''],
         porcAplicaCostoProd: '',
         porcInteres: '',
-        costoPropioMercaderia: ''
+        costoPropioMercaderia: '',
+        unidadTiempo: 'Meses'
       },
       result: true,
       modelsOpen: false
