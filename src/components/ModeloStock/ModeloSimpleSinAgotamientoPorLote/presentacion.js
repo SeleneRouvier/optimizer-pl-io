@@ -21,8 +21,10 @@ class Presentation extends React.Component {
 
     var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoPropioMercaderia, porcInteres } = variables;
 
+    console.log(variables);
+
     porcAplicaCostoProd = porcAplicaCostoProd/100;
-    porcInteres = porcAplicaCostoProd/100;
+    porcInteres = porcInteres/100;
 
     ds = ds.filter(d => {
       if (d.length === 0) {

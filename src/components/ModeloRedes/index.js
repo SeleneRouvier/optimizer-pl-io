@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import { Button, Jumbotron, Container, Row, Col } from "reactstrap";
 
 const ModeloRedes = () =>{
+    useEffect(() => {
+        document.title = "Modelos de redes"
+      }, []);
     return(
         <Container fluid className="App">
         <Row className="">
