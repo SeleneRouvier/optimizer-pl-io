@@ -95,7 +95,7 @@ class Configuration extends React.Component {
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
                 <CardTitle className="text-left">
-                  <h4>b</h4>
+                  <h4>Costo de producto</h4>
                 </CardTitle>
               </CardHeader>
               <CardBody>
@@ -109,7 +109,7 @@ class Configuration extends React.Component {
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
                 <CardTitle className="text-left">
-                  <h4>q</h4>
+                  <h4>Limite de lotes</h4>
                 </CardTitle>
               </CardHeader>
               <CardBody>
@@ -155,6 +155,12 @@ class Configuration extends React.Component {
     }
   }
 
+  costoDeProducto() {
+    if(!this.props.simpleSinAgot) {
+      return this.columnaGenerica("Costo de Producto (b)", 'DemanCosto de Productoda', this.handleCostoProd)
+    }
+  }
+
   render() {
     return (
       <>
@@ -173,7 +179,7 @@ class Configuration extends React.Component {
           </Row>
 
           <Row>
-            {this.columnaGenerica("Costo de Producto (b)", 'DemanCosto de Productoda', this.handleCostoProd)}
+            {this.costoDeProducto()}
 
             {this.sp()}
             {this.demandaUnit()}
