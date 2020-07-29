@@ -15,6 +15,7 @@ class ModeloAgotamientoSimple extends React.Component {
         costoPrep: '',
         costoProd: '',
         costoAgotamiento: '',
+        unidadTiempo: 'Meses'
       },
       result: true,
       modelsOpen: false

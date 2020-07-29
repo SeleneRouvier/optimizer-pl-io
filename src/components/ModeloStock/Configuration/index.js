@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, CardBody, CardHeader, CardTitle, Uncontrolle
 import ComponentsD from "./Ds";
 import ComponentsQ from "./Qs";
 import CampoUnitario from './CampoUnitarioBase';
+import TiempoTotal from './TiempoTotal';
 
 class Configuration extends React.Component {
 
@@ -36,6 +37,8 @@ class Configuration extends React.Component {
   handlePorcInteres = e => this.handleGeneral(e, 'porcInteres');
 
   handleCostoPropioMercaderia = e => this.handleGeneral(e, 'costoPropioMercaderia');
+
+  handleUnidadTiempoTotal = e => this.handleGeneral(e, 'unidadTiempo');
 
   handleDs = ds => {
     const model = this.props.status;
@@ -179,7 +182,23 @@ class Configuration extends React.Component {
           <Row>
             {this.columnaGenerica("Demanda (D)", 'Demanda', this.handleDemanda)}
 
-            {this.columnaGenerica("Tiempo Total (T)", 'Tiempo Total', this.handleTiempoTotal)}
+            <Col xs={12} md={6} className="my-4 mx-auto ">
+              <Card outline color="secondary" className="w-100 mt-3">
+                <CardHeader>
+                  <CardTitle className="text-left">
+                    <h4>Tiempo Total (T)</h4>
+                  </CardTitle>
+                </CardHeader>
+                <CardBody className="mx-auto">
+                  <TiempoTotal
+                    nombre="Tiempo Total (T)"
+                    handleChange={this.handleTiempoTotal}
+                    handleChangeUnit={this.handleUnidadTiempoTotal}
+                    selected={this.props.status.unidadTiempo}
+                  />
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
 
           <Row>

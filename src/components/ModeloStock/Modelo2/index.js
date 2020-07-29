@@ -14,7 +14,8 @@ class Modelo2 extends React.Component {
         costoAlm: '',
         costoPrep: '',
         costoProd: '',
-        stockProt: ''
+        stockProt: '',
+        unidadTiempo: 'Meses'
       },
       result: true,
       modelsOpen: false

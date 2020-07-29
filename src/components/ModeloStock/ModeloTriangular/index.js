@@ -15,7 +15,8 @@ class ArbolMinimaExpansion extends React.Component {
         costoPrep: '',
         costoProd: '',
         demandaUnit: '',
-        velocidadProd: ''
+        velocidadProd: '',
+        unidadTiempo: 'Meses'
       },
       result: true,
       modelsOpen: false
