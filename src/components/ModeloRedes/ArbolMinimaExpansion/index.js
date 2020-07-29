@@ -37,7 +37,12 @@ class ArbolMinimaExpansion extends React.Component {
         </Row>
         <Row>
           <Col xs={12} md={6} className="my-4 mx-auto ">
-
+            <Row>
+              <Jumbotron className='w-100'>
+                <h2>Modelos de redes:</h2>
+                <h2>Arbol de minima expansion</h2>
+              </Jumbotron>
+            </Row>
             <Row>
               <Jumbotron className='w-100'>
                 <Processing status={model} handleAristas={this.handleAristas}

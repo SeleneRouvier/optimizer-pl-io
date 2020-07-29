@@ -11,15 +11,15 @@ class Presentation extends React.Component {
 
   mostrarResultados = () => {
 
-    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoProd, ds, qs, costoPropioMercaderia, porcInteres } = this.model;
+    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, ds, qs, costoPropioMercaderia, porcInteres } = this.model;
 
-    const variables = { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoProd, costoPropioMercaderia, porcInteres };
+    const variables = { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoPropioMercaderia, porcInteres };
 
     let valido = validar(variables);
 
     if (valido !== true) return valido;
 
-    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoProd, costoPropioMercaderia, porcInteres } = variables;
+    var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoPropioMercaderia, porcInteres } = variables;
 
     ds = ds.filter(d => {
       if (d.length === 0) {
