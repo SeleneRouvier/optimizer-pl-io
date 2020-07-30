@@ -79,39 +79,45 @@ class Presentation extends React.Component {
         data={[{ x: T, y: 0 }, { x: T, y: topey }]}
       />);
       return (
-
-        <FlexibleGraph
-          height={500}
-          margin={{ bottom: 80, left: 50, right: 10, top: 75 }}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <Line
-            className="To"
-            color="blue"
-            style={{
-              strokeLinejoin: 'round',
-              strokeWidth: 4
-            }}
-            strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
-            data={[{ x: 0, y: 0 }, { x: To, y: 0 }]}
-          />
-          <MarkSeries
-            className="mark-series-example"
-            strokeWidth={2}
-            sizeRange={[5, 15]}
-            data={[{ x: 0, y: this.resultado.qo, size: 5 }, { x: To, y: 0, size: 5 }]} />
-          <LabelSeries animation allowOffsetToBeReversed data={[{ x: 0, y: this.resultado.qo, label: 'qo=' + this.resultado.qo, size: 10 },
-          { x: To, y: 0, label: 'To=' + To, size: 10 }]} />
-          <XAxis title="tiempo" />
-          <YAxis />
-          {items}
-          <DiscreteColorLegend style={{ position: 'absolute', left: '50px', top: '10px' }}
-            orientation="horizontal"
-            items={[{ title: 'reposiciones', color: '#7bc96f' },
-            { title: 'Tiempo total', color: 'Red' },
-            { title: 'Stock', color: '#12939A' },
-            { title: 'To', color: 'blue', strokeStyle: "dashed" }]} />
-        </FlexibleGraph>
+        <Card outline color="secondary" className="w-100 mt-3 mx-auto">
+          <CardHeader>
+            <CardTitle className="text-left">
+              <h4>Cantidad de stock en función del tiempo</h4>
+            </CardTitle>
+          </CardHeader>
+          <FlexibleGraph
+            height={500}
+            margin={{ bottom: 80, left: 50, right: 10, top: 75 }}>
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <Line
+              className="To"
+              color="blue"
+              style={{
+                strokeLinejoin: 'round',
+                strokeWidth: 4
+              }}
+              strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
+              data={[{ x: 0, y: 0 }, { x: To, y: 0 }]}
+            />
+            <MarkSeries
+              className="mark-series-example"
+              strokeWidth={2}
+              sizeRange={[5, 15]}
+              data={[{ x: 0, y: this.resultado.qo, size: 5 }, { x: To, y: 0, size: 5 }]} />
+            <LabelSeries animation allowOffsetToBeReversed data={[{ x: 0, y: this.resultado.qo, label: 'qo=' + this.resultado.qo, size: 10 },
+            { x: To, y: 0, label: 'To=' + To, size: 10 }]} />
+            <XAxis title="tiempo" />
+            <YAxis />
+            {items}
+            <DiscreteColorLegend style={{ position: 'absolute', left: '50px', top: '10px' }}
+              orientation="horizontal"
+              items={[{ title: 'reposiciones', color: '#7bc96f' },
+              { title: 'Tiempo total', color: 'Red' },
+              { title: 'Stock', color: '#12939A' },
+              { title: 'To', color: 'blue', strokeStyle: "dashed" }]} />
+          </FlexibleGraph>
+        </Card>
       );
     }
   }
@@ -161,8 +167,6 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
-        <hr class="my-2"></hr>
-        <h3>Cantidad de stock en función del tiempo</h3>
         {this.plotearGrafico()}
       </>
     );

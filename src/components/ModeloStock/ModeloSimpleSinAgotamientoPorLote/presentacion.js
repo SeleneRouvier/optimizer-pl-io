@@ -2,10 +2,12 @@ import React from "react";
 import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
 import modelo5 from "../Functions/ModeloSimpleSinAgotamientoPorLote";
 import validar from "../Functions/Validar";
-import {makeVisFlexible,LabelSeries,
-  LineSeriesCanvas,XYPlot, XAxis, YAxis,
-  HorizontalGridLines,LineSeries, AreaSeries,
-  VerticalGridLines,MarkSeries,DiscreteColorLegend} from 'react-vis';
+import {
+  makeVisFlexible, LabelSeries,
+  LineSeriesCanvas, XYPlot, XAxis, YAxis,
+  HorizontalGridLines, LineSeries, AreaSeries,
+  VerticalGridLines, MarkSeries, DiscreteColorLegend
+} from 'react-vis';
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -25,9 +27,9 @@ class Presentation extends React.Component {
     useCanvas: false
   };
   plotearGraficoCostoPorLimite = () => {
-    if (this.resultado){
+    if (this.resultado) {
       const FlexibleGraph = makeVisFlexible(XYPlot);
-      const {useCanvas} = this.state;
+      const { useCanvas } = this.state;
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
       //ver lo de tiempo
       let unidad;
@@ -41,61 +43,68 @@ class Presentation extends React.Component {
       let finx;
       const bi = this.resultado.bTransformado;
       const qi = this.resultado.qTransformado;
-      for (var i=(this.resultado.bTransformado.length)-1; i >= 0 ; i--){
+      for (var i = (this.resultado.bTransformado.length) - 1; i >= 0; i--) {
         iniciox = qi[i];
-        if (i-1 >= 0){
-          finx = qi[i-1];
+        if (i - 1 >= 0) {
+          finx = qi[i - 1];
         } else {
-          finx = qi[i]*2;
+          finx = qi[i] * 2;
         }
         items.push(<Line
           className="costoproducto"
           color="#12939A"
-          data={[{x: iniciox, y: bi[i]}, {x: finx, y: bi[i]}]}
+          data={[{ x: iniciox, y: bi[i] }, { x: finx, y: bi[i] }]}
         />);
         items.push(<Line
           className="linea"
           color="#7bc96f"
           strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
-          data={[{x: finx, y: 0}, {x: finx, y: bi[i]}]}
+          data={[{ x: finx, y: 0 }, { x: finx, y: bi[i] }]}
         />);
         items.push(<AreaSeries
-        className="area-series-example"
-        opacity= {0.25}
-        color="orange"
-        data={[{x: iniciox, y: bi[i]}, {x: finx, y: bi[i]}]}
+          className="area-series-example"
+          opacity={0.25}
+          color="orange"
+          data={[{ x: iniciox, y: bi[i] }, { x: finx, y: bi[i] }]}
         />);
         items.push(<MarkSeries
-            className="mark-series-example"
-            strokeWidth={2}
-            sizeRange={[5, 15]}
-            data={[{x: iniciox, y: 0, size: 5}]}/>);
-        items.push(<LabelSeries animation allowOffsetToBeReversed 
-        data={[{x: iniciox, y: 0, label: 'qi='+iniciox, size: 10}]}
-        labelAnchorX="start" />);
+          className="mark-series-example"
+          strokeWidth={2}
+          sizeRange={[5, 15]}
+          data={[{ x: iniciox, y: 0, size: 5 }]} />);
+        items.push(<LabelSeries animation allowOffsetToBeReversed
+          data={[{ x: iniciox, y: 0, label: 'qi=' + iniciox, size: 10 }]}
+          labelAnchorX="start" />);
       }
       return (
-      <FlexibleGraph
-      height={500}
-      margin={{bottom: 80, left: 50, right: 10, top: 75}}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis title="q" />
-        <YAxis />
-        <MarkSeries
-            className="mark-series-example"
-            strokeWidth={2}
-            sizeRange={[5, 15]}
-            data={[{x: this.resultado.qo, y: 0, size: 5}]}/>
-        <LabelSeries animation allowOffsetToBeReversed 
-        data={[{x: this.resultado.qo, y: 0, label: 'qo='+this.resultado.qo, size: 10}]}
-        labelAnchorX="start" />
-        {items}
-        <DiscreteColorLegend style={{position: 'absolute', left: '50px', top: '10px'}} 
-        orientation="horizontal"
-        items={[ { title: 'limite', color: '#7bc96f' },
-        { title: 'Costo del producto', color: '#12939A' }]}/>
-      </FlexibleGraph>
+        <Card outline color="secondary" className="w-100 mt-3 mx-auto">
+          <CardHeader>
+            <CardTitle className="text-left">
+              <h4>Cantidad de stock en función del tiempo</h4>
+            </CardTitle>
+          </CardHeader>
+          <FlexibleGraph
+            height={500}
+            margin={{ bottom: 80, left: 50, right: 10, top: 75 }}>
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis title="q" />
+            <YAxis />
+            <MarkSeries
+              className="mark-series-example"
+              strokeWidth={2}
+              sizeRange={[5, 15]}
+              data={[{ x: this.resultado.qo, y: 0, size: 5 }]} />
+            <LabelSeries animation allowOffsetToBeReversed
+              data={[{ x: this.resultado.qo, y: 0, label: 'qo=' + this.resultado.qo, size: 10 }]}
+              labelAnchorX="start" />
+            {items}
+            <DiscreteColorLegend style={{ position: 'absolute', left: '50px', top: '10px' }}
+              orientation="horizontal"
+              items={[{ title: 'limite', color: '#7bc96f' },
+              { title: 'Costo del producto', color: '#12939A' }]} />
+          </FlexibleGraph>
+        </Card>
       );
     }
   }
@@ -115,8 +124,8 @@ class Presentation extends React.Component {
 
     console.log(variables);
 
-    porcAplicaCostoProd = porcAplicaCostoProd/100;
-    porcInteres = porcInteres/100;
+    porcAplicaCostoProd = porcAplicaCostoProd / 100;
+    porcInteres = porcInteres / 100;
 
     ds = ds.filter(d => {
       if (d.length === 0) {
@@ -159,8 +168,8 @@ class Presentation extends React.Component {
       return <h3>Valores no numericos</h3>
     };
     this.resultado = modelo5(demanda, qTransformado, costoPrep, porcAplicaCostoProd, tiempoTotal, porcInteres, bTransformado, costoPropioMercaderia);
-    this.resultado["bTransformado"]=bTransformado;
-    this.resultado["qTransformado"]=qTransformado;
+    this.resultado["bTransformado"] = bTransformado;
+    this.resultado["qTransformado"] = qTransformado;
     const { n, To, ctprep, ctprod, ctalm, cte, qo, liminf, cprod } = this.resultado;
 
     return (
@@ -189,8 +198,6 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
-        <hr class="my-2"></hr>
-        <h3>Costo del producto en funcion de la cantidad de producto a adquirir</h3>
         {this.plotearGraficoCostoPorLimite()}
       </>
     );
