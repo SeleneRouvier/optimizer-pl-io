@@ -24,8 +24,14 @@ class Presentation extends React.Component {
       const {useCanvas} = this.state;
       const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
-      const T = this.modeloTransformado.tiempoTotal * 30;
-      const To = this.resultado.To*30;
+      let unidad;
+      if (this.model.unidadTiempo === "Meses") {
+        unidad = 30;
+      } else {
+        unidad = 360;
+      }
+      const T = this.modeloTransformado.tiempoTotal * unidad;
+      const To = this.resultado.To*unidad;
       const items = [];
       const incremento = To;
 
@@ -68,12 +74,12 @@ class Presentation extends React.Component {
         color="orange"
         data={[{x: iniciox, y: topey}, {x: finx, y: finy}]}
         />);
-        items.push(<Line
+      }
+      items.push(<Line
           className="Tiempo total"
           color="Red"
           data={[{x: finx, y: 0}, {x: finx, y: topey}]}
         />);
-      }
       return (
       <FlexibleGraph
       height={500}
@@ -176,6 +182,8 @@ class Presentation extends React.Component {
     return (
       <>
         {this.mostrarResultados()}
+        <hr class="my-2"></hr>
+        <h3>Cantidad de stock en función del tiempo</h3>
         {this.plotearGrafico()}
       </>
     );

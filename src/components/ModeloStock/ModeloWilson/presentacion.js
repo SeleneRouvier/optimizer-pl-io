@@ -21,7 +21,7 @@ class Presentation extends React.Component {
       const {useCanvas} = this.state;
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
       let unidad;
-      if (this.model.unidadTiempo = "Meses") {
+      if (this.model.unidadTiempo === "Meses") {
         unidad = 30;
       } else {
         unidad = 360;
