@@ -23,8 +23,14 @@ class Presentation extends React.Component {
       const {useCanvas} = this.state;
       const Line = useCanvas ? LineSeriesCanvas : LineSeries;
       //ver lo de tiempo
-      const T = this.model.tiempoTotal * 365;
-      const To = this.resultado.To*365;
+      let unidad;
+      if (this.model.unidadTiempo = "Meses") {
+        unidad = 30;
+      } else {
+        unidad = 360;
+      }
+      const T = this.model.tiempoTotal * unidad;
+      const To = this.resultado.To*unidad;
       const items = [];
       const incremento = To;
       let topey = this.resultado.sm;
