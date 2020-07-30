@@ -14,8 +14,15 @@ const ModelosStock = () => {
         <Col xs={12} md={6} className="mx-auto my-5">
           <Jumbotron>
             <Row>
-              <h2 className="mx-auto">¡Bien!, Ahora Seleccione un Modelo.</h2>
+              <h2 className="mx-auto">Modelos de stock</h2>
             </Row>
+            <Row>
+              <h4 className="mx-auto">Objetivos</h4>
+            </Row>
+            <Row>Determinar el lote óptimo de compra de una materia prima o producto a mantener para permitir un adecuado abastecimiento de los mismos para atender su demanda futura.</Row>
+            <Row>Determinar el costo total esperado</Row>
+            <Row>Determinar la duracion del lote</Row>
+            <Row>La cantidad de reaprovicionamiento requerido</Row>
             <Row className="mt-3 mx-auto">
               <Col>
                 <Link to={"/ModeloStock/ModeloWilson"}>

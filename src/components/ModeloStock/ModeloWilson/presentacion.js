@@ -5,6 +5,7 @@ import {makeVisFlexible,LabelSeries,
   HorizontalGridLines,LineSeries, AreaSeries,
   VerticalGridLines,MarkSeries,DiscreteColorLegend} from 'react-vis';
 import modelo1 from "../Functions/modelo1";
+import validar from "../Functions/Validar";
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -113,28 +114,21 @@ class Presentation extends React.Component {
   }
 
   mostrarResultados = () => {
-    let { demanda, tiempoTotal, costoAlm, costoPrep, costoProd } = this.model;
 
-    if (demanda.length === 0 || tiempoTotal.length === 0 || costoAlm.length === 0 || costoPrep.length === 0 || costoProd.length === 0) {
-      return <h3>Modelo incompleto</h3>
-    }
+    var { demanda, tiempoTotal, costoAlm, costoPrep, costoProd } = this.model;
 
-    demanda = parseInt(demanda);
-    tiempoTotal = parseInt(tiempoTotal);
-    costoAlm = parseInt(costoAlm);
-    costoPrep = parseInt(costoPrep);
-    costoProd = parseInt(costoProd);
+    const variables = { demanda, tiempoTotal, costoAlm, costoPrep, costoProd };
 
-    if (demanda < 0 || tiempoTotal < 0 || costoAlm < 0 || costoPrep < 0 || costoProd < 0) {
-      return <h3>No pueden existir numeros negativos</h3>
-    }
+    let valido = validar(variables);
 
-    if (Number.isNaN(demanda) || Number.isNaN(tiempoTotal) || Number.isNaN(costoAlm) || Number.isNaN(costoPrep) || Number.isNaN(costoProd)) {
-      return <h3>Valores no numericos</h3>
-    }
+    if (valido !== true) return valido;
+
+    var { demanda, tiempoTotal, costoAlm, costoPrep, costoProd } = variables;
 
     this.resultado = modelo1(demanda, costoPrep, costoAlm, tiempoTotal, costoProd);
+
     const { qo, n, CTPre, CTProd, CTAlm, CTE, To, CTEo } = this.resultado;
+
     return (
     <Card outline color="secondary" className="w-100 mt-3 mx-auto">
       <CardHeader>
