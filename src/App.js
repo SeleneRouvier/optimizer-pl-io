@@ -20,6 +20,7 @@ import Modelo2 from "./components/ModeloStock/Modelo2";
 import ModeloTriangular from "./components/ModeloStock/ModeloTriangular";
 import ModeloSimpleConAgotamiento from "./components/ModeloStock/ModeloAgotamientoSimple";
 import ModeloSimpleSinAgotamientoPorLote from "./components/ModeloStock/ModeloSimpleSinAgotamientoPorLote";
+import ModeloStockTeoria from "./components/ModeloStock/Teoria"
 
 const NoLinealProgrammingPage = () => <NoLinealProgramming />;
 
@@ -50,6 +51,7 @@ const App = () =>
       <Route exact path="/ModeloStock/ModeloTriangular" component={ModeloTriangular} /> 
       <Route exact path="/ModeloStock/ModeloSimpleConAgotamiento" component={ModeloSimpleConAgotamiento} /> 
       <Route exact path="/ModeloStock/ModeloSimpleSinAgotamientoPorLote" component={ModeloSimpleSinAgotamientoPorLote} /> 
+      <Route exact path="/ModeloStock/Teoria" component={ModeloStockTeoria} />
       <Redirect to="/home" />
     </Switch>;
 

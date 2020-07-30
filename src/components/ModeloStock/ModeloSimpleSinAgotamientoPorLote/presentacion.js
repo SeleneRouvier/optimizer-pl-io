@@ -101,6 +101,8 @@ class Presentation extends React.Component {
   }
   mostrarResultados = () => {
 
+    this.resultado = null;
+
     var { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, ds, qs, costoPropioMercaderia, porcInteres } = this.model;
 
     const variables = { demanda, tiempoTotal, porcAplicaCostoProd, costoPrep, costoPropioMercaderia, porcInteres };
