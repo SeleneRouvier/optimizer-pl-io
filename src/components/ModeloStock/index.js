@@ -19,7 +19,7 @@ const ModelosStock = () => {
             <Row >
               <Col sm="12" md={{ size: 6, offset: 3 }}>
                 <Link to={"/ModeloStock/Teoria"}>
-                  <Button id="Popover" size='lg' outline color="primary">Ayuda socio-teórica</Button>
+                  <Button id="Popover" size='lg' outline color="primary">Teoría</Button>
                 </Link>
               </Col>
             </Row>
