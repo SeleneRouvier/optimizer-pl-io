@@ -33,7 +33,7 @@ const Inicio = () => {
                         <Row className="mt-3 mx-auto">
                             <Col>
                                 <Link to={"/ModeloRedes"}>
-                                    <Button size='lg' outline color="success">Modelos de redes </Button>
+                                    <Button size='lg' outline color="success">Modelos de Redes </Button>
                                 </Link>
                             </Col>
                         </Row>
@@ -41,13 +41,13 @@ const Inicio = () => {
                         <Row className="mt-3 mx-auto">
                             <Col>
                                 <Link to={"/ModeloStock"}>
-                                    <Button size='lg' outline color="success">Modelos de stock </Button>
+                                    <Button size='lg' outline color="success">Modelos de Stock </Button>
                                 </Link>
                             </Col>
                         </Row>
 
                         <Row className="mt-5">
-                            <h5>Colaboradores:</h5>
+                            <h5>Colaboradores: Programación Lineal</h5>
                         </Row>
                         <Row>
                             <ButtonGroup className="mx-auto">
@@ -77,6 +77,31 @@ const Inicio = () => {
                             </Button>
                             </ButtonGroup>
                         </Row>
+
+                        <Row className="mt-5">
+                            <h5>Colaboradores: Modelos de Stock</h5>
+                        </Row>
+                        <Row>
+                            <ButtonGroup className="mx-auto">
+                                <UncontrolledTooltip target='btnbj'>Bravin, Juan</UncontrolledTooltip>
+                                <Button id='btnbj' outline tag="a" href="https://github.com/bravinjuan">
+                                    BJ
+                            </Button>
+                                <UncontrolledTooltip target='btnjm'>Jaworski, Martin Ezequiel</UncontrolledTooltip>
+                                <Button id='btnjm' outline tag="a" href="https://github.com/martinejaw">
+                                    JM
+                            </Button>
+                                <UncontrolledTooltip target='btntj'>Teng, Jazmin</UncontrolledTooltip>
+                                <Button id='btntj' outline tag="a" href="https://github.com/jazminteng">
+                                    TJ
+                            </Button>
+                                <UncontrolledTooltip target='btnth'>Thouzeau, Edgardo Hernan</UncontrolledTooltip>
+                                <Button id='btnth' outline tag="a" href="https://github.com/thouzeauhernan">
+                                    TH
+                            </Button>
+                            </ButtonGroup>
+                        </Row>
+
                         <Row className="mt-3">
                             <Col>
                                 <Button href="https://github.com/santinozaracho/optimizer-pl-io/issues"
