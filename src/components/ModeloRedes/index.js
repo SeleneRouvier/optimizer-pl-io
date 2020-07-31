@@ -17,7 +17,7 @@ const ModeloRedes = () =>{
                     <Row className="mt-3 mx-auto">
                         <Col>
                             <Link to={"/ModeloRedes/ArbolMinimaExpansion"}>
-                                <Button size='lg' outline color="success">Arbol de Minima Expansion</Button>
+                                <Button size='lg' outline color="success">Árbol de mínima expansión</Button>
                             </Link>
                                 
                         </Col>
@@ -25,7 +25,7 @@ const ModeloRedes = () =>{
                     <Row className="mt-3 mx-auto">
                         <Col>
                             <Link to={"/ModeloRedes/RutaMasCorta"} >
-                                <Button size='lg' outline color="success">Ruta Mas Corta</Button>
+                                <Button size='lg' outline color="success">Ruta más corta</Button>
 
                             </Link>
                         </Col>

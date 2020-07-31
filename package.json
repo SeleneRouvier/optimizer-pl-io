@@ -2,7 +2,7 @@
   "name": "optimizer-pl-io",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://martinejaw.github.io/",
   "dependencies": {
     "algebra.js": "^0.2.6",
     "bootstrap": "^4.3.1",

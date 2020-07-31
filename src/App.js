@@ -14,7 +14,7 @@ import ModeloRedes from "./components/ModeloRedes";
 import ArbolMinimaExpansion from "./components/ModeloRedes/ArbolMinimaExpansion";
 import RutaMasCorta from "./components/ModeloRedes/RutaMasCorta";
 
-import ModeloStock2 from "./components/ModeloStock";
+import ModeloStock from "./components/ModeloStock";
 import ModeloWilson from "./components/ModeloStock/ModeloWilson";
 import Modelo2 from "./components/ModeloStock/Modelo2";
 import ModeloTriangular from "./components/ModeloStock/ModeloTriangular";
@@ -28,8 +28,8 @@ const Index = () => <Inicio/>;
 
 const App = () => 
     <Switch>
-      <Route exact path="/home" component={Index} />
-      <Route exact path="/optimizer-pl-io/" component={Index} />
+      <Route exact path="/" component={Index} />
+      <Route exact path="/optimizer-pl-io" component={Index} />
 
       <Route exact path="/LinealProgramming" component={LinealProgramming} />
       <Route exact path="/LinealProgramming/InSteps" component={InSteps} />
@@ -45,14 +45,14 @@ const App = () =>
       <Route exact path="/ModeloRedes/RutaMasCorta" component={RutaMasCorta} />
 
 
-      <Route exact path="/ModeloStock" component={ModeloStock2} />
+      <Route exact path="/ModeloStock" component={ModeloStock} />
       <Route exact path="/ModeloStock/ModeloWilson" component={ModeloWilson} /> 
       <Route exact path="/ModeloStock/Modelo2" component={Modelo2} />
       <Route exact path="/ModeloStock/ModeloTriangular" component={ModeloTriangular} /> 
       <Route exact path="/ModeloStock/ModeloSimpleConAgotamiento" component={ModeloSimpleConAgotamiento} /> 
       <Route exact path="/ModeloStock/ModeloSimpleSinAgotamientoPorLote" component={ModeloSimpleSinAgotamientoPorLote} /> 
       <Route exact path="/ModeloStock/Teoria" component={ModeloStockTeoria} />
-      <Redirect to="/home" />
+      <Redirect to="/" />
     </Switch>;
 
 export default App;

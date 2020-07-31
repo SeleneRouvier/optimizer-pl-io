@@ -24,9 +24,9 @@ class StockTeoria extends React.Component {
                   <CardBody className="mx-auto text-justify">
                   <ul>
                     <li>Determinar el lote óptimo de compra de una materia prima o producto a mantener para permitir un adecuado abastecimiento de los mismos para atender su demanda futura.</li>
-                    <li>Determinar la cantidad de reaprovicionamiento requerido en un periodo determinado.</li>
+                    <li>Determinar la cantidad de reaprovicionamiento requerido en un período determinado.</li>
                     <li>Determinar el costo total esperado del lote.</li>
-                    <li>Determinar la duracion del lote.</li>
+                    <li>Determinar la duración del lote.</li>
                   </ul>
                   </CardBody>
                 </Card>

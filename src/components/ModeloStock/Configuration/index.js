@@ -73,13 +73,13 @@ class Configuration extends React.Component {
 
   sp() {
     if (this.props.modelo2) {
-      return this.columnaGenerica('Stock de proteccion (sp)', 'Stock de proteccion', this.handleStockProteccion)
+      return this.columnaGenerica('Stock de protección (sp)', 'Stock de protección', this.handleStockProteccion)
     }
   }
 
   demandaUnit() {
     if (this.props.modeloTriangular) {
-      return this.columnaGenerica('Demanda Unitaria (d)', 'Demanda Unitaria', this.handleDemandaUnitaria)
+      return this.columnaGenerica('Demanda Unitaria (d) [días]', 'Demanda Unitaria', this.handleDemandaUnitaria)
     }
   }
 
@@ -139,7 +139,7 @@ class Configuration extends React.Component {
 
   velocidadProd() {
     if (this.props.modeloTriangular) {
-      return this.columnaGenerica('Velocidad de Produccion (p)', 'Velocidad de Produccion', this.handleVelocidadProduccion)
+      return this.columnaGenerica('Velocidad de Producción (p) [días]', 'Velocidad de Producción', this.handleVelocidadProduccion)
     }
   }
 
@@ -163,13 +163,13 @@ class Configuration extends React.Component {
 
   costoPropioMercaderia() {
     if (this.props.simpleSinAgot) {
-      return this.columnaGenerica("Costo propio de la mercaderia (C1')", 'Costo propio de la mercaderia', this.handleCostoPropioMercaderia)
+      return this.columnaGenerica("Costo propio de la mercadería (C1')", 'Costo propio de la mercadería', this.handleCostoPropioMercaderia)
     }
   }
 
   costoDeProducto() {
     if (!this.props.simpleSinAgot) {
-      return this.columnaGenerica("Costo de Producto (b)", 'DemanCosto de Productoda', this.handleCostoProd)
+      return this.columnaGenerica("Costo de Producto (b)", 'Costo de Producto', this.handleCostoProd)
     }
   }
 
@@ -203,7 +203,7 @@ class Configuration extends React.Component {
           <Row>
             {this.costoAlm()}
 
-            {this.columnaGenerica("Costo de Preparacion (K)", 'Costo de Preparacion', this.handleCostoPrep)}
+            {this.columnaGenerica("Costo de Preparación (K)", 'Costo de Preparación', this.handleCostoPrep)}
           </Row>
 
           <Row>
