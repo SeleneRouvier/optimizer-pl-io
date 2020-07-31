@@ -80,7 +80,7 @@ class Presentation extends React.Component {
         <Card outline color="secondary" className="w-100 mt-3 mx-auto">
           <CardHeader>
             <CardTitle className="text-left">
-              <h4>Precio del producto en función a la cantidad de producto a provisionar</h4>
+              <h4>Precio en función a la cantidad a provisionar</h4>
             </CardTitle>
           </CardHeader>
           <FlexibleGraph
