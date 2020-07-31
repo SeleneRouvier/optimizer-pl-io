@@ -62,7 +62,7 @@ function ModeloSimpleSinAgotamientoPorLote(D,q,K,PorcCostoProd,T,P,bi,Cientrada)
     modelmin = model;
     if (xoptimo !== 0) {
         for (x=xoptimo-1; x>=0; x--){
-            liminf = q[x];
+            let liminf = q[x];
             qo = liminf;
             cdi = CostoDineroInmovilizado(P,bi[x]);
             Ci = CalcularCi(bi[x],PorcCostoProd)+Cientrada;
@@ -81,8 +81,8 @@ function ModeloSimpleSinAgotamientoPorLote(D,q,K,PorcCostoProd,T,P,bi,Cientrada)
             model.ctalm = ctalm;
             array.push(model);
         }
-        ctemin =Number.MAX_VALUE;
-        for (i=0; i<array.length; i++) {
+        let ctemin =Number.MAX_VALUE;
+        for (let i=0; i<array.length; i++) {
             if (array[i].cte < ctemin) {
                 modelmin = array[i];
                 ctemin = array[i].cte;
@@ -96,7 +96,7 @@ function ModeloSimpleSinAgotamientoPorLote(D,q,K,PorcCostoProd,T,P,bi,Cientrada)
     ctprod = modelmin.ctprod;
     cte = modelmin.cte;
     qo = modelmin.qo;
-    liminf = modelmin.liminf;
+    let liminf = modelmin.liminf;
     cprod = modelmin.bi;
     return {n,To,ctprep,ctprod,ctalm,cte,qo,liminf,cprod}
     //q[x-1] = limite inferior que se tomo el qo
