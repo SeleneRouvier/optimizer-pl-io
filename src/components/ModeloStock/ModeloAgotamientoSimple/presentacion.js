@@ -36,6 +36,7 @@ class Presentation extends React.Component {
       const T2 = this.resultado.T2 * unidad;
       const items = [];
       const incremento = To;
+      let middlex = T1;
       let topey = this.resultado.so;
       let iniciox = 0;
       let finx = To;
@@ -51,7 +52,13 @@ class Presentation extends React.Component {
           className="area-series-example"
           opacity={0.25}
           color="orange"
-          data={[{ x: iniciox, y: topey }, { x: finx, y: finy }]}
+          data={[{ x: iniciox, y: 0 },{ x: iniciox, y: topey }, { x: middlex, y: 0 }, { x: iniciox, y: 0 }]}
+        />);
+        items.push(<AreaSeries
+          className="area-series-example"
+          opacity={0.25}
+          color="red"
+          data={[{ x: middlex, y: 0 },{ x: finx, y: finy }, { x: finx, y: 0 }, { x: middlex, y: 0 }]}
         />);
         items.push(<Line
           className="se repone"
@@ -60,22 +67,45 @@ class Presentation extends React.Component {
         />);
         iniciox = finx;
         finx = finx + incremento;
+        middlex = middlex + incremento;
       }
       if (finx !== T) {
         const delta = T - (finx - incremento);
         finx = T;
-        finy = (-this.resultado.so / To) * delta + this.resultado.so;
-        items.push(<Line
+        finy = (-this.resultado.so / T1) * delta + this.resultado.so;
+        if (delta > T1){
+          items.push(<Line
           className="primera reposicion"
           color="#12939A"
           data={[{ x: iniciox, y: topey }, { x: finx, y: finy }]}
-        />);
-        items.push(<AreaSeries
-          className="area-series-example"
-          opacity={0.25}
-          color="orange"
+          />);
+          items.push(<AreaSeries
+            className="area-series-example"
+            opacity={0.25}
+            color="orange"
+            data={[{ x: iniciox, y: 0 },{ x: iniciox, y: topey }, { x: middlex, y: 0 }, { x: iniciox, y: 0 }]}
+          />);
+          items.push(<AreaSeries
+            className="area-series-example"
+            opacity={0.25}
+            color="red"
+            data={[{ x: middlex, y: 0 },{ x: finx, y: finy }, { x: finx, y: 0 }, { x: middlex, y: 0 }]}
+          />);
+        } else {
+          middlex = T;
+          items.push(<Line
+          className="primera reposicion"
+          color="#12939A"
           data={[{ x: iniciox, y: topey }, { x: finx, y: finy }]}
-        />);
+          />);
+          items.push(<AreaSeries
+            className="area-series-example"
+            opacity={0.25}
+            color="orange"
+            data={[{ x: iniciox, y: 0 },{ x: iniciox, y: topey }, { x: middlex, y: finy }, { x: middlex, y: 0 },{ x: iniciox, y: 0 }]}
+          />);
+        }
+        
       }
       items.push(<Line
         className="Tiempo total"
@@ -132,7 +162,7 @@ class Presentation extends React.Component {
                 strokeWidth: 4
               }}
               strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
-              data={[{ x: T1, y: 3 }, { x: T1 + T2, y: 3 }]}
+              data={[{ x: T1, y: 0 }, { x: T1 + T2, y: 0 }]}
             />
             <MarkSeries
               className="mark-series-example"
@@ -141,7 +171,7 @@ class Presentation extends React.Component {
               data={[{ x: 0, y: this.resultado.so, size: 5 }, { x: To, y: bottomy, size: 5 }, { x: T1, y: 0, size: 5 }, { x: T1 + T2, y: 0, size: 5 }]} />
             <LabelSeries animation allowOffsetToBeReversed
               data={[{ x: 0, y: this.resultado.so, label: 'so=' + this.resultado.so, size: 10 },
-              { x: To, y: bottomy - 15, label: 'To=' + To, size: 10 },
+              { x: To, y: bottomy, label: 'To=' + To, size: 10 },
               { x: T1, y: 0, label: 'T1=' + T1, size: 10 },
               { x: T1 + T2, y: -15, label: 'T2=' + T2, size: 10 }]}
               labelAnchorX="start" />

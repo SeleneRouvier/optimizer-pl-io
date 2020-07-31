@@ -55,7 +55,7 @@ class Presentation extends React.Component {
           className="area-series-example"
           opacity={0.25}
           color="orange"
-          data={[{ x: iniciox, y: 0 }, { x: middlex, y: topey }, { x: finx, y: 0 }]}
+          data={[{ x: iniciox, y: 0 }, { x: middlex, y: topey }, { x: finx, y: 0 }, { x: iniciox, y: 0 }]}
         />);
         items.push(<Line
           className="maximoStock"
@@ -82,7 +82,7 @@ class Presentation extends React.Component {
             className="area-series-example"
             opacity={0.25}
             color="orange"
-            data={[{ x: iniciox, y: 0 }, { x: middlex, y: topey }, { x: finx, y: finy }]}
+            data={[{ x: iniciox, y: 0 }, { x: middlex, y: topey }, { x: finx, y: finy },{ x: finx, y: 0 }, { x: iniciox, y: 0 }]}
           />);
           items.push(<Line
             className="maximoStock"
@@ -109,7 +109,7 @@ class Presentation extends React.Component {
             className="area-series-example"
             opacity={0.25}
             color="orange"
-            data={[{ x: iniciox, y: 0 }, { x: finx, y: finy }]}
+            data={[{ x: iniciox, y: 0 }, { x: finx, y: finy }, { x: finx, y: 0 },{ x: iniciox, y: 0 }]}
           />);
         }
       }
