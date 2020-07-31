@@ -13,14 +13,14 @@ class Presentation extends React.Component {
   constructor(props) {
     super(props);
     this.model = props.model;
-    /*this.model.demanda=4800;
+    /*this.model.demanda=25000;
     this.model.tiempoTotal=1;
-    this.model.porcAplicaCostoProd=0;
-    this.model.costoPrep=3000;
-    this.model.ds=[300,350,400];
-    this.model.qs=[500,200,0];
-    this.model.costoPropioMercaderia=36;
-    this.model.porcInteres=2;
+    this.model.porcAplicaCostoProd=45;
+    this.model.costoPrep=18000;
+    this.model.ds=[5.7,5.8,6];
+    this.model.qs=[30000,10000,0];
+    this.model.costoPropioMercaderia=0;
+    this.model.porcInteres=3;
     this.model.unidadTiempo = "Años";*/
   }
   state = {
@@ -94,9 +94,9 @@ class Presentation extends React.Component {
               className="mark-series-example"
               strokeWidth={2}
               sizeRange={[5, 15]}
-              data={[{ x: this.resultado.qo, y: 0, size: 5 }]} />
+              data={[{ x: this.resultado.qo, y: this.resultado.cprod, size: 5 }]} />
             <LabelSeries animation allowOffsetToBeReversed
-              data={[{ x: this.resultado.qo, y: 0, label: 'qo=' + this.resultado.qo, size: 10 }]}
+              data={[{ x: this.resultado.qo, y: this.resultado.cprod, label: 'qo=' + this.resultado.qo+' b='+this.resultado.cprod, size: 10 }]}
               labelAnchorX="start" />
             {items}
             <DiscreteColorLegend style={{ position: 'absolute', left: '50px', top: '10px' }}
