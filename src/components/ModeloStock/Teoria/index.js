@@ -21,11 +21,13 @@ class StockTeoria extends React.Component {
                       <h4>Objetivos</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
-                    <Row>Determinar el lote óptimo de compra de una materia prima o producto a mantener para permitir un adecuado abastecimiento de los mismos para atender su demanda futura.</Row>
-                    <Row>Determinar el costo total esperado</Row>
-                    <Row>Determinar la duracion del lote</Row>
-                    <Row>La cantidad de reaprovicionamiento requerido</Row>
+                  <CardBody className="mx-auto text-justify">
+                  <ul>
+                    <li>Determinar el lote óptimo de compra de una materia prima o producto a mantener para permitir un adecuado abastecimiento de los mismos para atender su demanda futura.</li>
+                    <li>Determinar la cantidad de reaprovicionamiento requerido en un periodo determinado.</li>
+                    <li>Determinar el costo total esperado del lote.</li>
+                    <li>Determinar la duracion del lote.</li>
+                  </ul>
                   </CardBody>
                 </Card>
               </Jumbotron>
@@ -39,10 +41,10 @@ class StockTeoria extends React.Component {
                       <h4>K</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo de preparación, de lanzamiento o de emisión de la orden de compra. <hr></hr>
-                    Es un costo que podemos considerar independiente de la cantidad ordenada. Son los costos de papelería, telefónicos, etc., así como de la mano de obra interviniente. También incluyen la parte de los costos de recepción e inspección que son independientes del tamaño del lote ordenado.
-                    Si el sistema de inventario controla la planta donde se fabrica el ítem en cuestión, y si suponemos que el ítem se fabrica por lotes, los costos de preparar todo para fabricar ese conjunto también caerán en esta categoría.
+                    Es un costo que podemos considerar independiente de la cantidad ordenada. Son los costos de papelería, telefónicos, etc., así como de la mano de obra interviniente. También incluyen la parte de los costos de recepción e inspección que son independientes del tamaño del lote ordenado.<p></p>
+                    Si el sistema de inventario controla la planta donde se fabrica el ítem en cuestión, y si suponemos que el ítem se fabrica por lotes, los costos de preparar todo para fabricar ese conjunto también caerán en esta categoría.<p></p>
                     Estos costos no dependen de la cantidad ordenada. Se incurre en ellos cada vez que se coloca una orden y se los puede considerar costos "fijos". Son los costos fijos de colocar una orden de compra.
                   </CardBody>
                 </Card>
@@ -52,7 +54,7 @@ class StockTeoria extends React.Component {
                       <h4>b</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo del producto, de adquisición o de producción. <hr></hr>
                     Supondremos que es el costo unitario, independiente (salvo para un modelo en especial) de la cantidad comprada.
                   </CardBody>
@@ -63,7 +65,7 @@ class StockTeoria extends React.Component {
                       <h4>C1</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo de almacenamiento. <hr></hr>
                     Es el costo de mantener en el almacén una unidad del ítem en la unidad de tiempo. Comprende costos fijos y variables.
                   </CardBody>
@@ -74,11 +76,12 @@ class StockTeoria extends React.Component {
                       <h4>C2</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo de escasez o agotamiento. <hr></hr>
-                    Aparecerá en los modelos que admitan ruptura del stock. La ruptura del stock tiene dos perjuicios:
-                    — inmediato: ingresos retrasados, llevar registros extra.
-                    — mediato: pérdida del prestigio comercial.
+                    Aparecerá en los modelos que admitan ruptura del stock. 
+                    La ruptura del stock tiene dos perjuicios:<p></p>
+                    - inmediato: ingresos retrasados, llevar registros extra.<p></p>
+                    - mediato: pérdida del prestigio comercial.
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
@@ -87,7 +90,7 @@ class StockTeoria extends React.Component {
                       <h4>T</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Tiempo total o periodo total. Se debe ingresar con la unidad de tiempo maximo que se presenta en el enunciado
                   </CardBody>
                 </Card>
@@ -97,8 +100,28 @@ class StockTeoria extends React.Component {
                       <h4>p</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Velocidad de producción.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>d</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Demanda unitaria
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>D</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Demanda total de un periodo dado (T).
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
@@ -107,8 +130,8 @@ class StockTeoria extends React.Component {
                       <h4>sp</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
-                    Stock de protección, stock mínimo de reposición.
+                  <CardBody className="mx-auto text-justify">
+                    Stock de protección, stock mínimo de reposición, inventario de contingencia.
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
@@ -117,7 +140,7 @@ class StockTeoria extends React.Component {
                       <h4>s</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Stock real almacenado.
                   </CardBody>
                 </Card>
@@ -127,8 +150,8 @@ class StockTeoria extends React.Component {
                       <h4>P</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
-                    Porcentaje de interés que se produciría con el dinero inmovilizado.
+                  <CardBody className="mx-auto text-justify">
+                    Porcentaje de interés que se produciría con el dinero inmovilizado o porcentaje aplicado al capital invertido.
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
@@ -137,18 +160,39 @@ class StockTeoria extends React.Component {
                       <h4>C'i</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
-                    Costo efectivo de almacenamiento del i-esimoproducto
+                  <CardBody className="mx-auto text-justify">
+                    Costo propio de la mercaderia. Costo efectivo de almacenamiento.
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
                   <CardHeader>
                     <CardTitle className="text-left">
-                      <h4>bi</h4>
+                      <h4>Porcentaje aplicado a costo de producto</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
-                    Costo del i-esimoproducto
+                  <CardBody className="mx-auto text-justify">
+                    Forma parte del costo propio de la mercaderia pero se solicita ingresar a parte para poder calcularlo segun el precio del producto.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>bi - Costo de producto</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Precios unitario del producto que varian segun la cantidad del producto que comprende el lote.
+                    Costo del i-esimo producto.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>Limite de lotes</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Limite inferior de los intervalos de los diferentes tamaños de lotes que se presentan en el modelo.
                   </CardBody>
                 </Card>
               </Jumbotron>
@@ -162,8 +206,28 @@ class StockTeoria extends React.Component {
                       <h4>qo</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Tamaño de lote optimo
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>so</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Stock optimo
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>sm</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Stock maximo
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
@@ -172,8 +236,8 @@ class StockTeoria extends React.Component {
                       <h4>n</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
-                    Es el número de veces que se emite una orden de compra en el período T
+                  <CardBody className="mx-auto text-justify">
+                    Es el número de veces que se emite una orden de compra o se solicita un reaprovisionamiento en el período T.
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
@@ -182,8 +246,38 @@ class StockTeoria extends React.Component {
                       <h4>To</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Duracion del lote, o tiempo optimo para la siguiente reaprovicionamiento, o duracion del ciclo de reaprovicionamiento.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>T1</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Duracion del lote, tiempo donde no existe agotamiento.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>T2</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Tiempo donde existe agotamiento.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>Tp</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Duracion de la produccion, tiempo de produccion.
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
@@ -192,7 +286,7 @@ class StockTeoria extends React.Component {
                       <h4>CTAlm</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo total de almacenamiento.
                   </CardBody>
                 </Card>
@@ -202,7 +296,7 @@ class StockTeoria extends React.Component {
                       <h4>CTProd</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo total de producto.
                   </CardBody>
                 </Card>
@@ -212,7 +306,7 @@ class StockTeoria extends React.Component {
                       <h4>CTPre</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo total de preparación.
                   </CardBody>
                 </Card>
@@ -222,7 +316,7 @@ class StockTeoria extends React.Component {
                       <h4>CTE</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo Total Esperado.
                   </CardBody>
                 </Card>
@@ -232,18 +326,58 @@ class StockTeoria extends React.Component {
                       <h4>CTEo</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
+                  <CardBody className="mx-auto text-justify">
                     Costo Total Esperado Óptimo.
                   </CardBody>
                 </Card>
                 <Card outline color="secondary" className="w-100 mt-3">
                   <CardHeader>
                     <CardTitle className="text-left">
-                      <h4>sm</h4>
+                      <h4>cmsp</h4>
                     </CardTitle>
                   </CardHeader>
-                  <CardBody className="mx-auto">
-                    Costo de mantenimiento del sp.
+                  <CardBody className="mx-auto text-justify">
+                    Costo de mantenimiento del stock de proteccion (sp).
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>casp</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Costo de adquisición del stock de proteccion (sp).
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>ca</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Costo total del agotamiento.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>liminf</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Limite inferior del intervalo del lote que se opto al final como optimo, produciendo el menor costo total esperado.
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>cprod</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Costo del producto que se opto al final con el tamaño del lote considerado como optimo, produciendo el menor costo total esperado.
                   </CardBody>
                 </Card>
               </Jumbotron>
