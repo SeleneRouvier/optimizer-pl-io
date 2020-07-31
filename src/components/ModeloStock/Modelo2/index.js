@@ -39,7 +39,7 @@ class Modelo2 extends React.Component {
             <Row>
               <Jumbotron className='w-100'>
                 <h2>Modelos de stock:</h2>
-                <h2>Modelo 2</h2>
+                <h2>Modelo simple sin agotamiento y con stock de protección</h2>
               </Jumbotron>
             </Row>
             <Row>
