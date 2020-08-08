@@ -30,7 +30,7 @@ class Processing extends React.Component {
   };
 
   rutaMasCorta() {
-    if (this.props.rutaMasCorta){
+    //if (this.props.rutaMasCorta){
     return <Row>
     <Card outline color="secondary" className="w-100 mt-3">
       <CardHeader>
@@ -46,7 +46,7 @@ class Processing extends React.Component {
     </Card>
   </Row>
         
-  }
+  //}
   }
 
   render() {
