@@ -60,7 +60,7 @@ class Processing extends React.Component {
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
                 <CardTitle className="text-left">
-                  <h4>Cantidad de nodos</h4>
+                  <h4>Cantidad de relaciones</h4>
                 </CardTitle>
               </CardHeader>
               <CardBody className="mx-auto">
@@ -81,6 +81,7 @@ class Processing extends React.Component {
               <CardBody>
                 <Aristas
                   aristas={this.props.status.aristas}
+                  cantN={this.props.status.cantidadNodos}
                   handleAristas = {this.handleAristas}
                 /></CardBody>
             </Card>

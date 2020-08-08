@@ -2,9 +2,12 @@ import React from 'react';
 import Arista from './Arista';
 
 const Aristas = props => {
+    console.log(props)
     let { aristas } = props;
+    let { cantN } = props;
 
     //Función que se encarga de manejar las modificaciones en las aristas.
+    //esto está al pedo
     const deleteArista = xi => {
         if (aristas.length > 2) {
             aristas.splice(xi, 1)
@@ -13,6 +16,13 @@ const Aristas = props => {
             aristas[xi].values = { nodoInicial: "", nodoFinal: "", peso: "0" };
         }*/
     };
+    const myDeleteArista = n => {
+        for (let index = 0; index < n; index++) {
+            aristas.pop();
+            
+        }
+        //aristas.splice(aristas.length-1,n);
+    }
     //Función que se encarga de manejar las modificaciones de aristas.
     const handleChangesArista = (e) => {
         const { name, value } = e.target;
@@ -24,12 +34,16 @@ const Aristas = props => {
     };
     //Función que se encarga de Añadir una arista si es necesario.
     const handleNewsVar = () => {
-        if (aristas.length < 20) {
+        console.log(cantN);
+        if (cantN && aristas.length < cantN) {
 
             var aristasSinValores = 0;
             aristas.forEach(arista => {
-                if (arista.values['nodoInicial'].length === 0 || arista.values['nodoFinal'].length === 0 || arista.values['peso'].length === 0)
-                    aristasSinValores++;
+                if (arista.values['nodoInicial'].length === 0 || arista.values['nodoFinal'].length === 0 || arista.values['peso'].length === 0) {
+                    //console.log("Hola");
+                    //aristasSinValores++;
+                }
+                   
             })
 
             //Si la cantidad de aristas Libres es igual a 0 se agrega una más.
@@ -41,6 +55,11 @@ const Aristas = props => {
             if(aristasSinValores > 1) {
                 deleteArista(aristas.length - 1);
             }
+        }
+        if (cantN && aristas.length > cantN) {
+            console.log("Hola")
+            console.log((aristas.length - cantN))
+            myDeleteArista((aristas.length - cantN));
         }
     };
     handleNewsVar();
