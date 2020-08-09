@@ -26,7 +26,20 @@ const ModeloRedes = () =>{
                         <Col>
                             <Link to={"/ModeloRedes/RutaMasCorta"} >
                                 <Button size='lg' outline color="success">Ruta más corta</Button>
-
+                            </Link>
+                        </Col>
+                    </Row>
+                    <Row className="mt-3 mx-auto">
+                        <Col>
+                            <Link to={"/ModeloRedes/FlujoMaximo"} >
+                                <Button size='lg' outline color="success">Flujo Máximo</Button>
+                            </Link>
+                        </Col>
+                    </Row>
+                    <Row className="mt-3 mx-auto">
+                        <Col>
+                            <Link to={"/ModeloRedes/FlujoCapacitadoCM"} >
+                                <Button size='lg' outline color="success">Flujo Capacitado con Costo Mínimo</Button>
                             </Link>
                         </Col>
                     </Row>
