@@ -21,11 +21,11 @@ class Presentation extends React.Component {
       return <h3>Deben existir al menos 2 nodos</h3>
     }
 
-    if (nodoInicial < 0 || nodoInicial >= cantidadNodos) {
+    if (nodoInicial < 0 || nodoInicial > cantidadNodos) {
       return <h3>El nodo inicial debe tener valores entre 0 y {cantidadNodos - 1}</h3>
     }
 
-
+    // El simbolo || actua como OR y el simbolo && actua como AND
     let aristasConverted = [];
     aristas.forEach(function callback(arista, index, array) {
 

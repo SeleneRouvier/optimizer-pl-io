@@ -1,5 +1,5 @@
 import React from "react";
-import flujoCapacitadoCM from "../Functions/FlujoCapacitadoCM";
+import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
 
 class Presentation extends React.Component {
   constructor(props) {
