@@ -29,16 +29,7 @@ class FlujoMaximo extends React.Component {
                             <h2>Flujo Maximo</h2>
                             </Jumbotron>
                         </Row>
-                        <Row>
-                            <Jumbotron className='w-100'>
-                                <Processing status={model} handleAristas={this.handleAristas}
-                                setModel={this.setModel} flujoMaximo={true} />
-                            </Jumbotron>
-
-                        </Row>
-                        <Row>
-                            <Presentation model={model} />
-                        </Row>
+                        
                     </Col>
                 </Row>
             </Container>

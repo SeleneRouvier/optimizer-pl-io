@@ -30,16 +30,7 @@ class FlujoCapacitadoCM extends React.Component {
                             <h2>Flujo Capacitado de Costo Mínimo</h2>
                             </Jumbotron>
                         </Row>
-                        <Row>
-                            <Jumbotron className='w-100'>
-                                <Processing status={model} handleAristas={this.handleAristas}
-                                setModel={this.setModel} rutaMasCorta={true} />
-                            </Jumbotron>
-
-                        </Row>
-                        <Row>
-                            <Presentation model={model} />
-                        </Row>
+                        
                     </Col>
                 </Row>
             </Container>

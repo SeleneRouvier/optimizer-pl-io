@@ -13,6 +13,9 @@ import KuhnyTucker from "./components/NoLinealProgramming/KuhnyTucker";
 import ModeloRedes from "./components/ModeloRedes";
 import ArbolMinimaExpansion from "./components/ModeloRedes/ArbolMinimaExpansion";
 import RutaMasCorta from "./components/ModeloRedes/RutaMasCorta";
+import FlujoMaximo from "./components/ModeloRedes/FlujoMaximo";
+import FlujoCapacitadoCM from "./components/ModeloRedes/FlujoCapacitadoCM";
+
 
 import ModeloStock from "./components/ModeloStock";
 import ModeloWilson from "./components/ModeloStock/ModeloWilson";
@@ -43,6 +46,8 @@ const App = () =>
       <Route exact path="/ModeloRedes" component={ModeloRedes} />
       <Route exact path="/ModeloRedes/ArbolMinimaExpansion" component={ArbolMinimaExpansion} />
       <Route exact path="/ModeloRedes/RutaMasCorta" component={RutaMasCorta} />
+      <Route exact path="/ModeloRedes/FlujoMaximo" component={FlujoMaximo} />
+      <Route exact path="/ModeloRedes/FlujoCapacitadoCM" component={FlujoCapacitadoCM} />
 
 
       <Route exact path="/ModeloStock" component={ModeloStock} />
