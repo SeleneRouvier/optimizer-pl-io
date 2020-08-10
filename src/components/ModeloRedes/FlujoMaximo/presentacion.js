@@ -1,5 +1,6 @@
 import React from "react";
-import FlujoMaximo from "../Functions/FlujoMaximo";
+import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
+import flujoMaximo from "../Functions/FlujoMaximo";
 
 class Presentation extends React.Component {
   constructor(props) {
