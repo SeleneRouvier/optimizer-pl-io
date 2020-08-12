@@ -66,8 +66,6 @@ class Presentation extends React.Component {
       return <h3>Modelo incompleto</h3>
     }
   
-    
-
   }
 
   render() {
