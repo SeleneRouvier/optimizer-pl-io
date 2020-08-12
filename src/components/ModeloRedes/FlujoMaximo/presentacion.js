@@ -1,21 +1,21 @@
 import React from "react";
-import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
+import { Card, CardTitle, CardHeader } from "reactstrap";
 import flujoMaximo from "../Functions/FlujoMaximo";
 
 
 class Presentation extends React.Component {
   constructor(props) {
     super(props);
-    this.model = props.model
-    this.resultado = null
+    this.model = props.model;
+    this.resultado = null;
   }
 
   mostrarResultados = () => {
     let{cantidadNodos, aristas, nodoInicial, nodoFinal} = this.model;
     cantidadNodos = parseInt(cantidadNodos);
-    nodoInicial = parseInt(cantidadNodos);
-    nodoFinal = parseInt(cantidadNodos);
-
+    nodoInicial = parseInt(nodoInicial);
+    nodoFinal = parseInt(nodoFinal);
+  
     var errorDatos;
     var error = false;
     var numeroArista;

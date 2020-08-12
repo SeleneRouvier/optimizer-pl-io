@@ -28,7 +28,7 @@ class Processing extends React.Component {
     this.props.status.aristas = aristas;
     this.props.setModel(this.props.status);
   };
-
+  
   rutaMasCorta() {
     //if (this.props.rutaMasCorta){
     return <Row>
