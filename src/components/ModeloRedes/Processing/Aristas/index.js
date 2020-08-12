@@ -3,8 +3,8 @@ import Arista from './Arista';
 
 const Aristas = props => {
     console.log(props)
-    let { aristas } = this.props.aristas;
-    let { cantN } = this.props.cantidadNodos;
+    let { aristas } = props;
+    let { cantN } = props;
 
     //Función que se encarga de manejar las modificaciones en las aristas.
     //esto está al pedo
