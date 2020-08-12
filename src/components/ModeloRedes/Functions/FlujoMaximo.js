@@ -1,7 +1,7 @@
 const jsgraphs = require('js-graph-algorithms');
 
-const cantNodos = 5;
-const aristas = [[0, 1, 5], [0, 2, 5], [1, 2, 5], [1, 3, 5], [2, 3, 5]];
+//const cantNodos = 5;
+//const aristas = [[0, 1, 5], [0, 2, 5], [1, 2, 5], [1, 3, 5], [2, 3, 5]];
 
 
 function flujoMaximo(cantidadNodos, aristas, source, target) {
