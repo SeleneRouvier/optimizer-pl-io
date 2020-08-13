@@ -102,30 +102,6 @@ const Inicio = () => {
                             </ButtonGroup>
                         </Row>
 
-                        <Row className="mt-5">
-                            <h5>Colaboradores: Modelos de Redes</h5>
-                        </Row>
-                        <Row>
-                            <ButtonGroup className="mx-auto">
-                                <UncontrolledTooltip target='btnnd'>Diaz Duarte, Nicolas</UncontrolledTooltip>
-                                <Button id='btnnd' outline tag="a" href="https://github.com/NicolasDiazDuarte">
-                                    NDD
-                            </Button>
-                                <UncontrolledTooltip target='btnml'>Luján, María del Pilar</UncontrolledTooltip>
-                                <Button id='btnml' outline tag="a" href="https://github.com/marialujan019">
-                                    ML
-                            </Button>
-                                <UncontrolledTooltip target='btnsr'>Rouvier, Selene Susana</UncontrolledTooltip>
-                                <Button id='btnsr' outline tag="a" href="https://github.com/SeleneRouvier">
-                                    SR
-                            </Button>
-                                <UncontrolledTooltip target='btnvg'>Velázquez, Gregorio</UncontrolledTooltip>
-                                <Button id='btnvg' outline tag="a" href="https://github.com/velazquezgreg">
-                                    GV
-                            </Button>
-                            </ButtonGroup>
-                        </Row>
-
 
                         <Row className="mt-3">
                             <Col>
