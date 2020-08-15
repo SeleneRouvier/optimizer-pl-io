@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, CardTitle, CardHeader, CardBody } from "reactstrap";
-import rutaMasCorta from "../Functions/RutaMasCorta";
+import { Card, CardTitle, CardHeader } from "reactstrap";
+import flujoMaximo from "../Functions/FlujoMaximo";
+
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -10,9 +11,11 @@ class Presentation extends React.Component {
   }
 
   mostrarResultados = () => {
-    let { aristas, cantidadNodos, nodoInicial } = this.model;
+    let{cantidadNodos, aristas, nodoInicial, nodoFinal} = this.model;
     cantidadNodos = parseInt(cantidadNodos);
     nodoInicial = parseInt(nodoInicial);
+    nodoFinal = parseInt(nodoFinal);
+  
     var errorDatos;
     var error = false;
     var numeroArista;
@@ -58,55 +61,14 @@ class Presentation extends React.Component {
     console.log('Cantidad de nodos: ', cantidadNodos);
 
     if (cantidadNodos > 0 && aristasConverted.length > 0 && nodoInicial >= 0) {
-      var { g, dijkstra } = rutaMasCorta(cantidadNodos, aristasConverted, nodoInicial);
+      return flujoMaximo(cantidadNodos, aristasConverted, nodoInicial, nodoFinal);
     } else {
       return <h3>Modelo incompleto</h3>
     }
-
-    let mostrar = [];
-    let flagNoHayCamino = true;
-
-    for (var v = 0; v < g.V; ++v) {
-      if (dijkstra.hasPathTo(v)) {
-        const path = dijkstra.pathTo(v);
-
-        if (v !== nodoInicial) {
-          mostrar.push(<h4>{`Ruta mas corta desde ${nodoInicial} a ${v}`}</h4>);
-
-          for (var i = 0; i < path.length; ++i) {
-            const e = path[i];
-            console.log(e.from() + ' => ' + e.to() + ': ' + e.weight);
-            mostrar.push(<p>{`(${e.from()} => ${e.to()}): Distancia de ${e.weight}`}</p>);
-          }
-
-          mostrar.push(<p>{`Distancia Total del Camino: ${dijkstra.distanceTo(v)}`}</p>);
-          mostrar.push(<br></br>);
-
-          flagNoHayCamino = false;
-        }
-      }
-    }
-
-    if (flagNoHayCamino) {
-      return <h3>El nodo no tiene caminos posibles</h3>
-    }
-
-    if (mostrar.length > 0) {
-      return <Card outline color="secondary" className="w-100 mt-3 mx-auto">
-        <CardHeader>
-          <CardTitle className="text-left">
-            <h4>Resultados</h4>
-          </CardTitle>
-        </CardHeader>
-        <CardBody className="mx-auto">
-          {mostrar}
-        </CardBody>
-      </Card>
-    }
+  
   }
 
   render() {
-
     return (
       <>
         <Card outline color="info" className="w-100 mt-3 mx-auto">

@@ -3,8 +3,9 @@ import { Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstra
 import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 import NodoInicial from "./NodoInicial";
+import NodoFinal from './NodoFinal';
 
-class Processing extends React.Component {
+class ProcessingFM extends React.Component {
 
   handleCantidadNodos = event => {
     let { value } = event.target;
@@ -24,13 +25,22 @@ class Processing extends React.Component {
     }
   }
 
+  handleNodoFinal = event => {
+    let { value } = event.target;
+    if (value) {
+      console.log('Cambiando Nodo Final');
+      this.props.status.nodoFinal = value;
+      this.props.setModel(this.props.status);
+    }
+  }
+
   handleAristas = aristas => {
     this.props.status.aristas = aristas;
     this.props.setModel(this.props.status);
   };
-  
-  rutaMasCorta() {
-    //if (this.props.rutaMasCorta){
+
+
+  flujoMaximo() {
     return <Row>
     <Card outline color="secondary" className="w-100 mt-3">
       <CardHeader>
@@ -41,6 +51,18 @@ class Processing extends React.Component {
       <CardBody className="mx-auto">
         <NodoInicial
           handleNodoInicial={this.handleNodoInicial}
+        />
+      </CardBody>
+    </Card>
+    <Card outline color="secondary" className="w-100 mt-3">
+      <CardHeader>
+        <CardTitle className="text-left">
+          <h4>Nodo Final</h4>
+        </CardTitle>
+      </CardHeader>
+      <CardBody className="mx-auto">
+        <NodoFinal
+          handleNodoFinal={this.handleNodoFinal}
         />
       </CardBody>
     </Card>
@@ -70,7 +92,7 @@ class Processing extends React.Component {
               </CardBody>
             </Card>
           </Row>
-          {this.rutaMasCorta()}
+          {this.flujoMaximo()}
           <Row>
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
@@ -92,4 +114,4 @@ class Processing extends React.Component {
   }
 }
 
-export default Processing;
+export default ProcessingFM;

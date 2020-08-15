@@ -16,6 +16,7 @@ const Aristas = props => {
             aristas[xi].values = { nodoInicial: "", nodoFinal: "", peso: "0" };
         }*/
     };
+
     const myDeleteArista = n => {
         for (let index = 0; index < n; index++) {
             aristas.pop();
@@ -23,6 +24,7 @@ const Aristas = props => {
         }
         //aristas.splice(aristas.length-1,n);
     }
+
     //Función que se encarga de manejar las modificaciones de aristas.
     const handleChangesArista = (e) => {
         const { name, value } = e.target;
@@ -32,6 +34,7 @@ const Aristas = props => {
         //pedimos al padre que almacene los cambios
         props.handleAristas(aristas);
     };
+
     //Función que se encarga de Añadir una arista si es necesario.
     const handleNewsVar = () => {
         console.log(cantN);
