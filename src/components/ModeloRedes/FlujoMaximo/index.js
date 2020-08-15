@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Col, Row, Jumbotron } from "reactstrap";
-import ProcessingFM from "../Processing";
+import ProcessingFM from "../Processing/indexFM";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
 
@@ -40,12 +40,12 @@ class FlujoMaximo extends React.Component {
                         </Row>
                         <Row>
                             <Jumbotron className='w-100'>
-                                <ProcessingFM status={model} handleAristas={this.handleAristas}
+                                <ProcessingFM status={this.state.model} handleAristas={this.handleAristas}
                                     setModel={this.setModel} FlujoMaximo={true} />
                             </Jumbotron>
                         </Row>
                         <Row>
-                            <Presentation model={model} />
+                            <Presentation model={this.state.model} />
                         </Row>
                     </Col>
                 </Row>

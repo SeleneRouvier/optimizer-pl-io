@@ -36,6 +36,7 @@ class ProcessingFM extends React.Component {
 
   handleAristas = aristas => {
     this.props.status.aristas = aristas;
+    console.log(this.props.status.aristas);
     this.props.setModel(this.props.status);
   };
 
