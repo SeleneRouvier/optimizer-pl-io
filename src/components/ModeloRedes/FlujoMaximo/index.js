@@ -35,7 +35,7 @@ class FlujoMaximo extends React.Component {
                         <Row>
                             <Jumbotron className='w-100'>
                                 <h2>Modelos de redes:</h2>
-                                <h2>Flujo Maximo</h2>
+                                <h2>Flujo Máximo</h2>
                             </Jumbotron>
                         </Row>
                         <Row>
