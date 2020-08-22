@@ -1,8 +1,12 @@
 import React from "react";
 import { Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
-import Aristas from "./Aristas";
+import AristaFMI from "./AristasFMI";
 import CantidadNodos from "./CantidadNodos";
-import NodoInicial from "./NodoInicial";
+import CantidadVertices from "./CantidadVertices";
+import Cantidadindex from "./CantidadV";
+
+
+//ESTO ES DE FLUJO MINIMO
 
 class Processing extends React.Component {
 
@@ -15,38 +19,23 @@ class Processing extends React.Component {
     }
   }
 
-  handleNodoInicial = event => {
-    let { value } = event.target;
-    if (value) {
-      console.log('Cambiando Nodo Inicial');
-      this.props.status.nodoInicial = value;
-      this.props.setModel(this.props.status);
-    }
-  }
-
   handleAristas = aristas => {
     this.props.status.aristas = aristas;
     this.props.setModel(this.props.status);
   };
+
+  handleVertice = vertices => {
+    this.props.status.vertices = vertices;
+    this.props.setModel(this.props.status);
+  };
   
-  rutaMasCorta() {
-    if (this.props.rutaMasCorta){
-    return <Row>
-    <Card outline color="secondary" className="w-100 mt-3">
-      <CardHeader>
-        <CardTitle className="text-left">
-          <h4>Nodo Inicial</h4>
-        </CardTitle>
-      </CardHeader>
-      <CardBody className="mx-auto">
-        <NodoInicial
-          handleNodoInicial={this.handleNodoInicial}
-        />
-      </CardBody>
-    </Card>
-  </Row>
-        
-  }
+  handleCantidadVertices = event => {
+    let { value } = event.target;
+    if (value) {
+      console.log('Cambiando Objetivo');
+      this.props.status.CantidadVertices = value;
+      this.props.setModel(this.props.status);
+    }
   }
 
   render() {
@@ -56,6 +45,38 @@ class Processing extends React.Component {
       <>
         <h3>Cargamos los datos de nuestro modelo</h3>
         <Container>
+
+        <Row>
+            <Card outline color="secondary" className="w-100 mt-3">
+              <CardHeader>
+                <CardTitle className="text-left">
+                  <h4>Cantidad de vertices</h4>
+                </CardTitle>
+              </CardHeader>
+              <CardBody className="mx-auto">
+                <CantidadVertices
+                  handleCantidadVertices={this.handleCantidadVertices}
+                />
+              </CardBody>
+            </Card>
+          </Row>
+          <Row>
+            <Card outline color="secondary" className="w-100 mt-3">
+              <CardHeader>
+                <CardTitle className="text-left">
+                  <h4>Ingrese oferta y demanda</h4>
+                </CardTitle>
+              </CardHeader>
+              <CardBody>
+                <Cantidadindex
+                  vertices={this.props.status.vertices}
+                  cant={this.props.status.CantidadVertices}
+                  handleVertice = {this.handleVertice}
+                /></CardBody>
+            </Card>
+          </Row>
+
+
           <Row>
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
@@ -70,16 +91,15 @@ class Processing extends React.Component {
               </CardBody>
             </Card>
           </Row>
-          {this.rutaMasCorta()}
           <Row>
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>
                 <CardTitle className="text-left">
-                  <h4>Aristas</h4>
+                  <h4>Arcos</h4>
                 </CardTitle>
               </CardHeader>
               <CardBody>
-                <Aristas
+                <AristaFMI
                   aristas={this.props.status.aristas}
                   cantN={this.props.status.cantidadNodos}
                   handleAristas = {this.handleAristas}
