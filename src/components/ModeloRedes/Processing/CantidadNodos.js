@@ -4,7 +4,7 @@ import { Input } from 'reactstrap'
 
 const CantidadNodos = props => {
     return (
-            <Input
+            <Input id="cantN"
                 placeholder="Cantidad de relaciones"
                 aria-label="Descripcion"
                 aria-describedby="cantidad"

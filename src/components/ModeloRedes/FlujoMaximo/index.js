@@ -1,9 +1,9 @@
 import React from "react";
-import { Container, Col, Row, Jumbotron } from "reactstrap";
+import { Button,Container, Col, Row, Jumbotron } from "reactstrap";
 import ProcessingFM from "../Processing/indexFM";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
-
+import { GrafosFM } from "../Processing/Grafos/GrafosFM";
 
 class FlujoMaximo extends React.Component {
 
@@ -19,6 +19,12 @@ class FlujoMaximo extends React.Component {
         };
     }
     setModel = model => this.setState({ model, changes: true });
+
+    activarGrafo() {
+        return(
+            <GrafosFM/>
+        );
+    }
 
     render() {
         let {model} = this.setState;
@@ -42,6 +48,8 @@ class FlujoMaximo extends React.Component {
                             <Jumbotron className='w-100'>
                                 <ProcessingFM status={this.state.model} handleAristas={this.handleAristas}
                                     setModel={this.setModel} FlujoMaximo={true} />
+
+                                <Button onClick={this.activarGrafo}>Mostrar Grafo</Button>
                             </Jumbotron>
                         </Row>
                         <Row>
