@@ -1,39 +1,25 @@
-import React from 'react';
-import { DataSet, Network } from "vis-network/standalone"
+import React, { Component } from 'react';
+import { Network, Node, Edge } from 'react-vis-network';
+ 
+class GrafosFM extends Component {
 
+    for (let i = 0; i < cantN.length; i++) {
+        <Node id= i label= i />
+    } 
 
-export const GrafosFM = () => {
-    const cantidadNodos=document.getElementById("cantN")
-    console.log(cantidadNodos)
-    // create an array with nodes
-    const nodes = new DataSet([
-        { id: 1, label: "Node 1" },
-        { id: 2, label: "Node 2" },
-        { id: 3, label: "Node 3" },
-        { id: 4, label: "Node 4" },
-        { id: 5, label: "Node 5" }
-    ]);
-    
-    // create an array with edges
-    const edges = new DataSet([
-        { from: 1, to: 3 },
-        { from: 1, to: 2 },
-        { from: 2, to: 4 },
-        { from: 2, to: 5 },
-        { from: 3, to: 3 }
-    ]);
-    
-    // create a network
-    const container = document.getElementById("mynetwork");
-    const data = {
-        nodes: nodes,
-        edges: edges
-    };
-    const options = {};
-    const network = new Network(container, data, options);
-    
-    return(
-        <div id="mynetwork"></div>
-    )
-    
+    render() {
+        return (
+            <Network>
+                {nodos}
+                
+                <Node id="1" label="Nodo 1" />
+                <Node id="2" label="Nodo 2" />
+                <Node id="3" label="Nodo 3" />
+                <Edge id="1" from="1" to="2" />
+                <Edge id="2" from="2" to="3" />
+            </Network>
+        );
+    }
 }
+
+export default GrafosFM;
