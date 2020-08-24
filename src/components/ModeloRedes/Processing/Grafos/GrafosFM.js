@@ -2,15 +2,24 @@ import React, { Component } from 'react';
 import { Network, Node, Edge } from 'react-vis-network';
  
 class GrafosFM extends Component {
-
-    for (let i = 0; i < cantN.length; i++) {
-        <Node id= i label= i />
-    } 
-
+    constructor(props) {
+        super(props);
+        this.model = props.model;
+    }
+    
+    //cargarNodos = () =>{
+        //let {cantNodos} = this.model.cantidadNodos;
+        //cantNodos = parseInt(cantNodos)
+        
+        //for (let i = 0; i < cantNodos; i++) {
+          //  <Node id= {i} label= {i} />
+        //}
+    
+    //}
     render() {
         return (
             <Network>
-                {nodos}
+              
                 
                 <Node id="1" label="Nodo 1" />
                 <Node id="2" label="Nodo 2" />
