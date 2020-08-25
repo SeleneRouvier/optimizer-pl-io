@@ -6,21 +6,20 @@ class GrafosFM extends Component {
         super(props);
         this.model = props.model;
     }
-    
-    //cargarNodos = () =>{
-        //let {cantNodos} = this.model.cantidadNodos;
+  
+    render() {
+        //let {cantNodos} = this.state.model.cantidadNodos
         //cantNodos = parseInt(cantNodos)
         
-        //for (let i = 0; i < cantNodos; i++) {
-          //  <Node id= {i} label= {i} />
-        //}
-    
-    //}
-    render() {
+        let nodos=[];
+        
+        for (var i = 0; i < 6; ++i){
+            nodos.push({id:{i} ,label:{i}})
+        }
+        console.log(nodos)
         return (
             <Network>
               
-                
                 <Node id="1" label="Nodo 1" />
                 <Node id="2" label="Nodo 2" />
                 <Node id="3" label="Nodo 3" />
