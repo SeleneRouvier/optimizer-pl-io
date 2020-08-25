@@ -4,8 +4,13 @@ import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 import NodoInicial from "./NodoInicial";
 import NodoFinal from './NodoFinal';
+import GrafosFM  from "../Processing/Grafos/GrafosFM";
 
 class ProcessingFM extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {show:false}
+  }
 
   handleCantidadNodos = event => {
     let { value } = event.target;
@@ -39,6 +44,13 @@ class ProcessingFM extends React.Component {
     console.log(this.props.status.aristas);
     this.props.setModel(this.props.status);
   };
+  
+  cambiarEstado = () => {  
+    this.setState({show:!this.state.show})
+    console.log("entre")
+    console.log(this.state.show)
+  };
+
 
 
   flujoMaximo() {
@@ -74,6 +86,9 @@ class ProcessingFM extends React.Component {
 
   render() {
     //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
+    
+    
+    
 
     return (
       <>
@@ -108,8 +123,16 @@ class ProcessingFM extends React.Component {
                   handleAristas = {this.handleAristas}
                 /></CardBody>
             </Card>
+            
           </Row>
         </Container>
+        <Card >
+              <div>
+              <button onClick={this.cambiarEstado}>holi</button>
+              <br/>
+              {this.state.show && <GrafosFM cantN={this.props.status.cantidadNodos} /> }                                  
+              </div>
+        </Card>
       </>
     );
   }

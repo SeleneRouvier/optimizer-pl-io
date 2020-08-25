@@ -3,7 +3,7 @@ import { Button, Container, Col, Row, Jumbotron } from "reactstrap";
 import ProcessingFM from "../Processing/indexFM";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
-import GrafosFM  from "../Processing/Grafos/GrafosFM";
+
 
 class FlujoMaximo extends React.Component {
 
@@ -30,9 +30,8 @@ class FlujoMaximo extends React.Component {
 
     render() {
 
-       let button;
-       const cambiarEstado = () => {
-        this.setState({show: !this.state.show})};
+       
+       
         //if (this.state.show) {
          //   button = <Button onClick={ this.noEjecutarGrafo}>Mostrar Grafo, es true</Button>;
         //} else {
@@ -65,10 +64,7 @@ class FlujoMaximo extends React.Component {
                             <Jumbotron className='w-100'>
                                 <Presentation model={this.state.model} />
                                 <br/>
-                                <div>
-                                    <button onClick={cambiarEstado}>holi</button>
-                                    {this.state.show && <GrafosFM /> }                                  
-                                </div>
+                                
                             </Jumbotron>
                         </Row>
                     </Col>
