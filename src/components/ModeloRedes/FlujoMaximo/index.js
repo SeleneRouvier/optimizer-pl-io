@@ -14,15 +14,15 @@ class FlujoMaximo extends React.Component {
                 aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "" } }],
                 cantidadNodos: "0",
                 nodoInicial: "",
-                nodoFinal: ""
+                nodoFinal: "",
+                show: false
             }
         };
     }
 
     setModel = model => this.setState({ model, changes: true });
 
-    //ejecutarGrafo() {
-     //   this.setState({show: true});
+    
    // }
     //noEjecutarGrafo() {
      //   this.setState({show: false});
@@ -30,8 +30,9 @@ class FlujoMaximo extends React.Component {
 
     render() {
 
-       // let button;
-
+       let button;
+       const cambiarEstado = () => {
+        this.setState({show: !this.state.show})};
         //if (this.state.show) {
          //   button = <Button onClick={ this.noEjecutarGrafo}>Mostrar Grafo, es true</Button>;
         //} else {
@@ -65,7 +66,8 @@ class FlujoMaximo extends React.Component {
                                 <Presentation model={this.state.model} />
                                 <br/>
                                 <div>
-                                    <GrafosFM />                                   
+                                    <button onClick={cambiarEstado}>holi</button>
+                                    {this.state.show && <GrafosFM /> }                                  
                                 </div>
                             </Jumbotron>
                         </Row>

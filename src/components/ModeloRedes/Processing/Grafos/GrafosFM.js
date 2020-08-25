@@ -5,15 +5,20 @@ class GrafosFM extends Component {
     constructor(props) {
         super(props);
         this.model = props.model;
+        this.resultado = null;
+    }
+    obtenerNodos= () => {
+        let{cantidadNodos} = this.props.model.cantidadNodos;
+        cantidadNodos = parseInt(cantidadNodos);
     }
   
     render() {
-        //let {cantNodos} = this.state.model.cantidadNodos
-        //cantNodos = parseInt(cantNodos)
+       
         
         let nodos=[];
-        
-        for (var i = 0; i < 6; ++i){
+        {this.obtenerNodos()}
+
+        for (var i = 0; i < this.props.cantidadNodos; ++i){
             nodos.push({id:{i} ,label:{i}})
         }
         console.log(nodos)
