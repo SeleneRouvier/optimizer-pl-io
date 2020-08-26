@@ -64,7 +64,6 @@ class FlujoMaximo extends React.Component {
                             <Jumbotron className='w-100'>
                                 <Presentation model={this.state.model} />
                                 <br/>
-                                
                             </Jumbotron>
                         </Row>
                     </Col>

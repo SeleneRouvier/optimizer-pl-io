@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { Container, Row, Card, CardBody, CardHeader, CardTitle, Button } from "reactstrap";
 import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 import NodoInicial from "./NodoInicial";
@@ -86,10 +86,6 @@ class ProcessingFM extends React.Component {
 
   render() {
     //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
-    
-    
-    
-
     return (
       <>
         <h3>Cargamos los datos de nuestro modelo</h3>
@@ -123,15 +119,18 @@ class ProcessingFM extends React.Component {
                   handleAristas = {this.handleAristas}
                 /></CardBody>
             </Card>
-            
           </Row>
         </Container>
-        <Card >
-              <div>
-              <button onClick={this.cambiarEstado}>holi</button>
-              <br/>
-              {this.state.show && <GrafosFM cantN={this.props.status.cantidadNodos} /> }                                  
-              </div>
+        <Card>
+          <div class="mh-100">
+            <br/>
+            <Button outline color="success"
+              onClick={this.cambiarEstado}>Mostrar Grafo</Button>
+            <br/>
+            <br/>
+            {this.state.show && <GrafosFM cantN={this.props.status.cantidadNodos} aristas={this.props.status.aristas} /> }  
+            <br/>                                
+          </div>
         </Card>
       </>
     );
