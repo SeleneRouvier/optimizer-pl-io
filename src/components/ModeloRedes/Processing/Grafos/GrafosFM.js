@@ -15,7 +15,8 @@ const GrafosFM = props => {
         relaciones.push({
             id: (aristas[i].xi),
             from: (aristas[i].values.nodoInicial),
-            to: (aristas[i].values.nodoFinal)
+            to: (aristas[i].values.nodoFinal),
+            peso: (aristas[i].values.peso)
         })
     }
     console.log(relaciones)
@@ -23,7 +24,7 @@ const GrafosFM = props => {
     return(
         <Network style = {{height:"40vh"}}>
             {nodos.map((item) => <Node id={JSON.stringify(item)} label={JSON.stringify(item)} />) }
-            {relaciones.map((item) => <Edge id={item.id} from={item.from} to={item.to} />) }
+            {relaciones.map((item) => <Edge id={item.id} from={item.from} to={item.to} arrows={"to"} label={item.peso}/>) }
         </Network>
     ); 
 }    
