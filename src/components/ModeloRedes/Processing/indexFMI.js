@@ -117,11 +117,11 @@ class Processing extends React.Component {
     let table = [];
     for (let i = 0; i < long; i++) {
        table.push(<tr>
-         <td>{this.props.status.nodosI[i]}</td>
-         <td>{this.props.status.nodosF[i]}</td>
-         <td>{this.props.status.f[i]}</td>
-         <td>{this.props.status.ca[i]}</td>
-         <td>{this.props.status.co[i]}</td>
+         <td style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>{this.props.status.nodosI[i]}</td>
+         <td style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>{this.props.status.nodosF[i]}</td>
+         <td style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>{this.props.status.f[i]}</td>
+         <td style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>{this.props.status.ca[i]}</td>
+         <td style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>{this.props.status.co[i]}</td>
        </tr>)
     }
     return table;
@@ -198,25 +198,25 @@ class Processing extends React.Component {
             </Card>
           </Row>
           <Row>
-            <div style={{textAlign:"center"}}>
+            <div style={{textAlign:"center", margin:"auto", paddingTop:"20px"}}>
               <Button variant="danger" onClick={this.handleResolver}>Resolver</Button>
             </div>
           </Row>
         </Container>
-          <div>
+          <div style={{paddingTop:"20px"}}>
             {this.props.status.minimumCost > 0 &&
               <h4>El Costo Mínimo es: {this.props.status.minimumCost}</h4>
             }
             <br></br>
-            <table>
+            <table style={{width: "100%"}}>
               <thead>
                 {this.props.status.nodosI?.length > 0 && 
                   <tr>
-                    <th>Nodo Inicial</th>
-                    <th>Nodo Final</th>
-                    <th>Flow</th>
-                    <th>Capacidad</th>
-                    <th>Costo</th>
+                    <th style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>Nodo Inicial</th>
+                    <th style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>Nodo Final</th>
+                    <th style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>Flow</th>
+                    <th style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>Capacidad</th>
+                    <th style={{borderColor: "darkgray", borderStyle: "solid", borderWidth: "medium"}}>Costo</th>
                   </tr> 
                 }
 
