@@ -125,7 +125,7 @@ class ProcessingFM extends React.Component {
           <div class="mh-100">
             <br/>
             <Button outline color="success"
-              onClick={this.cambiarEstado}>Mostrar Grafo</Button>
+              onClick={this.cambiarEstado}>Mostrar/Ocultar Grafo</Button>
             <br/>
             <br/>
             {this.state.show && <GrafosFM cantN={this.props.status.cantidadNodos} aristas={this.props.status.aristas} /> }  

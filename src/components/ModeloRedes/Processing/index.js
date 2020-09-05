@@ -1,10 +1,15 @@
 import React from "react";
-import { Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { Container, Row, Button, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 import NodoInicial from "./NodoInicial";
+import GrafosRMC  from "../Processing/Grafos/GrafosRMC";
 
 class Processing extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {show:false}
+  }
 
   handleCantidadNodos = event => {
     let { value } = event.target;
@@ -28,6 +33,13 @@ class Processing extends React.Component {
     this.props.status.aristas = aristas;
     this.props.setModel(this.props.status);
   };
+
+  cambiarEstado = () => {  
+    this.setState({show:!this.state.show})
+    console.log("entre")
+    console.log(this.state.show)
+  };
+
   
   rutaMasCorta() {
     if (this.props.rutaMasCorta){
@@ -87,6 +99,17 @@ class Processing extends React.Component {
             </Card>
           </Row>
         </Container>
+        <Card>
+          <div class="mh-100">
+            <br/>
+            <Button outline color="success"
+              onClick={this.cambiarEstado}>Mostrar/Ocultar Grafo</Button>
+            <br/>
+            <br/>
+            {this.state.show && <GrafosRMC cantN={this.props.status.cantidadNodos} aristas={this.props.status.aristas} /> }  
+            <br/>                                
+          </div>
+        </Card>
       </>
     );
   }
