@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import { Button, Container, Col, Row, Jumbotron } from "reactstrap";
+import React from "react";
+import { Button,Container, Col, Row, Jumbotron } from "reactstrap";
 import ProcessingFM from "../Processing/indexFM";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
-
+import { GrafosFM } from "../Processing/Grafos/GrafosFM";
 
 class FlujoMaximo extends React.Component {
 
@@ -14,29 +14,20 @@ class FlujoMaximo extends React.Component {
                 aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "" } }],
                 cantidadNodos: "0",
                 nodoInicial: "",
-                nodoFinal: "",
-                show: false
+                nodoFinal: ""
             }
         };
     }
-
     setModel = model => this.setState({ model, changes: true });
 
-    
-   // }
-    //noEjecutarGrafo() {
-     //   this.setState({show: false});
-    //}
+    activarGrafo() {
+        return(
+            <GrafosFM/>
+        );
+    }
 
     render() {
-
-       
-       
-        //if (this.state.show) {
-         //   button = <Button onClick={ this.noEjecutarGrafo}>Mostrar Grafo, es true</Button>;
-        //} else {
-          //  button = <Button onClick={ this.ejecutarGrafo}>Mostrar Grafo, es false</Button>;
-        //}
+        let {model} = this.setState;
 
         return (
             <Container fluid className="App">
@@ -57,20 +48,20 @@ class FlujoMaximo extends React.Component {
                             <Jumbotron className='w-100'>
                                 <ProcessingFM status={this.state.model} handleAristas={this.handleAristas}
                                     setModel={this.setModel} FlujoMaximo={true} />
+
+                                <Button onClick={this.activarGrafo}>Mostrar Grafo</Button>
                             </Jumbotron>
                         </Row>
-                        
                         <Row>
-                            <Jumbotron className='w-100'>
-                                <Presentation model={this.state.model} />
-                                <br/>
-                            </Jumbotron>
+                            <Presentation model={this.state.model} />
                         </Row>
                     </Col>
                 </Row>
             </Container>
         );
     }
+
+
 }
 
 export default FlujoMaximo;

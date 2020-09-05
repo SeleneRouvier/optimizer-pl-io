@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Card, CardBody, CardHeader, CardTitle, Button } from "reactstrap";
+import { Container, Button, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 import NodoInicial from "./NodoInicial";
@@ -7,10 +7,6 @@ import NodoFinal from './NodoFinal';
 import GrafosFM  from "../Processing/Grafos/GrafosFM";
 
 class ProcessingFM extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {show:false}
-  }
 
   handleCantidadNodos = event => {
     let { value } = event.target;
@@ -44,13 +40,6 @@ class ProcessingFM extends React.Component {
     console.log(this.props.status.aristas);
     this.props.setModel(this.props.status);
   };
-  
-  cambiarEstado = () => {  
-    this.setState({show:!this.state.show})
-    console.log("entre")
-    console.log(this.state.show)
-  };
-
 
 
   flujoMaximo() {
@@ -86,6 +75,7 @@ class ProcessingFM extends React.Component {
 
   render() {
     //Generamos el renderizado para cada una de los elementos de los arreglos obtenidos anteriormente.
+
     return (
       <>
         <h3>Cargamos los datos de nuestro modelo</h3>
