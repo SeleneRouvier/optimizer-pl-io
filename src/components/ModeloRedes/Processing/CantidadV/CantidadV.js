@@ -16,7 +16,7 @@ const Cantidad = props => {
       </InputGroupAddon>
       <Input
         name={[xj, "supplie"]}
-        placeholder="Valor"
+        placeholder="Supplie"
         aria-label="Supplie"
         aria-describedby="vertice"
         onChange={props.handleChanges}
