@@ -31,6 +31,11 @@ function flujoMaximo(cantidadNodos, aristas, source, target) {
             <hr/>
             <h3>Enumeracion de cortes:</h3>
             <h3>{resultadoEC}</h3>
+            <div>
+                {g.V}
+                {g.adj(0)}
+            </div>
+            
         </>
     );
 }

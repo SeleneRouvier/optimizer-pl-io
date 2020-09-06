@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardTitle, CardHeader } from "reactstrap";
 import flujoMaximo from "../Functions/FlujoMaximo";
 
+
 class Presentation extends React.Component {
   constructor(props) {
     super(props);
