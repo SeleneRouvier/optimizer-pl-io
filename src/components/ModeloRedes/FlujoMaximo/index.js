@@ -3,7 +3,6 @@ import { Button,Container, Col, Row, Jumbotron } from "reactstrap";
 import ProcessingFM from "../Processing/indexFM";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
-import { GrafosFM } from "../Processing/Grafos/GrafosFM";
 
 class FlujoMaximo extends React.Component {
 
@@ -14,20 +13,15 @@ class FlujoMaximo extends React.Component {
                 aristas: [{ xi: 0, values: { nodoInicial: "", nodoFinal: "", peso: "" } }, { xi: 1, values: { nodoInicial: "", nodoFinal: "", peso: "" } }],
                 cantidadNodos: "0",
                 nodoInicial: "",
-                nodoFinal: ""
+                nodoFinal: "",
+                show: false
             }
         };
     }
     setModel = model => this.setState({ model, changes: true });
 
-    activarGrafo() {
-        return(
-            <GrafosFM/>
-        );
-    }
-
     render() {
-        let {model} = this.setState;
+       
 
         return (
             <Container fluid className="App">
@@ -48,12 +42,13 @@ class FlujoMaximo extends React.Component {
                             <Jumbotron className='w-100'>
                                 <ProcessingFM status={this.state.model} handleAristas={this.handleAristas}
                                     setModel={this.setModel} FlujoMaximo={true} />
-
-                                <Button onClick={this.activarGrafo}>Mostrar Grafo</Button>
                             </Jumbotron>
                         </Row>
                         <Row>
-                            <Presentation model={this.state.model} />
+                            <Jumbotron className='w-100'>
+                                <Presentation model={this.state.model} />
+                                <br/>
+                            </Jumbotron>
                         </Row>
                     </Col>
                 </Row>
