@@ -1,7 +1,6 @@
 import React from 'react';
 import { Network, Node, Edge } from 'react-vis-network';
 
- 
 const GrafosFM = props => {
     let{cantN} = props;
     let{aristas} = props;

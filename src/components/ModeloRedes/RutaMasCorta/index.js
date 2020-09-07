@@ -35,7 +35,7 @@ class RutaMasCorta extends React.Component {
                             <Row>
                                 <Jumbotron className='w-100'>
                                     <h2>Modelos de redes:</h2>
-                                    <h2>Ruta Mas Corta</h2>
+                                    <h2>Ruta Más Corta</h2>
                                 </Jumbotron>
                             </Row>
                             <Row>

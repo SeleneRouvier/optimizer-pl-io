@@ -1,9 +1,8 @@
-import React, {useState} from "react";
-import { Button, Container, Col, Row, Jumbotron } from "reactstrap";
+import React from "react";
+import { Button,Container, Col, Row, Jumbotron } from "reactstrap";
 import ProcessingFM from "../Processing/indexFM";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
-
 
 class FlujoMaximo extends React.Component {
 
@@ -19,24 +18,10 @@ class FlujoMaximo extends React.Component {
             }
         };
     }
-
     setModel = model => this.setState({ model, changes: true });
 
-    
-   // }
-    //noEjecutarGrafo() {
-     //   this.setState({show: false});
-    //}
-
     render() {
-
        
-       
-        //if (this.state.show) {
-         //   button = <Button onClick={ this.noEjecutarGrafo}>Mostrar Grafo, es true</Button>;
-        //} else {
-          //  button = <Button onClick={ this.ejecutarGrafo}>Mostrar Grafo, es false</Button>;
-        //}
 
         return (
             <Container fluid className="App">
@@ -59,7 +44,6 @@ class FlujoMaximo extends React.Component {
                                     setModel={this.setModel} FlujoMaximo={true} />
                             </Jumbotron>
                         </Row>
-                        
                         <Row>
                             <Jumbotron className='w-100'>
                                 <Presentation model={this.state.model} />
@@ -71,6 +55,8 @@ class FlujoMaximo extends React.Component {
             </Container>
         );
     }
+
+
 }
 
 export default FlujoMaximo;
