@@ -15,6 +15,7 @@ import ArbolMinimaExpansion from "./components/ModeloRedes/ArbolMinimaExpansion"
 import RutaMasCorta from "./components/ModeloRedes/RutaMasCorta";
 import FlujoMaximo from "./components/ModeloRedes/FlujoMaximo";
 import FlujoCapacitadoCM from "./components/ModeloRedes/FlujoCapacitadoCM";
+import RedesTeoria from "./components/ModeloRedes/Teoria"
 
 
 import ModeloStock from "./components/ModeloStock";
@@ -48,7 +49,8 @@ const App = () =>
       <Route exact path="/ModeloRedes/RutaMasCorta" component={RutaMasCorta} />
       <Route exact path="/ModeloRedes/FlujoMaximo" component={FlujoMaximo} />
       <Route exact path="/ModeloRedes/FlujoCapacitadoCM" component={FlujoCapacitadoCM} />
-
+      <Route exact path="/ModeloRedes/Teoria" component={RedesTeoria} />
+	  
 
       <Route exact path="/ModeloStock" component={ModeloStock} />
       <Route exact path="/ModeloStock/ModeloWilson" component={ModeloWilson} /> 

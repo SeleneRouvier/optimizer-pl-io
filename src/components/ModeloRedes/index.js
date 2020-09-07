@@ -43,7 +43,14 @@ const ModeloRedes = () =>{
                             </Link>
                         </Col>
                     </Row>
-                
+                    <Row className="mt-3 mx-auto">
+                        <Col>
+                            <Link to={"/ModeloRedes/Teoria"} >
+                                <Button size='lg' outline color="primary">Teoría</Button>
+                            </Link>
+                        </Col>
+                    </Row>
+                                
                     <Row className="mt-5 mx-auto">
                         <h5>Colaboradores: Modelos de Redes</h5>
                     </Row>
@@ -70,6 +77,7 @@ const ModeloRedes = () =>{
                 </Jumbotron>
             </Col>
         </Row>
+		
     </Container>
   )
 };
