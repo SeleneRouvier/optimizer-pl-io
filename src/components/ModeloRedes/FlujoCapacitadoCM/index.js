@@ -36,7 +36,7 @@ class FlujoMinimo extends React.Component {
                         <Row>
                             <Jumbotron className='w-100'>
                                 <h2>Modelos de redes:</h2>
-                                <h2>Flujo Mínimo</h2>
+                                <h2>Flujo Capacitado con Costo Mínimo</h2>
                             </Jumbotron>
                         </Row>
                         <Row>
@@ -45,9 +45,9 @@ class FlujoMinimo extends React.Component {
                                     setModel={this.setModel} FlujoMinimo={true} />
                             </Jumbotron>
                         </Row>
-                        <Row>
+                        {/*<Row>
                             <Presentation model={this.state.model} />
-                        </Row>
+                        </Row>*/}
                     </Col>
                 </Row>
 						<Row className="">

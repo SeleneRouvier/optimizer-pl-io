@@ -205,7 +205,7 @@ class Processing extends React.Component {
         </Container>
           <div style={{paddingTop:"20px"}}>
             {this.props.status.minimumCost > 0 &&
-              <h4>El Costo Mínimo es: {this.props.status.minimumCost}</h4>
+              <h4>El Mínimo es: {this.props.status.minimumCost}</h4>
             }
             <br></br>
             <table style={{width: "100%"}}>
