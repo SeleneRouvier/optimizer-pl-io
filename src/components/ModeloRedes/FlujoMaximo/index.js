@@ -1,8 +1,9 @@
 import React from "react";
-import { Button,Container, Col, Row, Jumbotron } from "reactstrap";
+import { Button, Container, Col, Row, Jumbotron } from "reactstrap";
 import ProcessingFM from "../Processing/indexFM";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
+import {Link} from 'react-router-dom';
 
 class FlujoMaximo extends React.Component {
 
@@ -52,6 +53,17 @@ class FlujoMaximo extends React.Component {
                         </Row>
                     </Col>
                 </Row>
+						<Row className="">
+        <Col xs={12} md={6} className="mx-auto">
+		<Row>
+              <Jumbotron className='w-100'>
+                <Link to={"/ModeloRedes/"}>
+                  <Button size='lg' outline color="success">VOLVER</Button>
+                </Link>
+              </Jumbotron>
+         </Row>
+		 </Col>
+		 </Row>
             </Container>
         );
     }

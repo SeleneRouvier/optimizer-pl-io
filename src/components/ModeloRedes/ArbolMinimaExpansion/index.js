@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Col, Row, Jumbotron } from "reactstrap";
+import { Button, Container, Col, Row, Jumbotron } from "reactstrap";
 import Processing from "../Processing";
 import Presentation from "./presentacion";
 import logo from "../logo.svg";
+import {Link} from 'react-router-dom';
 
 class ArbolMinimaExpansion extends React.Component {
   constructor(props) {
@@ -56,7 +57,17 @@ class ArbolMinimaExpansion extends React.Component {
 
           </Col>
         </Row>
-
+		<Row className="">
+        <Col xs={12} md={6} className="mx-auto">
+		<Row>
+              <Jumbotron className='w-100'>
+                <Link to={"/ModeloRedes/"}>
+                  <Button size='lg' outline color="success">VOLVER</Button>
+                </Link>
+              </Jumbotron>
+         </Row>
+		 </Col>
+		 </Row>
       </Container>
     );
   }
