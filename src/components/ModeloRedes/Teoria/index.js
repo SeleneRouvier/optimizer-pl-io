@@ -175,15 +175,15 @@ class RedesTeoria extends React.Component {
                   </ol>
 				  </CardBody>
                 </Card>
-               
-              </Jumbotron>
-            </Row>
-			<Row>
-              <Jumbotron className='w-100'>
+                <br/>
+                <br/>
                 <Link to={"/ModeloRedes/"}>
                   <Button size='lg' outline color="success">VOLVER</Button>
                 </Link>
               </Jumbotron>
+            </Row>
+			<Row>
+              
             </Row>
           </Col>
         </Row>
