@@ -30,6 +30,7 @@ class RedesTeoria extends React.Component {
                     <li>Ruta más corta</li>
                     <li>Árbol de expansión mínima</li>
                     <li>Flujo máximo</li>
+					<li>Flujo de costo mínimo</li>
                   </ul>
                   </CardBody>
                 </Card>
@@ -177,13 +178,59 @@ class RedesTeoria extends React.Component {
                 </Card>
                 <br/>
                 <br/>
+              </Jumbotron>
+            </Row>
+			<Row>
+              <Jumbotron className='w-100'>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>Flujo de Costo Mínimo</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+                    Se describe el problema del flujo de costo mínimo: 
+					<p></p><ul>
+					<li>La red es una red dirigida y conexa.</li>
+					<li>Al menos uno de los nodos es un nodo fuente.</li>
+					<li>Al menos uno de los nodos es un nodo demanda.</li>
+					<li>El resto de los nodos son nodos de trasbordo.</li>
+					<li>Se permite el flujo a través de un arco sólo en la dirección que indica la flecha, donde la can tidad máxima de flujo está dada por la capacidad del arco. (Si el flujo puede ocurrir en ambas direcciones, debe representarse por un par de arcos con direcciones opuestas.)</li>
+					<li>La red tiene suficientes arcos con suficiente capacidad para permitir que todos los flujos generados por los nodos fuente lleguen a los nodos demanda.</li>
+					<li>El costo del flujo a través del arco es proporcional a la cantidad de ese flujo, donde se conoce el costo por unidad.</li>
+					<li>El <b>objetivo</b> es minimizar el costo total de enviar el suministro disponible a través de la red para satisfacer la demanda dada. (Un objetivo alternativo es maximizar la ganancia total del envío.)</li>
+					</ul>
+                  </CardBody>
+                </Card>
+                <Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>Propiedad de las Soluciones Factibles</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+				  Una condición necesaria para que un problema de flujo de costo mínimo tenga soluciones factibles, es que el flujo total generado por los nodos origen sea <b>igual</b> al flujo total absorbido por los nodos destino.<p></p>
+				  Si los valores de <i>bi</i> violan esta condición, la interpretación más común es que los recursos o las demandas —lo que se tenga en exceso— representan en realidad cotas superiores y no cantidades exactas.
+                  </CardBody>
+                </Card>
+				<Card outline color="secondary" className="w-100 mt-3">
+                  <CardHeader>
+                    <CardTitle className="text-left">
+                      <h4>Propiedad de las Soluciones Enteras</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody className="mx-auto text-justify">
+				  En el caso de los problemas de flujo de costo mínimo en donde toda <i>bi</i> y <i>uij</i> tienen un valor entero, todas las variables de cada solución básica factible (BF), incluida la óptima, tendrán también <b>valores enteros</b>. 
+                  </CardBody>
+                </Card>
+              </Jumbotron>
+            </Row>
+			<Row>
+              <Jumbotron className='w-100'>
                 <Link to={"/ModeloRedes/"}>
                   <Button size='lg' outline color="success">VOLVER</Button>
                 </Link>
               </Jumbotron>
-            </Row>
-			<Row>
-              
             </Row>
           </Col>
         </Row>
