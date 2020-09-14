@@ -4,7 +4,7 @@ import Aristas from "./Aristas";
 import CantidadNodos from "./CantidadNodos";
 import NodoInicial from "./NodoInicial";
 import NodoFinal from './NodoFinal';
-// import GrafosFM  from "../Processing/Grafos/GrafosFM";
+import GrafosFM  from "../Processing/Grafos/GrafosFM";
 
 class ProcessingFM extends React.Component {
   constructor(props) {
@@ -121,6 +121,17 @@ class ProcessingFM extends React.Component {
             </Card>
           </Row>
         </Container>
+        <Card>
+          <div class="mh-100">
+            <br/>
+            <Button outline color="success"
+              onClick={this.cambiarEstado}>Mostrar/Ocultar Grafo</Button>
+            <br/>
+            <br/>
+            {this.state.show && <GrafosFM cantN={this.props.status.cantidadNodos} aristas={this.props.status.aristas} /> }  
+            <br/>                                
+          </div>
+        </Card>
 
       </>
     );

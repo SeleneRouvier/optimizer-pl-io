@@ -1,10 +1,10 @@
 import React from "react";
-import { Container, Row, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { Container, Row, Button,Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import AristaFMI from "./AristasFMI";
 import CantidadNodos from "./CantidadNodos";
 import CantidadVertices from "./CantidadVertices";
 import Cantidadindex from "./CantidadV";
-import Button from 'react-bootstrap/Button';
+
 
 
 //ESTO ES DE FLUJO MINIMO
