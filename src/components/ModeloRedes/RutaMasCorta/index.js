@@ -25,11 +25,7 @@ class RutaMasCorta extends React.Component {
 
             return (
                 <Container fluid className="App">
-                    <Row className="">
-                        <Col xs={12} md={6} className="mx-auto">
-                            <img src={logo} className="App-logo" alt="logo" height="200" />
-                        </Col>
-                    </Row>
+                   
                     <Row>
                         <Col xs={12} md={6} className="my-4 mx-auto ">
                             <Row>
